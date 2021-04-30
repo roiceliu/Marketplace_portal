@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarketplacePortal_Service
 {
+    
     public class Class1
     {
     }

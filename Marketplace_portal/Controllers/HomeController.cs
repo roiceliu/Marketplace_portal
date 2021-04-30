@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MarketplacePortal_DAL;
+using MarketplacePortal_Service;
 
 namespace Marketplace_portal.Controllers
 {
@@ -10,7 +12,13 @@ namespace Marketplace_portal.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+
+            List<tblDepartment> departments = new List<tblDepartment>();
+            Service service = new Service();
+            departments = service.GetAllDepartments();
+
+
+            return View(departments);
         }
 
         public ActionResult About()

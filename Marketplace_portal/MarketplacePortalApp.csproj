@@ -187,6 +187,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MarketplacePortal_DAL\MarketplacePortal_DAL.csproj">
+      <Project>{f7c7ef6e-3045-4e13-a645-8b1d6ad8c8cb}</Project>
+      <Name>MarketplacePortal_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarketplacePortal_Service\MarketplacePortal_Service.csproj">
+      <Project>{c5c446d5-ad4c-4e2f-8708-428ffead5685}</Project>
+      <Name>MarketplacePortal_Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
