@@ -19,6 +19,8 @@ namespace MarketplacePortal_Repository
         private GenericRepository<tblTechSpecsFilter> techSpecsFilterRepository;
         private GenericRepository<tblTypeFilter> typeFilterRepository;
         private GenericRepository<tblUser> userRepository;
+        private ProductRepository productRepositoryFilter;
+
 
 
         public GenericRepository<tblDepartment> DepartmentRepository
@@ -161,6 +163,19 @@ namespace MarketplacePortal_Repository
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public ProductRepository ProductRepositoryFilter()
+        {
+           
+                if (this.productRepositoryFilter == null)
+                {
+                    this.productRepositoryFilter = new ProductRepository(context);
+                }
+                return productRepositoryFilter;
+
+                
+          
         }
     }
 }

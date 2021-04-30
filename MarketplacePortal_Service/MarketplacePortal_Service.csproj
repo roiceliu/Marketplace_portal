@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilterService.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DepartmentService.cs" />
     <Compile Include="ManufacturerService.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="PropertyValueService.cs" />
     <Compile Include="techSpecsFilterService.cs" />
     <Compile Include="typeFilterService.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

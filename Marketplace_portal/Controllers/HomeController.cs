@@ -12,8 +12,8 @@ namespace Marketplace_portal.Controllers
     {/*
         public ActionResult Index()
         {
-            
-            List<tblDepartment> departments = new List<tblDepartment>();
+
+            IEnumerable<tblDepartment> departments = new List<tblDepartment>();
             Service service = new Service();
             departments = service.GetAllDepartments();
 
