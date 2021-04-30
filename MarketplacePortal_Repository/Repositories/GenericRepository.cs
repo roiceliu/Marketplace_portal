@@ -45,7 +45,6 @@ namespace MarketplacePortal_Repository
 
         public void Delete(TEntity entity)
         {
-
             dbSet.Remove(entity);
 
         }
