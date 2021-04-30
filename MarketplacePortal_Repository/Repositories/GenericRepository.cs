@@ -27,7 +27,7 @@ namespace MarketplacePortal_Repository
 
     public class GenericRepository<TEntity>: IRepository<TEntity> where TEntity : class
     {
-        protected JooleEntities context;
+        internal JooleEntities context;
         internal DbSet<TEntity> dbSet;
 
         public GenericRepository(JooleEntities context)
