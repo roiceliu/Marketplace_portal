@@ -9,17 +9,27 @@ using MarketplacePortal_Service;
 namespace Marketplace_portal.Controllers
 {
     public class HomeController : Controller
-    {
+    {/*
         public ActionResult Index()
         {
-
+            
             List<tblDepartment> departments = new List<tblDepartment>();
             Service service = new Service();
             departments = service.GetAllDepartments();
 
 
             return View(departments);
-        }
+        }*/
+        /*public ActionResult IndexTwo()
+        {
+
+            List<tblManufacturer> manufacturers = new List<tblManufacturer>();
+            Service service = new Service();
+            manufacturers = service.GetAllManufacturers();
+
+
+            return View(manufacturers);
+        }*/
 
         public ActionResult About()
         {

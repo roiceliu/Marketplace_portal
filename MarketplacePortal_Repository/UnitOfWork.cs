@@ -17,7 +17,7 @@ namespace MarketplacePortal_Repository
         private GenericRepository<tblPropertyValue> propertyValueRepository;
         private GenericRepository<tblSubcategory> subcategoryRepository;
         private GenericRepository<tblTechSpecsFilter> techSpecsFilterRepository;
-        private GenericRepository<tblTypeFilter> typeFiltertRepository;
+        private GenericRepository<tblTypeFilter> typeFilterRepository;
         private GenericRepository<tblUser> userRepository;
 
 
@@ -117,15 +117,15 @@ namespace MarketplacePortal_Repository
             get
             {
 
-                if (this.typeFiltertRepository == null)
+                if (this.typeFilterRepository == null)
                 {
-                    this.typeFiltertRepository = new GenericRepository<tblTypeFilter>(context);
+                    this.typeFilterRepository = new GenericRepository<tblTypeFilter>(context);
                 }
-                return typeFiltertRepository;
+                return typeFilterRepository;
             }
         }
 
-        public GenericRepository<tblUser> CourseRepository
+        public GenericRepository<tblUser> UserRepository
         {
             get
             {
