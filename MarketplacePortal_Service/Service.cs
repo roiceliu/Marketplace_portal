@@ -8,31 +8,29 @@ using MarketplacePortal_DAL;
 
 namespace MarketplacePortal_Service
 {
+    //work as a place to another class to get data from repository
     public class Service
     {
         
         UnitOfWork uow = new UnitOfWork();
 
-        public Service() { 
-
-        
-        }
-        public List<tblDepartment> GetAllDepartments()
+      
+        public IEnumerable<tblDepartment> GetAllDepartments()
         {
             return uow.DepartmentRepository.GetAll();
         }
 
-        public List<tblManufacturer> GetAllManufacturers()
+        public IEnumerable<tblManufacturer> GetAllManufacturers()
         {
             return uow.ManufacturerRepository.GetAll();
         }
 
-        public List<tblProduct> GetAllProducts()
+        public IEnumerable<tblProduct> GetAllProducts()
         {
             return uow.ProductRepository.GetAll();
         }
 
-        public List<tblProperty> GetAllProperties()
+        public IEnumerable<tblProperty> GetAllProperties()
         {
             return uow.PropertyRepository.GetAll();
         }

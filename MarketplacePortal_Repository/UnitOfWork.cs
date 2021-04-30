@@ -21,6 +21,7 @@ namespace MarketplacePortal_Repository
         private GenericRepository<tblUser> userRepository;
 
 
+
         public GenericRepository<tblDepartment> DepartmentRepository
         {
             get
@@ -125,7 +126,7 @@ namespace MarketplacePortal_Repository
             }
         }
 
-        public GenericRepository<tblUser> CourseRepository
+        public GenericRepository<tblUser> UserRepository
         {
             get
             {
