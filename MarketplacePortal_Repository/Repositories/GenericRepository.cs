@@ -13,13 +13,16 @@ namespace MarketplacePortal_Repository
     {
         TEntity GetByID(int id);
 
+        //Get table record/Entity by PrimaryKey 
+        TEntity Get(object obj);
+
         void Insert(TEntity entity);
 
         void Delete(TEntity entity);
 
         void Update(TEntity entity);
 
-        List<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll();
 
         
 
@@ -35,19 +38,18 @@ namespace MarketplacePortal_Repository
             this.context = context;
             this.dbSet = context.Set<TEntity>();
 
-
         }
+
+        
         public void Insert(TEntity entity) {
-
             dbSet.Add(entity);
-
+            context.SaveChanges();
         }
 
         public void Delete(TEntity entity)
         {
-
             dbSet.Remove(entity);
-
+            context.SaveChanges();
         }
 
         public TEntity GetByID(int id)
@@ -57,16 +59,23 @@ namespace MarketplacePortal_Repository
 
         }
 
+        
+        public TEntity Get(object obj)
+        {
+            return dbSet.Find(obj);
+        }
+
         public void Update(TEntity entity)
         {
 
             dbSet.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
+            context.SaveChanges();
         }
 
-        public List<TEntity> GetAll() {
+        public IEnumerable<TEntity> GetAll() {
 
-            return dbSet.ToList<TEntity>();
+            return dbSet.AsEnumerable<TEntity>();
         }
 
     }

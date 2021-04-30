@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JooleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JooleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblDepartment">
           <Key>
             <PropertyRef Name="DepartmentID" />
@@ -92,9 +92,9 @@
           <Property Name="UserEmail" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="UserPassword" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserProfileImage" Type="varchar" MaxLength="100" />
+          <Property Name="UserProfileImage" Type="varchar" MaxLength="500" />
         </EntityType>
-        <Association Name="FK__tblDepart__Manuf__286302EC">
+        <Association Name="FK__tblDepart__Manuf__145C0A3F">
           <End Role="tblManufacturer" Type="Self.tblManufacturer" Multiplicity="0..1" />
           <End Role="tblDepartment" Type="Self.tblDepartment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -106,7 +106,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProduc__Manuf__2E1BDC42">
+        <Association Name="FK__tblProduc__Manuf__1A14E395">
           <End Role="tblManufacturer" Type="Self.tblManufacturer" Multiplicity="0..1" />
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,7 +118,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProduc__Subca__2F10007B">
+        <Association Name="FK__tblProduc__Subca__1B0907CE">
           <End Role="tblSubcategory" Type="Self.tblSubcategory" Multiplicity="0..1" />
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,7 +130,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProper__Produ__34C8D9D1">
+        <Association Name="FK__tblProper__Produ__5165187F">
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
           <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -142,7 +142,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProper__Prope__33D4B598">
+        <Association Name="FK__tblProper__Prope__5070F446">
           <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
           <End Role="tblPropertyValue" Type="Self.tblPropertyValue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -154,7 +154,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSubcat__Depar__2B3F6F97">
+        <Association Name="FK__tblSubcat__Depar__173876EA">
           <End Role="tblDepartment" Type="Self.tblDepartment" Multiplicity="0..1" />
           <End Role="tblSubcategory" Type="Self.tblSubcategory" Multiplicity="*" />
           <ReferentialConstraint>
@@ -166,7 +166,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblTechSp__Prope__37A5467C">
+        <Association Name="FK__tblTechSp__Prope__5441852A">
           <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
           <End Role="tblTechSpecsFilter" Type="Self.tblTechSpecsFilter" Multiplicity="*" />
           <ReferentialConstraint>
@@ -178,7 +178,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblTechSp__Subca__38996AB5">
+        <Association Name="FK__tblTechSp__Subca__5535A963">
           <End Role="tblSubcategory" Type="Self.tblSubcategory" Multiplicity="1" />
           <End Role="tblTechSpecsFilter" Type="Self.tblTechSpecsFilter" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +190,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblTypeFi__Prope__3B75D760">
+        <Association Name="FK__tblTypeFi__Prope__5812160E">
           <End Role="tblProperty" Type="Self.tblProperty" Multiplicity="1" />
           <End Role="tblTypeFilter" Type="Self.tblTypeFilter" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,7 +202,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblTypeFi__Subca__3C69FB99">
+        <Association Name="FK__tblTypeFi__Subca__59063A47">
           <End Role="tblSubcategory" Type="Self.tblSubcategory" Multiplicity="1" />
           <End Role="tblTypeFilter" Type="Self.tblTypeFilter" Multiplicity="*" />
           <ReferentialConstraint>
@@ -214,7 +214,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblTypeFi__TypeF__3D5E1FD2">
+        <Association Name="FK__tblTypeFi__TypeF__59FA5E80">
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
           <End Role="tblTypeFilter" Type="Self.tblTypeFilter" Multiplicity="*" />
           <ReferentialConstraint>
@@ -236,53 +236,52 @@
           <EntitySet Name="tblTechSpecsFilter" EntityType="Self.tblTechSpecsFilter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTypeFilter" EntityType="Self.tblTypeFilter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tblDepart__Manuf__286302EC" Association="Self.FK__tblDepart__Manuf__286302EC">
+          <AssociationSet Name="FK__tblDepart__Manuf__145C0A3F" Association="Self.FK__tblDepart__Manuf__145C0A3F">
             <End Role="tblManufacturer" EntitySet="tblManufacturer" />
             <End Role="tblDepartment" EntitySet="tblDepartment" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProduc__Manuf__2E1BDC42" Association="Self.FK__tblProduc__Manuf__2E1BDC42">
+          <AssociationSet Name="FK__tblProduc__Manuf__1A14E395" Association="Self.FK__tblProduc__Manuf__1A14E395">
             <End Role="tblManufacturer" EntitySet="tblManufacturer" />
             <End Role="tblProduct" EntitySet="tblProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProduc__Subca__2F10007B" Association="Self.FK__tblProduc__Subca__2F10007B">
+          <AssociationSet Name="FK__tblProduc__Subca__1B0907CE" Association="Self.FK__tblProduc__Subca__1B0907CE">
             <End Role="tblSubcategory" EntitySet="tblSubcategory" />
             <End Role="tblProduct" EntitySet="tblProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProper__Produ__34C8D9D1" Association="Self.FK__tblProper__Produ__34C8D9D1">
+          <AssociationSet Name="FK__tblProper__Produ__5165187F" Association="Self.FK__tblProper__Produ__5165187F">
             <End Role="tblProduct" EntitySet="tblProduct" />
             <End Role="tblPropertyValue" EntitySet="tblPropertyValue" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProper__Prope__33D4B598" Association="Self.FK__tblProper__Prope__33D4B598">
+          <AssociationSet Name="FK__tblProper__Prope__5070F446" Association="Self.FK__tblProper__Prope__5070F446">
             <End Role="tblProperty" EntitySet="tblProperty" />
             <End Role="tblPropertyValue" EntitySet="tblPropertyValue" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSubcat__Depar__2B3F6F97" Association="Self.FK__tblSubcat__Depar__2B3F6F97">
+          <AssociationSet Name="FK__tblSubcat__Depar__173876EA" Association="Self.FK__tblSubcat__Depar__173876EA">
             <End Role="tblDepartment" EntitySet="tblDepartment" />
             <End Role="tblSubcategory" EntitySet="tblSubcategory" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblTechSp__Prope__37A5467C" Association="Self.FK__tblTechSp__Prope__37A5467C">
+          <AssociationSet Name="FK__tblTechSp__Prope__5441852A" Association="Self.FK__tblTechSp__Prope__5441852A">
             <End Role="tblProperty" EntitySet="tblProperty" />
             <End Role="tblTechSpecsFilter" EntitySet="tblTechSpecsFilter" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblTechSp__Subca__38996AB5" Association="Self.FK__tblTechSp__Subca__38996AB5">
+          <AssociationSet Name="FK__tblTechSp__Subca__5535A963" Association="Self.FK__tblTechSp__Subca__5535A963">
             <End Role="tblSubcategory" EntitySet="tblSubcategory" />
             <End Role="tblTechSpecsFilter" EntitySet="tblTechSpecsFilter" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblTypeFi__Prope__3B75D760" Association="Self.FK__tblTypeFi__Prope__3B75D760">
+          <AssociationSet Name="FK__tblTypeFi__Prope__5812160E" Association="Self.FK__tblTypeFi__Prope__5812160E">
             <End Role="tblProperty" EntitySet="tblProperty" />
             <End Role="tblTypeFilter" EntitySet="tblTypeFilter" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblTypeFi__Subca__3C69FB99" Association="Self.FK__tblTypeFi__Subca__3C69FB99">
+          <AssociationSet Name="FK__tblTypeFi__Subca__59063A47" Association="Self.FK__tblTypeFi__Subca__59063A47">
             <End Role="tblSubcategory" EntitySet="tblSubcategory" />
             <End Role="tblTypeFilter" EntitySet="tblTypeFilter" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblTypeFi__TypeF__3D5E1FD2" Association="Self.FK__tblTypeFi__TypeF__3D5E1FD2">
+          <AssociationSet Name="FK__tblTypeFi__TypeF__59FA5E80" Association="Self.FK__tblTypeFi__TypeF__59FA5E80">
             <End Role="tblProduct" EntitySet="tblProduct" />
             <End Role="tblTypeFilter" EntitySet="tblTypeFilter" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JooleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -395,7 +394,7 @@
           <Property Name="UserEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserProfileImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserProfileImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__tblDepart__Manuf__286302EC">
           <End Role="tblManufacturer" Type="Self.tblManufacturer" Multiplicity="0..1" />
