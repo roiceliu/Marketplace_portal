@@ -1,14 +1,15 @@
 ﻿@using Marketplace_portal.Models;
 @using MarketplacePortal_DAL;
+@using Newtonsoft.Json;
 
 @{
-    var Products = ViewData["products"] as List<tblProduct>;
-    var productsNames = new string[Products.Count()];
+    string[] productNames = (string[])ViewData["productNames"];
+    //String[] productsNames = new string[Products.products.Count()];
 
-    for(var i = 0; i < Products.Count(); i++)
-    {
-        productsNames[i] = Products[i].ProductName;
-    }
+    //for (var i = 0; i < Products.products.Count(); i++)
+    //{
+    //    productsNames[i] = Products.products[i].ProductName;
+    //}
 
     //foreach(tblProduct p in Products){
     //    productsNames.Add(p.ProductName);
@@ -33,11 +34,16 @@
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-    @Products[0].ProductName;
-    @productsNames[0];
+    @productNames[0]
+    @{
+        foreach (String p in productNames)
+        {
+            @p <br />
+        }
+    }
 
 
-    <label for="autocomplete">Select a programming language: </label>
+    <label for="autocomplete">Search: </label>
     <input id="autocomplete">
 
 
@@ -46,7 +52,7 @@
 
 <script type="text/javascript">
     $("#autocomplete").autocomplete({
-        source: @productsNames
+        source: @Html.Raw(JsonConvert.SerializeObject(productNames)),
     });
 </script>
 

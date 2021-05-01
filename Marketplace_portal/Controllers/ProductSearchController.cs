@@ -15,10 +15,17 @@ namespace Marketplace_portal.Controllers
         public ActionResult Index()
         {
 
-            //Get list of products
-            Service s = new Service();
-            List<tblProduct> products = s.GetAllProducts();
-            ViewData["products"] = products;
+            ProductSearchService productSearchService = new ProductSearchService();
+            ProductSearchModel p = new ProductSearchModel
+            {
+                products = productSearchService.getProducts().ToList(),
+                productNames = productSearchService.getProductNames()
+            };
+
+            ////Get list of products
+            //Service s = new Service();
+            //List<tblProduct> products = s.GetAllProducts();
+            ViewData["productNames"] = p.productNames;
             return View();
         }
 
