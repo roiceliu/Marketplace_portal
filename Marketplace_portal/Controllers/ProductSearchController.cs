@@ -19,13 +19,16 @@ namespace Marketplace_portal.Controllers
             ProductSearchModel p = new ProductSearchModel
             {
                 products = productSearchService.getProducts().ToList(),
-                productNames = productSearchService.getProductNames()
+                productNames = productSearchService.getProductNames(),
+                productID = productSearchService.getProductIDs(),
+                //departmentName = ProductSearchService.getDepartmentName()
             };
 
             ////Get list of products
             //Service s = new Service();
             //List<tblProduct> products = s.GetAllProducts();
-            ViewData["productNames"] = p.productNames;
+            ViewData["productObject"] = p;
+            //ViewData["productNames"] = p.productNames;
             return View();
         }
 

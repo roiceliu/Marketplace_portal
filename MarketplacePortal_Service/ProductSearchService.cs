@@ -38,6 +38,35 @@ namespace MarketplacePortal_Service
             return productNames;
         }
 
+        public int[] getProductIDs()
+        {
+            tblProduct[] products = (tblProduct[])getProducts().ToArray();
+            int[] productIDs = new int[products.Length];
+            for (var i = 0; i < products.Length; i++)
+            {
+                productIDs[i] = products[i].ProductID;
+            }
+            return productIDs;
+        }
+
+
+        public IEnumerable<tblDepartment> getDepartments()
+        {
+            IRepository<tblDepartment> departmentRepository = uow.DepartmentRepository;
+            return departmentRepository.GetAll();
+        }
+
+        public String[] getDepartmentNames()
+        {
+            tblDepartment[] departments = (tblDepartment[])getDepartments().ToArray();
+            string[] productNames = new string[departments.Length];
+            for (var i = 0; i < departments.Length; i++)
+            {
+                productNames[i] = departments[i].DepartmentName;
+            }
+            return productNames;
+        }
+
         //public List<tblProduct> getProducts()
         //{
         //    return (List<tblProduct>) uow.PropertyRepository.GetAll();

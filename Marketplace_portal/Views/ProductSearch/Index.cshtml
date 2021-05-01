@@ -1,9 +1,10 @@
 ﻿@using Marketplace_portal.Models;
-@using MarketplacePortal_DAL;
 @using Newtonsoft.Json;
 
 @{
-    string[] productNames = (string[])ViewData["productNames"];
+    ProductSearchModel productObject = ViewData["productObject"] as ProductSearchModel;
+
+    //string[] productNames = (string[])ViewData["productNames"];
     //String[] productsNames = new string[Products.products.Count()];
 
     //for (var i = 0; i < Products.products.Count(); i++)
@@ -34,25 +35,49 @@
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-    @productNames[0]
+    @*@productNames[0]
     @{
         foreach (String p in productNames)
         {
             @p <br />
         }
-    }
+    }*@
+
+    <form action="/action_page.php">
+        <select name="departments" id="departments">
+            <option value="All" selected disabled hidden>Departments</option>
+            <option value="All">All</option>
+            @{
+                foreach (string productName in productObject.productNames)
+                {
+                    <option value="@productName">@productName</option>
+
+                    //dict[@productObject.subcategoryID[i]] -> returns departmentName
+                }
+            }
+        </select>
+        <input id="autocomplete">
+        <input type="submit" value="Submit">
+    </form>
 
 
-    <label for="autocomplete">Search: </label>
-    <input id="autocomplete">
+    @*<label for="autocomplete">Search: </label>*@
+
 
 
 </body>
 </html>
 
 <script type="text/javascript">
+    @*$(document).ready(function () {
+        @foreach ViewData[""]
+    });*@
+
     $("#autocomplete").autocomplete({
-        source: @Html.Raw(JsonConvert.SerializeObject(productNames)),
+
+
+        
+        source: @Html.Raw(JsonConvert.SerializeObject(productObject.productNames)),
     });
 </script>
 
