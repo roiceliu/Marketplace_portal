@@ -27,7 +27,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ViewBag.Title</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -43,7 +43,7 @@
         }
     }*@
 
-    <form action="/action_page.php">
+    <form action="">
         <select name="departments" id="departments">
             <option value="All" selected disabled hidden>Departments</option>
             <option value="All">All</option>
@@ -73,10 +73,45 @@
         @foreach ViewData[""]
     });*@
 
+    $("#departments").change(function () {
+        var departmentSelection = $(this).val();
+        if (departmentSelection == "All") {
+            //Reset the tempList
+            return;
+        }
+        alert($(this).val());
+
+        //Transforms the dictionary
+        var departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict));
+        var searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+        searchList.forEach(function () {
+            //if()
+        });
+        console.log(departmentNameLookup);
+        console.log(searchList);            
+
+
+    });
+
+
     $("#autocomplete").autocomplete({
+        @*var departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict))*@
+        //$.each(departmentNameLookup, function (key, value) {
+        //    console.log(key);
+        //})
 
 
-        
+        @*@{
+
+            List<string> filteredProductsList = new List<string>();
+            for(int i = 0; i < productObject.productNames.Length; i++)
+            {
+                //if()
+
+            }
+        }*@
+
+
         source: @Html.Raw(JsonConvert.SerializeObject(productObject.productNames)),
     });
 </script>

@@ -10,7 +10,7 @@ namespace MarketplacePortal_Repository
         public interface IProductRepository : IDisposable
         {
             IEnumerable<tblProduct> GetStudents();
-           tblProduct GetProductByID(int ProductID);
+            tblProduct GetProductByID(int ProductID);
             void InsertProduct(tblProduct product);
             void DeleteProduct(int ProductID);
             void UpdateProduct(tblProduct product);

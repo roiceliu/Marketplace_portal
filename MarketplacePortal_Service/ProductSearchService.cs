@@ -49,27 +49,37 @@ namespace MarketplacePortal_Service
             return productIDs;
         }
 
-
+        public IEnumerable<tblSubcategory> getSubcategories()
+        {
+            IRepository<tblSubcategory> subcategoryRepository = uow.SubcategoryRepository;
+            return subcategoryRepository.GetAll();
+        }
         public IEnumerable<tblDepartment> getDepartments()
         {
             IRepository<tblDepartment> departmentRepository = uow.DepartmentRepository;
             return departmentRepository.GetAll();
         }
 
-        public String[] getDepartmentNames()
+        //The Key is SubcategoryID and the Value is DepartmentName
+        //SubcategoryID is a string because jQuery doesn't allow conversions when the Key is not a string
+        public Dictionary<string, string> getSubcategoryDepartmentDict()
         {
-            tblDepartment[] departments = (tblDepartment[])getDepartments().ToArray();
-            string[] productNames = new string[departments.Length];
-            for (var i = 0; i < departments.Length; i++)
-            {
-                productNames[i] = departments[i].DepartmentName;
-            }
-            return productNames;
-        }
+            Dictionary<string, string> subCategoryDepartmentDict = new Dictionary<string, string>();
 
-        //public List<tblProduct> getProducts()
-        //{
-        //    return (List<tblProduct>) uow.PropertyRepository.GetAll();
-        //}
+            tblSubcategory[] subcategories = (tblSubcategory[])getSubcategories().ToArray();
+            Dictionary<int, string> departmentsDict = getDepartments().ToDictionary(x => x.DepartmentID, x => x.DepartmentName);
+
+            for(int i = 0; i < subcategories.Length; i++)
+            {
+                if(!subCategoryDepartmentDict.ContainsKey(subcategories[i].SubcategoryID.ToString()))
+                {
+                    //DepartmentID is a nullable int, so we append .Value to the end. We should change this in our
+                    //database so it can't be null. Since if it ever is, this'll default to 0 and we'll get unexpected behavior
+                    subCategoryDepartmentDict.Add(subcategories[i].SubcategoryID.ToString(), departmentsDict[subcategories[i].DepartmentID.Value]);
+                }
+            }
+
+            return subCategoryDepartmentDict;
+        }
     }
 }
