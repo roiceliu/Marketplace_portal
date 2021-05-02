@@ -11,8 +11,8 @@ namespace Marketplace_portal.Models
     {
         public List<tblProduct> products { get; set; }
         public String[] productNames { get; set; }
-
-        //public int[] productID { get; set; }
+        public int[] productSubcategoryIDs { get; set; }
+        public String[] departmentNames { get; set; }
         public Dictionary<string, string> subCategoryDepartmentDict { get; set; }
 
         //[Key]

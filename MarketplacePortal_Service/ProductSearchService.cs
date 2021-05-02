@@ -49,6 +49,17 @@ namespace MarketplacePortal_Service
             return productIDs;
         }
 
+        public int[] getProductSubcategoryIDs()
+        {
+            tblProduct[] products = (tblProduct[])getProducts().ToArray();
+            int[] productSubcategoryIDs = new int[products.Length];
+            for (var i = 0; i < products.Length; i++)
+            {
+                productSubcategoryIDs[i] = products[i].SubcategoryID.Value;
+            }
+            return productSubcategoryIDs;
+        }
+
         public IEnumerable<tblSubcategory> getSubcategories()
         {
             IRepository<tblSubcategory> subcategoryRepository = uow.SubcategoryRepository;
@@ -59,6 +70,19 @@ namespace MarketplacePortal_Service
             IRepository<tblDepartment> departmentRepository = uow.DepartmentRepository;
             return departmentRepository.GetAll();
         }
+
+        public String[] getDepartmentNames()
+        {
+            tblDepartment[] departments = (tblDepartment[])getDepartments().ToArray();
+            string[] departmentNames = new string[departments.Length];
+            for (var i = 0; i < departments.Length; i++)
+            {
+                departmentNames[i] = departments[i].DepartmentName;
+            }
+            return departmentNames;
+        }
+
+
 
         //The Key is SubcategoryID and the Value is DepartmentName
         //SubcategoryID is a string because jQuery doesn't allow conversions when the Key is not a string
@@ -78,6 +102,8 @@ namespace MarketplacePortal_Service
                     subCategoryDepartmentDict.Add(subcategories[i].SubcategoryID.ToString(), departmentsDict[subcategories[i].DepartmentID.Value]);
                 }
             }
+
+            //tblProduct[] products = (tblProduct[])getProducts().ToArray();
 
             return subCategoryDepartmentDict;
         }

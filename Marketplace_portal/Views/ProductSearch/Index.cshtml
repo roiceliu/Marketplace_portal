@@ -35,145 +35,61 @@
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-    @*@productNames[0]
-    @{
-        foreach (String p in productNames)
-        {
-            @p <br />
-        }
-    }*@
-
     <form action="">
         <select name="departments" id="departments">
             <option value="All" selected disabled hidden>Departments</option>
             <option value="All">All</option>
             @{
-                foreach (string productName in productObject.productNames)
+                foreach (string departmentName in productObject.departmentNames)
                 {
-                    <option value="@productName">@productName</option>
-
-                    //dict[@productObject.subcategoryID[i]] -> returns departmentName
+                    <option value="@departmentName">@departmentName</option>
                 }
             }
         </select>
+
         <input id="autocomplete">
         <input type="submit" value="Submit">
     </form>
-
-
-    @*<label for="autocomplete">Search: </label>*@
-
 
 
 </body>
 </html>
 
 <script type="text/javascript">
-    @*$(document).ready(function () {
-        @foreach ViewData[""]
-    });*@
+    var searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+    var departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict));
+    var productNames = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+    var subcategoryIDs = @Html.Raw(JsonConvert.SerializeObject(productObject.productSubcategoryIDs));
+
+    $(document).ready(function () {
+        $("#departments").val("All");
+        populateSearchList("All");
+        autocomplete()
+    });
+
 
     $("#departments").change(function () {
-        var departmentSelection = $(this).val();
+        populateSearchList($("#departments").val());
+    });
+
+    function populateSearchList(departmentSelection) {
+        searchList = [];
         if (departmentSelection == "All") {
-            //Reset the tempList
+            searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+            autocomplete()
             return;
         }
-        alert($(this).val());
 
-        //Transforms the dictionary
-        var departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict));
-        var searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
-        searchList.forEach(function () {
-            //if()
-        });
-        console.log(departmentNameLookup);
-        console.log(searchList);            
-
-
-    });
-
-
-    $("#autocomplete").autocomplete({
-        @*var departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict))*@
-        //$.each(departmentNameLookup, function (key, value) {
-        //    console.log(key);
-        //})
-
-
-        @*@{
-
-            List<string> filteredProductsList = new List<string>();
-            for(int i = 0; i < productObject.productNames.Length; i++)
-            {
-                //if()
-
+        for (var i = 0; i < subcategoryIDs.length; i++) {
+            if (departmentNameLookup[subcategoryIDs[i]] == departmentSelection) {
+                searchList.push(productNames[i]);
             }
-        }*@
-
-
-        source: @Html.Raw(JsonConvert.SerializeObject(productObject.productNames)),
-    });
-</script>
-
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Series)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModelYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tblManufacturer.ManufacturerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tblSubcategory.SubcategoryName)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Series)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tblManufacturer.ManufacturerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tblSubcategory.SubcategoryName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
-            </td>
-        </tr>
+        }
+        autocomplete()
     }
-
-    </table>*@
+    function autocomplete() {
+        $("#autocomplete").autocomplete({
+            source: searchList
+        });
+    }
+</script>

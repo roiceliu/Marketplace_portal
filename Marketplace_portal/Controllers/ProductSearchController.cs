@@ -20,7 +20,8 @@ namespace Marketplace_portal.Controllers
             {
                 products = productSearchService.getProducts().ToList(),
                 productNames = productSearchService.getProductNames(),
-                //productID = productSearchService.getProductIDs(),
+                productSubcategoryIDs = productSearchService.getProductSubcategoryIDs(),
+                departmentNames = productSearchService.getDepartmentNames(),
                 subCategoryDepartmentDict = productSearchService.getSubcategoryDepartmentDict()
             };
 
