@@ -51,12 +51,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="MarketPlaceModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MarketPlaceModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MarketPlaceModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MarketPlaceModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MarketPlaceModels.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tblDepartment.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblManufacturer.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProduct.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProperty.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPropertyValue.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSubcategory.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTechSpecsFilter.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTypeFilter.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
+      <DependentUpon>MarketPlaceModels.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="MarketPlaceModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MarketPlaceModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MarketPlaceModels.edmx.diagram">
+      <DependentUpon>MarketPlaceModels.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MarketPlaceModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MarketPlaceModels.edmx</DependentUpon>
+      <LastGenOutput>MarketPlaceModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MarketPlaceModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MarketPlaceModels.edmx</DependentUpon>
+      <LastGenOutput>MarketPlaceModels.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

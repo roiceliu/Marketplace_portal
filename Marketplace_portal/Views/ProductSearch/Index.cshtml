@@ -1,0 +1,99 @@
+﻿@using Marketplace_portal.Models;
+@using Newtonsoft.Json;
+
+@{
+    ProductSearchModel productObject = ViewData["productObject"] as ProductSearchModel;
+
+    //string[] productNames = (string[])ViewData["productNames"];
+    //String[] productsNames = new string[Products.products.Count()];
+
+    //for (var i = 0; i < Products.products.Count(); i++)
+    //{
+    //    productsNames[i] = Products.products[i].ProductName;
+    //}
+
+    //foreach(tblProduct p in Products){
+    //    productsNames.Add(p.ProductName);
+    //}
+
+    //productsNames = List.ToArray();
+
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <form action="">
+        <select name="departments" id="departments">
+            <option value="All" selected disabled hidden>Departments</option>
+            <option value="All">All</option>
+            @{
+                foreach (string departmentName in productObject.departmentNames)
+                {
+                    <option value="@departmentName">@departmentName</option>
+                }
+            }
+        </select>
+
+        <input id="autocomplete">
+        <input type="submit" value="Submit">
+    </form>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+    var searchList;
+    var departmentNameLookup;
+    var productNames;
+    var subcategoryIDs;
+
+    $(document).ready(function () {
+        searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+        departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict));
+        productNames = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+        subcategoryIDs = @Html.Raw(JsonConvert.SerializeObject(productObject.productSubcategoryIDs));
+        $("#departments").val("All");
+        populateSearchList("All");
+        autocomplete()
+    });
+
+
+    $("#departments").change(function () {
+        populateSearchList($("#departments").val());
+    });
+
+    function populateSearchList(departmentSelection) {
+        searchList = [];
+        if (departmentSelection == "All") {
+            searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+            autocomplete()
+            return;
+        }
+
+        for (var i = 0; i < subcategoryIDs.length; i++) {
+            if (departmentNameLookup[subcategoryIDs[i]] == departmentSelection) {
+                searchList.push(productNames[i]);
+            }
+        }
+        autocomplete()
+    }
+    function autocomplete() {
+        $("#autocomplete").autocomplete({
+            source: searchList
+        });
+    }
+</script>
