@@ -56,12 +56,16 @@
 </html>
 
 <script type="text/javascript">
-    var searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
-    var departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict));
-    var productNames = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
-    var subcategoryIDs = @Html.Raw(JsonConvert.SerializeObject(productObject.productSubcategoryIDs));
+    var searchList;
+    var departmentNameLookup;
+    var productNames;
+    var subcategoryIDs;
 
     $(document).ready(function () {
+        searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+        departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict));
+        productNames = @Html.Raw(JsonConvert.SerializeObject(productObject.productNames));
+        subcategoryIDs = @Html.Raw(JsonConvert.SerializeObject(productObject.productSubcategoryIDs));
         $("#departments").val("All");
         populateSearchList("All");
         autocomplete()
