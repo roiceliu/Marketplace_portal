@@ -1,7 +1,6 @@
-﻿.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 800px;
+﻿.register-modal {
+    padding: 15px;
+    width: auto;
 }
 
 #profile_image {

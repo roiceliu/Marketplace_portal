@@ -14,12 +14,14 @@ namespace Marketplace_portal.Controllers
     public class RegistrationController : Controller
     {
         // GET: Registration
+        [AllowAnonymous]
         public ActionResult Register()
         {
-            return PartialView("ModalRegister");
+            return PartialView("Register");
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Register(UserRegister user)
         {
             if (ModelState.IsValid)
@@ -55,7 +57,7 @@ namespace Marketplace_portal.Controllers
             
             //Add Error Message
             //ViewData["ErrorMessage"] = 
-            return PartialView("ModalRegister");
+            return PartialView("Register");
             
         }
     }
