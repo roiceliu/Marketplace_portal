@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarketplacePortal_Service
+namespace MarketplacePortal_DAL
 {
     public class Class1
     {
