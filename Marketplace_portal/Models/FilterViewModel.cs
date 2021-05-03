@@ -8,7 +8,12 @@ namespace Marketplace_portal.Models
 {
     public class FilterViewModel
     {
-        public List<string> productTypes { get; set; }
-        public List<tblProduct> products { get; set; }
+        public String subcategory;
+        public List<string> productTypes = new List<string>();
+        public List<tblProduct> products = new List<tblProduct>();
+        public List<tblPropertyValue> propertyValues = new List<tblPropertyValue>();
+        public List<tblProperty> property = new List<tblProperty>();
+        public List<IHtmlString> listOfDivs = new List<IHtmlString>(); 
+        
     }
 }

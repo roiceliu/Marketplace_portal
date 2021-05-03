@@ -1,0 +1,104 @@
+﻿
+
+@{
+    if (Model.listOfDivs != null)
+
+    {
+        foreach (var Data in Model.listOfDivs)
+        {
+
+            @Data;
+
+        }
+
+        @*
+            if (Convert.ToString(@Session["subcategory"]) == "Fans")
+            {
+                var airflowKey = -1;
+                var maxPowerKey = -1;
+                var soundMaxKey = -1;
+                var fanSweepDiameterKey = -1;
+
+
+
+                for (int i = 0; i < Model.property.Count; i++)
+                {
+                    if (Convert.ToString(Model.property[i].PropertyName) == "Air Flow")
+                    {
+                        airflowKey = Model.property[i].PropertyID;
+                    }
+
+                    if (Convert.ToString(Model.property[i].PropertyName) == "Power")
+                    {
+                        maxPowerKey = Model.property[i].PropertyID;
+                    }
+
+                    if (Convert.ToString(Model.property[i].PropertyName) == "Sound at Max Speed")
+                    {
+                        soundMaxKey = Model.property[i].PropertyID;
+                    }
+
+                    if (Convert.ToString(Model.property[i].PropertyName) == "Fan Sweep Diameter")
+                    {
+                        fanSweepDiameterKey = Model.property[i].PropertyID;
+                    }
+
+
+                }
+
+                foreach (var Data in Model.products)
+                {
+                    var airflowValue = "";
+                    var maxPowerValue = -1.1;
+                    var soundMaxValue = "";
+                    var fanSweepDiameterValue = "";
+
+                    for (int i = 0; i < Model.propertyValues.Count; i++)
+                    {
+
+                        if ((Data.ProductID == Model.propertyValues[i].ProductID) & (Model.propertyValues[i].PropertyID == airflowKey))
+                        {
+
+                            airflowValue = Model.propertyValues[i].Value;
+                        }
+                        if ((Data.ProductID == Model.propertyValues[i].ProductID) & (Model.propertyValues[i].PropertyID == maxPowerKey))
+                        {
+
+                            maxPowerValue = Model.propertyValues[i].Max;
+                        }
+                        if ((Data.ProductID == Model.propertyValues[i].ProductID) & (Model.propertyValues[i].PropertyID == soundMaxKey))
+                        {
+
+                            soundMaxValue = Model.propertyValues[i].Value;
+                        }
+
+                        if ((Data.ProductID == Model.propertyValues[i].ProductID) & (Model.propertyValues[i].PropertyID == fanSweepDiameterKey))
+                        {
+
+                            fanSweepDiameterValue = Model.propertyValues[i].Value;
+                        }
+
+
+                    }
+
+                    <a href="@Url.Action("ProductDetail", "Filter", new { id = @Data.ProductID })" id="ProductDiv">
+                        <div>
+                            <div>@Data.ProductName</div>
+                            <div>@airflowValue</div>
+                            <div>@maxPowerValue</div>
+                            <div>@soundMaxValue</div>
+                            <div>@fanSweepDiameterValue</div>
+                        </div>
+                    </a>
+
+
+
+
+
+                }
+
+
+            }*@
+    }
+}
+
