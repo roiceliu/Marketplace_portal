@@ -17,7 +17,7 @@ namespace Marketplace_portal.Controllers
 
             //Get list of products
             Service s = new Service();
-            List<tblProduct> products = s.GetAllProducts();
+            IEnumerable<tblProduct> products = s.GetAllProducts();
             ViewData["products"] = products;
             return View();
         }

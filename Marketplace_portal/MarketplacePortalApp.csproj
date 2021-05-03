@@ -145,10 +145,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Filter.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ProductImages\fan1.jpg" />
+    <Content Include="ProductImages\Fan2.jpg" />
+    <Content Include="ProductImages\fan3.jpg" />
+    <Content Include="ProductImages\fan4.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -182,6 +187,7 @@
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
+    <Content Include="Views\Filter\_Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
