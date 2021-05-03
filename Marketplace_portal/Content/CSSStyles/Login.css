@@ -1,0 +1,123 @@
+﻿body{
+    background: linear-gradient(180deg, #357CAA 0%, rgba(53, 124, 170, 0.88573) 28.24%, rgba(53, 124, 170, 0) 100%);
+    background-repeat: no-repeat;
+    min-height:600px;
+}
+
+input{
+    max-width:900px;
+}
+
+.loginWrapper{
+    padding: 5px 20px;
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+   
+}
+
+.loginHeader{
+    display: flex;
+    justify-content:flex-end; 
+}
+
+    .loginHeader a{
+        text-decoration: none;
+        font-size: 16pt;
+        color: black;
+        cursor: pointer;
+            border:none;
+    }
+
+    .loginHeader a:hover {
+        color: white;
+        transition: all 0.2s ease-in-out;
+    }
+
+.ColumnSet{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.loginSection h3{
+    font-size:16pt;
+    color:black;
+    font-weight:400;
+}
+
+.loginSection {
+    margin-top: 40px;
+}
+
+.inputUser{
+    position:relative;
+}
+
+.inputPassword {
+    position: relative;
+}
+
+
+.inputUser i {
+    position: absolute;
+    left: 95%;
+    top: 30px;
+    font-size: 18px;
+   
+}
+
+.inputPassword i {
+    position: absolute;
+    left: 95%;
+    top: 30px;
+    font-size: 18px;
+}
+
+.loginForm{
+    width:500px;
+}
+
+.loginForm div input {
+    width: 500px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+#loginBtn {
+    border: none;
+    background: #327AB9;
+    border-radius: 5px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    height: 30px;
+    align-self: flex-end;
+    margin:20px 0;
+}
+
+#loginBtn:hover{
+    color:black;
+    background-color:aliceblue;
+    transition:all 0.3s ease-in-out;
+}
+
+
+.modal{
+    display:none;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    position: absolute;
+    width: 60%;
+    top: 50px;
+    left: 25%;
+    width: 700px;
+}
+

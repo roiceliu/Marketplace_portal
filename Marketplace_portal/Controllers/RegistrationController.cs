@@ -14,41 +14,51 @@ namespace Marketplace_portal.Controllers
     public class RegistrationController : Controller
     {
         // GET: Registration
+        [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return PartialView("Register");
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Register(UserRegister user)
         {
-            //get fileName
-            string FileName = Path.GetFileNameWithoutExtension(user.ImageFile.FileName);
-            //get image extension
-            string FileExtension = Path.GetExtension(user.ImageFile.FileName);
-
-            //setting up image path for user
-            FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
-            //get config upload path
-            string UploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
-            user.ImagePath = UploadPath + FileName;
-            //To copy and save file into server.  
-            user.ImageFile.SaveAs(user.ImagePath);
-
-
-            //save user into database 
-            //FIXME: database Identity key, database image type
-            IUserService us = new UserService();
-            tblUser newUser = new tblUser
+            if (ModelState.IsValid)
             {
-                UserEmail = user.UserEmail,
-                UserPassword = user.Password,
-                UserName = user.Username,
-                UserProfileImage = user.ImagePath
-            };
+                //get fileName
+                string FileName = Path.GetFileNameWithoutExtension(user.ImageFile.FileName);
+                //get image extension
+                string FileExtension = Path.GetExtension(user.ImageFile.FileName);
 
-            us.InsertUser(newUser);
-            return RedirectToAction("Login", "Login");
+                //setting up image path for user
+                FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+                //get config upload path
+                string UploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
+                user.ImagePath = UploadPath + FileName;
+                //To copy and save file into project "UserImages" path
+                user.ImageFile.SaveAs(user.ImagePath);
+
+
+                //save user into database 
+                //FIXME: database Identity key, database image type
+                IUserService us = new UserService();
+                tblUser newUser = new tblUser
+                {
+                    UserEmail = user.UserEmail,
+                    UserPassword = user.Password,
+                    UserName = user.Username,
+                    UserProfileImage = user.ImagePath
+                };
+
+                us.InsertUser(newUser);
+                return RedirectToAction("Login", "Login");
+            }
+            
+            //Add Error Message
+            //ViewData["ErrorMessage"] = 
+            return PartialView("Register");
+            
         }
     }
 }
