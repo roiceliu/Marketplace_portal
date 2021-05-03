@@ -20,6 +20,8 @@ namespace MarketplacePortal_Repository
         private GenericRepository<tblTypeFilter> typeFilterRepository;
         private GenericRepository<tblUser> userRepository;
         private ProductRepository productRepositoryFilter;
+        private ProductRepository compareRepository;
+
 
 
 
@@ -176,6 +178,18 @@ namespace MarketplacePortal_Repository
 
                 
           
+        }
+        public ProductRepository CompareRepository()
+        {
+
+            if (this.compareRepository == null)
+            {
+                this.compareRepository = new ProductRepository(context);
+            }
+            return compareRepository;
+
+
+
         }
     }
 }
