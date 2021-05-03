@@ -146,7 +146,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSSStyles\Login.css" />
     <Content Include="Content\CSSStyles\main.css" />
+    <Content Include="Content\CSSStyles\Register.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -185,9 +187,11 @@
     <Content Include="Views\Compare\CompareProduct.cshtml" />
     <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
+    <Content Include="Views\Registration\ModalRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="UserImages\" />
     <Folder Include="Views\AddTo\" />
   </ItemGroup>

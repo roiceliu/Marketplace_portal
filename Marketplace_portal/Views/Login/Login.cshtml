@@ -1,22 +1,56 @@
-﻿@*!!!!Question: have to bind with model to use textboxfor? *@
-@model Marketplace_portal.Models.UserLogin
+﻿@model Marketplace_portal.Models.UserLogin
 
 @{
     ViewBag.Title = "Login";
-    
-}
-
-<h2>Login</h2>
-
-@using (Html.BeginForm("Login", "Login", FormMethod.Post, new {@class="loginForm" }))
-{
-    @Html.TextBoxFor(m => m.UserName, new {placeholder ="Username or Email"  });
-    @Html.PasswordFor(m=>m.Password, new { placeholder = "Password" })
-
-    <p>@ViewData["errorMessage"]</p>
-    
-    <input type="submit" value="Log In"/>
 
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Joole</title>
+    @Styles.Render("~/Content/CSSStyles/Login.css")
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="loginWrapper">
+        <div class="loginHeader">
+            <a href='@Url.Action("Register", "Registration")'>Sign Up</a>
+        </div>
+        <div class="loginSection ColumnSet">
+            <img id="jooleIcon" src="@Url.Content("~/Content/Images/jooleIcon.png")" alt=" Joole Icon">
+            <h3>Building Product Selection Platform</h3>
+
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "loginForm ColumnSet" }))
+            {
+                <div class="inputUser">
+                    <i class="fa fa-user icon"></i>
+                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "Username or Email" })
+                </div>
+
+                <div class="inputPassword">
+                    <i class="fa fa-lock icon"></i>
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+
+                </div>
+
+                <p>@ViewData["errorMessage"]</p>
+
+                <input id ="loginBtn" type="submit" value="Log In" />
+
+            }
+        </div>
+
+
+
+    </div>
+
+
+</body>
+
+</html>
 
