@@ -138,7 +138,7 @@
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
-    <Compile Include="Models\ProductSearch.cs" />
+    <Compile Include="Models\ProductSearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
