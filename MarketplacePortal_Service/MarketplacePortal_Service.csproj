@@ -51,33 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FilterService.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="DepartmentService.cs" />
-    <Compile Include="ManufacturerService.cs" />
-    <Compile Include="ProductSearchService.cs" />
-    <Compile Include="productService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyService.cs" />
-    <Compile Include="PropertyValueService.cs" />
-    <Compile Include="techSpecsFilterService.cs" />
-    <Compile Include="typeFilterService.cs" />
-    <Compile Include="Service.cs" />
-    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MarketplacePortal_DAL\MarketplacePortal_DAL.csproj">
-      <Project>{f7c7ef6e-3045-4e13-a645-8b1d6ad8c8cb}</Project>
-      <Name>MarketplacePortal_DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MarketplacePortal_Repository\MarketplacePortal_Repository.csproj">
-      <Project>{785b5a4a-2772-4204-af3f-17bd5e9b57ed}</Project>
-      <Name>MarketplacePortal_Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
