@@ -30,8 +30,11 @@ namespace Marketplace_portal.Controllers
             var modelYear = product.Select(x => x.ModelYear);
             int manufacturerId = (int)product.Select(x => x.ManufacturerID).FirstOrDefault();
             string manufacturerName = fservice.GetManufacturerNameByID(manufacturerId);
-            List<String> propertyType = fservice.GetPropertyValueByProductID(productId);
+            List<tblProperty> propertyNames = fservice.GetPropertyNames();
+            List<tblPropertyValue> productProperties = fservice.GetPropertyInfoForProduct(productId);
 
+            
+            
 
             return View();
         }

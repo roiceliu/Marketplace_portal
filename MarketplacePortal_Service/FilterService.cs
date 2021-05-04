@@ -86,6 +86,22 @@ namespace MarketplacePortal_Service
 
         }
 
+        //get all property names and ID from <tblProperty>
+
+        public List<tblProperty> GetPropertyNames()
+        {
+            return uow.CompareRepository().GetPropertyNames();
+
+        }
+
+        //get all property info for product
+        public List<tblPropertyValue> GetPropertyInfoForProduct(int productID)
+        {
+            return uow.CompareRepository().GetPropertyInfoForProduct(productID);
+
+        }
+
+
         public void Save()
         {
 

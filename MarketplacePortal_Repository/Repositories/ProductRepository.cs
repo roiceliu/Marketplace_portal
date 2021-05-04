@@ -194,30 +194,40 @@ namespace MarketplacePortal_Repository
 
         }
 
-        //get property name from <tblManufacturer> using manufacturer id
-        public List<String> GetPropertyValueByProductID(int productID)
+        //get all property names and ID from <tblProperty>
+        public List<tblProperty> GetPropertyNames()
         {
-            var query1 = from product in context.Set<tblPropertyValue>()
-                        where product.ProductID == productID
-                        select product.PropertyID;
+            var query = from property in context.Set<tblProperty>()
+                        select property;
 
-            int propertyId = -1;
+            List<tblProperty> propertyNames = new List<tblProperty>();
 
-            //get property ID from <tblPropertyValue>
-            foreach (var item in query1)
+            foreach (var product in query)
             {
-                propertyId = item;
+                propertyNames.Add(product);
             }
 
-
-
-            List<String> propertyValues = new List<string>();
-
-
-            return propertyValues;
+            return propertyNames;
 
         }
 
+        //get all property info for product
+        public List<tblPropertyValue> GetPropertyInfoForProduct(int productID)
+        {
+            var query = from property in context.Set<tblPropertyValue>()
+                        where property.ProductID == productID
+                        select property;
+
+            List<tblPropertyValue> properties = new List<tblPropertyValue>();
+
+            foreach (var item in query)
+            {
+                properties.Add(item);
+            }
+
+            return properties;
+
+        }
 
     }
 }
