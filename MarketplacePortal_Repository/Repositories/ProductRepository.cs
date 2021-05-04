@@ -194,6 +194,30 @@ namespace MarketplacePortal_Repository
 
         }
 
+        //get property name from <tblManufacturer> using manufacturer id
+        public List<String> GetPropertyValueByProductID(int productID)
+        {
+            var query1 = from product in context.Set<tblPropertyValue>()
+                        where product.ProductID == productID
+                        select product.PropertyID;
+
+            int propertyId = -1;
+
+            //get property ID from <tblPropertyValue>
+            foreach (var item in query1)
+            {
+                propertyId = item;
+            }
+
+
+
+            List<String> propertyValues = new List<string>();
+
+
+            return propertyValues;
+
+        }
+
 
     }
 }
