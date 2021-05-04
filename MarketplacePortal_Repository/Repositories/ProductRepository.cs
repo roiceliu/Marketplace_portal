@@ -219,10 +219,25 @@ namespace MarketplacePortal_Repository
                         select property;
 
             List<tblPropertyValue> properties = new List<tblPropertyValue>();
-
+            float? Min=int.MinValue;
+            float? Max=int.MaxValue;
             foreach (var item in query)
             {
-                properties.Add(item);
+                if (item.HasMinMax == 1)
+                { 
+                    
+                    Min = item.Min;
+                    Max = item.Max;
+
+                    properties.Add(item);
+
+                }
+                else if(item.HasMinMax == 0)
+                {
+                    properties.Add(item);
+
+                }
+
             }
 
             return properties;
