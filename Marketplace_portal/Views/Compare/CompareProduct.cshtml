@@ -4,12 +4,14 @@
 }
 
 <h2>CompareProduct</h2>
-
+@*
 const urlParams = new URLSearchParams(queryString);
-const product = urlParams.get('id')
+const product = urlParams.get('id')*@
 
 @{
-    ViewData
+    var data = ViewBag.Message;
 }
+
+<h3>Model: @data.Model</h3>
 
 

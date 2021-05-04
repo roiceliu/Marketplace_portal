@@ -16,9 +16,10 @@ namespace Marketplace_portal.Controllers
         JooleEntities context = new JooleEntities();
         FilterService fservice = new FilterService();
 
-        public ActionResult CompareProduct(int id)
+        public ActionResult CompareProduct()
         {
-            int productId = int.Parse(Request.QueryString["id"].ToString());
+            //int productId = int.Parse(Request.QueryString["id"].ToString());
+            int productId = 1;
 
             //get current product using productID
             List<tblProduct> currProduct = fservice.GetProductsByProductID(productId);
@@ -49,6 +50,7 @@ namespace Marketplace_portal.Controllers
                   Image = currProduct.Select(x => x.ProductImage).FirstOrDefault()
             };
 
+            ViewBag.Message = product;
             return View();
         }
 
