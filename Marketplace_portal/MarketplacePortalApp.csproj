@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompareList.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -195,6 +196,7 @@
     <Content Include="Views\ProductSearch\Index.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\Compare\CompareProduct.cshtml" />
+    <Content Include="Views\Compare\CompareTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Filter\_Products.cshtml" />

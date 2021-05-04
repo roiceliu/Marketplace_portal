@@ -16,11 +16,32 @@ namespace Marketplace_portal.Controllers
         JooleEntities context = new JooleEntities();
         FilterService fservice = new FilterService();
 
-        public ActionResult CompareProduct()
+        public ActionResult Test()
         {
-            //int productId = int.Parse(Request.QueryString["id"].ToString());
-            int productId = 1;
+            List<int> testList = new List<int>();
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            return RedirectToAction("CompareAltController", testList);
+        }
 
+        //Main functional part
+        public ActionResult CompareProduct(List<int> IdList)
+        {
+            CompareList list = new CompareList();
+            foreach(int id in IdList)
+            {
+                ProductModel item = GetModelByID(id);
+                list.ProductList.Add(item);
+            }
+
+            //ViewBag.Message = product;
+            return View(list);
+        }
+
+        //get product properties mapped to productModel
+        private ProductModel GetModelByID(int productId)
+        {
             //get current product using productID
             List<tblProduct> currProduct = fservice.GetProductsByProductID(productId);
             int manufacturerId = (int)currProduct.Select(x => x.ManufacturerID).FirstOrDefault();
@@ -30,28 +51,26 @@ namespace Marketplace_portal.Controllers
             //Set all product related values to Product Model
             ProductModel product = new ProductModel()
             {
-                  ManufacturerName = fservice.GetManufacturerNameByID(manufacturerId),
-                  Series = currProduct.Select(x => x.Series).FirstOrDefault(),
-                  Model = currProduct.Select(x => x.Model).FirstOrDefault(),
-                  ModelYear = currProduct.Select(x => x.ModelYear).FirstOrDefault(),
-                  UseType = productProperties[0].Value,
-                  Application = productProperties[1].Value,
-                  MountingLocation = productProperties[2].Value,
-                  Accessories = productProperties[3].Value,
-                  AirFlow = productProperties[4].Value,
-                  Power = productProperties[5].Value,
-                  OperatingVoltage = productProperties[6].Value,
-                  NumberFanSpeed = productProperties[8].Value,
-                  MaxSpeed = productProperties[9].Value,
-                  FanSpeed = productProperties[7].Value,
-                  FanSweep = productProperties[10].Value,
-                  Height = productProperties[11].Value,
-                  Weight = productProperties[12].Value,
-                  Image = currProduct.Select(x => x.ProductImage).FirstOrDefault()
+                ManufacturerName = fservice.GetManufacturerNameByID(manufacturerId),
+                Series = currProduct.Select(x => x.Series).FirstOrDefault(),
+                Model = currProduct.Select(x => x.Model).FirstOrDefault(),
+                ModelYear = currProduct.Select(x => x.ModelYear).FirstOrDefault(),
+                UseType = productProperties[0].Value,
+                Application = productProperties[1].Value,
+                MountingLocation = productProperties[2].Value,
+                Accessories = productProperties[3].Value,
+                AirFlow = productProperties[4].Value,
+                Power = productProperties[5].Value,
+                OperatingVoltage = productProperties[6].Value,
+                NumberFanSpeed = productProperties[8].Value,
+                MaxSpeed = productProperties[9].Value,
+                FanSpeed = productProperties[7].Value,
+                FanSweep = productProperties[10].Value,
+                Height = productProperties[11].Value,
+                Weight = productProperties[12].Value,
+                Image = currProduct.Select(x => x.ProductImage).FirstOrDefault()
             };
-
-            ViewBag.Message = product;
-            return View();
+            return product;
         }
 
     }
