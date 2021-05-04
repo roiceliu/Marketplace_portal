@@ -3,3 +3,13 @@
     text-align: center;
     background-size: cover;
 }
+
+.primaryBtn {
+    border: none;
+    background: #327AB9;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+}
+

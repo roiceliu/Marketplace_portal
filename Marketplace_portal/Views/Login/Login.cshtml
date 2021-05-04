@@ -1,22 +1,78 @@
-﻿@*!!!!Question: have to bind with model to use textboxfor? *@
-@model Marketplace_portal.Models.UserLogin
+﻿@model Marketplace_portal.Models.UserLogin
 
 @{
     ViewBag.Title = "Login";
-    
-}
-
-<h2>Login</h2>
-
-@using (Html.BeginForm("Login", "Login", FormMethod.Post, new {@class="loginForm" }))
-{
-    @Html.TextBoxFor(m => m.UserName, new {placeholder ="Username or Email"  });
-    @Html.PasswordFor(m=>m.Password, new { placeholder = "Password" })
-
-    <p>@ViewData["errorMessage"]</p>
-    
-    <input type="submit" value="Log In"/>
 
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Joole</title>
+    @Styles.Render("~/Content/CSSStyles/Login.css")
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</head>
+
+<body>
+    <div class="loginWrapper">
+        <div class="loginHeader">
+            <a onclick="ShowSignup()">Sign Up</a>
+        </div>
+        <div class="modal" >
+            <div class="modal-content">
+                @{Html.RenderAction("Register", "Registration"); }
+            </div>    
+        </div>
+        <div class="loginSection ColumnSet">
+            <img id="jooleIcon" src="@Url.Content("~/Content/Images/jooleIcon.png")" alt=" Joole Icon">
+            <h3>Building Product Selection Platform</h3>
+
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "loginForm ColumnSet" }))
+            {
+                <div class="inputUser">
+                    <i class="fa fa-user icon"></i>
+                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "Username or Email" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="inputPassword">
+                    <i class="fa fa-lock icon"></i>
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                </div>
+
+                <p class="text-danger">@ViewData["errorMessage"]</p>
+
+                <input id="loginBtn" type="submit" value="Log In" />
+
+            }
+        </div>
+
+    </div>
+
+    <script>
+        var ShowSignup =function() {
+            $('.modal').show();
+        }
+
+        $('#closeBtn').on("click", function () {
+            $('.modal').hide();
+        });
+
+    </script>
+
+</body>
+
+</html>
 
