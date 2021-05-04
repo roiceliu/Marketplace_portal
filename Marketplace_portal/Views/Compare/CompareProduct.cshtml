@@ -22,7 +22,7 @@
 
 <body>
     <div class="container-fluid" style="background-color:white"></div>
-    <div id="header" class="row" style="background:linear-gradient(blue,white)">
+    <div id="header" class="row" style="background:linear-gradient(#357CAA,white)">
         <div class="row" style="width:99vw;height:70px;text-align: center;margin-top:20px;">
             <div style="display:inline;width:400px;margin-left:20px">
                 <form style="color:black;font:bold;">
@@ -34,8 +34,9 @@
     </div>
     <div>
         @*@ViewBag.Message World!*@
-
+        <div class="topper" style="color:#357CAA ">
         Mechanical > HVAC Fans > Compare
+            </div>
     </div>
     <table class="table table-bordered" width="100%">
         <thead>
@@ -97,8 +98,8 @@
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Air Flow (CFM)</th>
-                <td class="col-3">5467 p1</td>
-                <td class="col-3">5956 p2</td>
+                <td class="col-3">5467 </td>
+                <td class="col-3">5956 </td>
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Power (W)</th>
@@ -107,13 +108,13 @@
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">1.95 p2</td>
+                            <td class="col-md-3">@data.PowerMin</td>
                         </tr>
                     </table>
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">21.14 p1</td>
+                            <td class="col-md-3">@data.PowerMax</td>
                         </tr>
                     </table>
                 </td>
@@ -122,13 +123,13 @@
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">7.5 p2</td>
+                            <td class="col-md-3">7.5 </td>
                         </tr>
                     </table>
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">12.11 p2</td>
+                            <td class="col-md-3">12.11</td>
                         </tr>
                     </table>
                 </td>
@@ -140,13 +141,13 @@
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">100 p2</td>
+                            <td class="col-md-3">@data.OperatingVoltageMin </td>
                         </tr>
                     </table>
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">240 p1</td>
+                            <td class="col-md-3">@data.OperatingVoltageMax </td>
                         </tr>
                     </table>
                 </td>
@@ -155,13 +156,13 @@
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">1 p2</td>
+                            <td class="col-md-3">1 </td>
                         </tr>
                     </table>
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">100 p2</td>
+                            <td class="col-md-3">100 </td>
                         </tr>
                     </table>
                 </td>
@@ -173,13 +174,13 @@
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">35 p2</td>
+                            <td class="col-md-3">@data.FanSpeedMin </td>
                         </tr>
                     </table>
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">200 p1</td>
+                            <td class="col-md-3">@data.FanSpeedMax </td>
                         </tr>
                     </table>
                 </td>
@@ -188,26 +189,26 @@
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">5 p2</td>
+                            <td class="col-md-3">5 </td>
                         </tr>
                     </table>
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">200 p2</td>
+                            <td class="col-md-3">200 </td>
                         </tr>
                     </table>
                 </td>
             </tr>
             <tr>
                 <th scope="row" class="active">Number of fan speeds</th>
-                <td>7 p1</td>
-                <td>7 p2</td>
+                <td>7 </td>
+                <td>7 </td>
             </tr>
             <tr>
                 <th scope="row" class="active">Sound at max speed (dBA)</th>
-                <td>35 p1</td>
-                <td>35 p2</td>
+                <td>35 </td>
+                <td>35 </td>
             </tr>
             <tr>
                 <th scope="row" class="active">Fan sweep diameter (in)</th>
@@ -221,13 +222,13 @@
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">12.3 p2</td>
+                            <td class="col-md-3">@data.HeightMin</td>
                         </tr>
                     </table>
                     <table width="100%" class="text-center">
                         <tr>
                             <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">57 p1</td>
+                            <td class="col-md-3">@data.HeightMax</td>
                         </tr>
                     </table>
                 </td>

@@ -17,16 +17,21 @@ namespace Marketplace_portal.Models
         public String MountingLocation { get; set; }
         public String Accessories { get; set; }
         public String AirFlow { get; set; }
-        public String Power { get; set; }
-        public String OperatingVoltage { get; set; }
+        public int HasMinMax { get; set; }
+        public float? PowerMin { get; set; }
+        public float? PowerMax { get; set; }        
+        public float? Min { get; set; }      
+        public float? Max { get; set; }
+        public float? OperatingVoltageMin { get; set; }
+        public float? OperatingVoltageMax { get; set; }
         public String NumberFanSpeed { get; set; }
+        public float? FanSpeedMin { get; set; }
+        public float? FanSpeedMax { get; set; }
         public String MaxSpeed { get; set; }
-        public String FanSpeed { get; set; }
-
         public String FanSweep { get; set; }
-        public String Height { get; set; }
+        public float? HeightMin { get; set; }
+        public float? HeightMax { get; set; }
         public String Weight { get; set; }
-
         public String Image { get; set; }
     }
 }
