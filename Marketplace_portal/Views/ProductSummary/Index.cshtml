@@ -1,0 +1,35 @@
+﻿@using Marketplace_portal.Models;
+@using Newtonsoft.Json;
+@{
+
+    ProductSummaryModel propertiesObject = ViewData["propertiesObject"] as ProductSummaryModel;
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+
+        [PropertyName, IsType, Value, HasMinMax, Max, Min]
+        @{
+            foreach (string[] property in propertiesObject.properties)
+            {
+                <p>@property[0]</p>
+                <p>@property[1]</p>
+                <p>@property[2]</p>
+                <p>@property[3]</p>
+                <p>@property[4]</p>
+                <p>@property[5]</p>
+                <br /><br />
+            }
+        }
+    </div>
+</body>
+</html>

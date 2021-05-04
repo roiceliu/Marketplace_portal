@@ -130,12 +130,14 @@
     <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductSummaryController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ProductSearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\FilterViewModel.cs" />
+    <Compile Include="Models\ProductSummaryModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Models\ProductSearchModel.cs" />
@@ -185,6 +187,7 @@
     <Content Include="Views\Compare\CompareProduct.cshtml" />
     <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
+    <Content Include="Views\ProductSummary\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
