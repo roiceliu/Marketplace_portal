@@ -8,35 +8,15 @@ namespace Marketplace_portal.Models
 {
     public class CompareModel
     {
-        
-        public List<string> ProductDetails { get; set; } = new List<string>();
-        public List<tblManufacturer> Manufacturer { get; set; }
-        public List<tblProduct> Products { get; set; }
-        public List<tblProperty> Properties { get; set; }
-        public List<tblPropertyValue> ProperValues { get; set; }
-        public List<tblTypeFilter> TypeInfo { get; set; }
-        public List<tblTechSpecsFilter> Minmax { get; set; }
-        public int ProductID { get; set; }
-        public int ManufacturerName { get; set; }
-        public int SubCategoryID { get; set; }
-        public string ProductName { get; set; }
-        //public image productImage { get; set; }
-        public string Series { get; set; }
-        public string Model { get; set; }
-        public int ModelYear { get; set; }
-        public string PropertyName { get; set; }
-        public string PropertyValue { get; set; }
-
-        /*
-         * Now when I wanna add a string to the list I try
-
-            Product p=new Product();
-            p.CategoryRef.Add("sadi");
-
-         */
-
-
-
+        public String subcategory;
+        public List<string> productTypes = new List<string>();
+        public List<tblProduct> products = new List<tblProduct>();
+        public List<tblPropertyValue> propertyValues = new List<tblPropertyValue>();
+        public List<tblProperty> property = new List<tblProperty>();
+        public List<tblManufacturer> manufacture = new List<tblManufacturer>();
+        public List<tblTechSpecsFilter> techspec = new List<tblTechSpecsFilter>();
+        public List<tblTypeFilter> type = new List<tblTypeFilter>();
+        public List<IHtmlString> listOfDivs = new List<IHtmlString>();
 
     }
 }

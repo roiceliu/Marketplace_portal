@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompareModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
@@ -189,23 +190,20 @@
     <Content Include="Views\Filter\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Success.cshtml" />
-    <Content Include="Views\Compare\CompareProduct.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
+    <Content Include="Views\Compare\CompareProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
     <Content Include="Views\Filter\_Products.cshtml" />
-    <Content Include="Views\Compare\CompareProduct.cshtml" />
     <Content Include="Views\CompareAlt\CompareAlt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="UserImages\" />
-    <Folder Include="Views\AddTo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

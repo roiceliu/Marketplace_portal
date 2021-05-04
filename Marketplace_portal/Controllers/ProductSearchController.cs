@@ -21,12 +21,12 @@
 //            ViewData["products"] = products;
 //            return View();
 //        }
-            //Get list of products
-            Service s = new Service();
-            IEnumerable<tblProduct> products = s.GetAllProducts();
-            ViewData["products"] = products;
-            return View();
-        }
+ //           //Get list of products
+ //           Service s = new Service();
+ //           IEnumerable<tblProduct> products = s.GetAllProducts();
+//            ViewData["products"] = products;
+ //           return View();
+ //       }
 
 //        //public ActionResult getProducts()
 //        //{

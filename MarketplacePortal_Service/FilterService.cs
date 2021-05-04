@@ -64,7 +64,7 @@ namespace MarketplacePortal_Service
         public List<tblProduct> GetProductsByProductType(string productType)
         {
             return uow.ProductRepositoryFilter().GetProductByProductType(productType);
-        }
+        }        
 
         //gets products by produc type
         public List<string> GetTypesBySubcategory(string subcategory)
@@ -72,6 +72,11 @@ namespace MarketplacePortal_Service
             return uow.ProductRepositoryFilter().GetTypesBySubcategory(subcategory);
         }
 
+        //Get product by product id
+        public List<tblProduct> GetProductsByProductID(int productID)
+        {
+            return uow.CompareRepository().GetProductsByProductID(productID);
+        }
 
         public void Save()
         {

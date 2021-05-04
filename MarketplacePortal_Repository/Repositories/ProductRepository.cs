@@ -85,8 +85,6 @@ namespace MarketplacePortal_Repository
         }
 
 
-
-
         //get products by the subcategories
         public List<tblProduct> GetProductBySubcategory(string subcategoryname) {
 
@@ -160,6 +158,24 @@ namespace MarketplacePortal_Repository
 
 
         }
+
+        //Get product by product id from tblProduct
+        public List<tblProduct> GetProductsByProductID(int productID)
+        {
+            var query = from product in context.Set<tblProduct>()
+                        where product.ProductID == productID
+                        select product;
+
+            List<tblProduct> productInfo = new List<tblProduct>();
+
+            foreach (var product in query)
+            {
+                productInfo.Add(product);
+            }
+
+            return productInfo;
+        }
+
 
     }
 }
