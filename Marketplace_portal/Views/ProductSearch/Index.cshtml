@@ -47,7 +47,7 @@
             }
         </select>
 
-        <input id="autocomplete">
+        <input id="autocomplete" placeholder="Search">
         <input type="submit" value="Submit">
     </form>
 
@@ -93,7 +93,8 @@
     }
     function autocomplete() {
         $("#autocomplete").autocomplete({
+            minLength: 0,
             source: searchList
-        });
+        }).on('focus', function () { $(this).keydown();});
     }
 </script>
