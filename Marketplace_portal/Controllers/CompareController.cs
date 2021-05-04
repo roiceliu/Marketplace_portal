@@ -14,9 +14,24 @@ namespace Marketplace_portal.Controllers
     {
         // GET: Compare
         JooleEntities context = new JooleEntities();
+        FilterViewModel viewModel = new FilterViewModel();
+        FilterService fservice = new FilterService();
+
         public ActionResult CompareProduct(int id)
         {
-            //const urlParams = new URLSearchParams(queryString);
+            int productId = int.Parse(Request.QueryString["id"].ToString());
+
+            //get current product using productID
+            List<tblProduct> product = fservice.GetProductsByProductID(productId);
+
+            //select specific columns from the current product row
+            var img = product.Select(x => x.ProductImage);
+            var model = product.Select(x => x.Model);
+            var modelYear = product.Select(x => x.ModelYear);
+            var manufacturerId = product.Select(x => x.ManufacturerID);
+
+
+
             return View();
         }
 

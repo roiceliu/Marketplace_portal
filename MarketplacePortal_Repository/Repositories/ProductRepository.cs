@@ -165,6 +165,7 @@ namespace MarketplacePortal_Repository
             var query = from product in context.Set<tblProduct>()
                         where product.ProductID == productID
                         select product;
+                        
 
             List<tblProduct> productInfo = new List<tblProduct>();
 
