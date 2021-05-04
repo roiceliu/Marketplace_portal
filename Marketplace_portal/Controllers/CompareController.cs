@@ -14,7 +14,6 @@ namespace Marketplace_portal.Controllers
     {
         // GET: Compare
         JooleEntities context = new JooleEntities();
-        FilterViewModel viewModel = new FilterViewModel();
         FilterService fservice = new FilterService();
 
         public ActionResult CompareProduct(int id)
@@ -22,19 +21,33 @@ namespace Marketplace_portal.Controllers
             int productId = int.Parse(Request.QueryString["id"].ToString());
 
             //get current product using productID
-            List<tblProduct> product = fservice.GetProductsByProductID(productId);
-
-            //select specific columns for current product
-            var img = product.Select(x => x.ProductImage);
-            var model = product.Select(x => x.Model);
-            var modelYear = product.Select(x => x.ModelYear);
-            int manufacturerId = (int)product.Select(x => x.ManufacturerID).FirstOrDefault();
-            string manufacturerName = fservice.GetManufacturerNameByID(manufacturerId);
+            List<tblProduct> currProduct = fservice.GetProductsByProductID(productId);
+            int manufacturerId = (int)currProduct.Select(x => x.ManufacturerID).FirstOrDefault();
             List<tblProperty> propertyNames = fservice.GetPropertyNames();
             List<tblPropertyValue> productProperties = fservice.GetPropertyInfoForProduct(productId);
 
-            
-            
+            //Set all product related values to Product Model
+            ProductModel product = new ProductModel()
+            {
+                  ManufacturerName = fservice.GetManufacturerNameByID(manufacturerId),
+                  Series = currProduct.Select(x => x.Series).FirstOrDefault(),
+                  Model = currProduct.Select(x => x.Model).FirstOrDefault(),
+                  ModelYear = currProduct.Select(x => x.ModelYear).FirstOrDefault(),
+                  UseType = productProperties[0].Value,
+                  Application = productProperties[1].Value,
+                  MountingLocation = productProperties[2].Value,
+                  Accessories = productProperties[3].Value,
+                  AirFlow = productProperties[4].Value,
+                  Power = productProperties[5].Value,
+                  OperatingVoltage = productProperties[6].Value,
+                  NumberFanSpeed = productProperties[8].Value,
+                  MaxSpeed = productProperties[9].Value,
+                  FanSpeed = productProperties[7].Value,
+                  FanSweep = productProperties[10].Value,
+                  Height = productProperties[11].Value,
+                  Weight = productProperties[12].Value,
+                  Image = currProduct.Select(x => x.ProductImage).FirstOrDefault()
+            };
 
             return View();
         }

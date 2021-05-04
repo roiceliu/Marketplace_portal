@@ -61,6 +61,7 @@
     <Compile Include="techSpecsFilterService.cs" />
     <Compile Include="typeFilterService.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="UnitOfWork.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
