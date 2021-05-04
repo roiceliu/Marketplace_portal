@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FilterService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="DepartmentService.cs" />
     <Compile Include="ManufacturerService.cs" />
     <Compile Include="ProductSearchService.cs" />
