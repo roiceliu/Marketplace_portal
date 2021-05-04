@@ -15,7 +15,7 @@ namespace MarketplacePortal_Service
         tblPropertyValue GetAll();
 
     }
-    class PropertyValueService : IPropertyValueService
+    public class PropertyValueService : IPropertyValueService
     {
         UnitOfWork uow = new UnitOfWork();
 

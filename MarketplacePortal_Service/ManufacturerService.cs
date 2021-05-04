@@ -12,10 +12,11 @@ namespace MarketplacePortal_Service
     public interface IManufacturerService
     {
         IEnumerable<tblManufacturer> GetAllTblManufacturer();
-        tblManufacturer GetAll();
+        tblManufacturer GetByID(int id);
+        
 
     }
-    class ManufacturerService : IManufacturerService
+    public class ManufacturerService : IManufacturerService
     {
         UnitOfWork uow = new UnitOfWork();
 
@@ -26,15 +27,9 @@ namespace MarketplacePortal_Service
             return manuRepo.GetAll();
         }
 
-        public tblManufacturer GetAll()
+        public tblManufacturer GetByID(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Save()
-        {
-
-            uow.Save();
+            return uow.ManufacturerRepository.GetByID(id);
         }
     }
 }

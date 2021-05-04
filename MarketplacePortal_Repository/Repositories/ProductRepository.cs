@@ -36,7 +36,6 @@ namespace MarketplacePortal_Repository
         //get Products by the product type
         public List<tblProduct> GetProductByProductType(string productType)
         {
-
             var query = from tblPropertyValue in context.Set<tblPropertyValue>()
                         join tblProduct in context.Set<tblProduct>()
                             on new { Id = (int?)tblPropertyValue.ProductID, tblPropertyValue.Value }
@@ -51,6 +50,5 @@ namespace MarketplacePortal_Repository
             }
             return products;
         }
-
     }
 }

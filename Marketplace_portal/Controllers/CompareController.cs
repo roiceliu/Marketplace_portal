@@ -6,35 +6,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Marketplace_portal.Models;
+using System.Reflection;
 
 namespace Marketplace_portal.Controllers
 {
     public class CompareController : Controller
     {
-        // GET: Compare
-            
-            private readonly IProductService productService;
-            private readonly IPropertyService propertyService;
-            private readonly IPropertyValueService propertyValueService;
-            private readonly IManufacturerService ManufacturerService;
-            private readonly ITypeFilterService typeFilterService;
-            private readonly ITechSpecsFilterService techSpecsFilterService;
+        public ActionResult Test()
+        {
+            List<int> productIdList = new List<int>();
+            productIdList.Add(1);
+            productIdList.Add(2);
+            productIdList.Add(3);
 
+            //convert ids to CompareList
+            IProductService ps = new ProductService();
+            IPropertyValueService pval = new PropertyValueService();
+            CompareList list = new CompareList();
 
-
-        public CompareController(IProductService productService, IPropertyService propertyService, IPropertyValueService propertyValueService, IManufacturerService ManufacturerService, ITypeFilterService typeFilterService, ITechSpecsFilterService techSpecsFilterService)
+            foreach (int id in productIdList)
             {
-                this.productService = productService;
-                this.propertyService = propertyService; 
-                this.propertyValueService = propertyValueService;
-                this.ManufacturerService = ManufacturerService;
-                this.typeFilterService = typeFilterService;
-                this.techSpecsFilterService = techSpecsFilterService;
+                ProductDetails product = new ProductDetails();
+                //info product's properties
+                var query = from property in pval.GetAllTblPropertyValue()
+                            where property.ProductID == id
+                            select property;
+               
+                
+                //Get Product property first
+                product.Manufacturer = new ManufacturerService().GetByID(id).ManufacturerName;
 
+                //Optimize: see if we can use foreach loop
+                
+                
+
+                return RedirectToAction("TestCompare");
+            }
 
         }
+        public ActionResult Compare(CompareList list)
+        {
+            
+
+
+
+
+
+            
+
+            return View();
+        }
     }
-    }
+}
     /*
          public CompareController()
          {
