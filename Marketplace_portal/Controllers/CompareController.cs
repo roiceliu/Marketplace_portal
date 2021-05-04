@@ -32,7 +32,7 @@ namespace Marketplace_portal.Controllers
             foreach(int id in IdList)
             {
                 ProductModel item = GetModelByID(id);
-                list.ProductList.Add(item);
+                list.ProductList1.Add(item);
             }
 
             //ViewBag.Message = product;
@@ -60,13 +60,17 @@ namespace Marketplace_portal.Controllers
                 MountingLocation = productProperties[2].Value,
                 Accessories = productProperties[3].Value,
                 AirFlow = productProperties[4].Value,
-                Power = productProperties[5].Value,
-                OperatingVoltage = productProperties[6].Value,
+                PowerMin = productProperties[5].Min,
+                PowerMax = productProperties[5].Max,
+                OperatingVoltageMin = productProperties[6].Min,
+                OperatingVoltageMax = productProperties[6].Max,
                 NumberFanSpeed = productProperties[8].Value,
                 MaxSpeed = productProperties[9].Value,
-                FanSpeed = productProperties[7].Value,
+                FanSpeedMin = productProperties[7].Min,
+                FanSpeedMax = productProperties[7].Max,
                 FanSweep = productProperties[10].Value,
-                Height = productProperties[11].Value,
+                HeightMin = productProperties[11].Min,
+                HeightMax = productProperties[11].Max,
                 Weight = productProperties[12].Value,
                 Image = currProduct.Select(x => x.ProductImage).FirstOrDefault()
             };
