@@ -1,4 +1,5 @@
-﻿@using Marketplace_portal.Models;
+﻿@model Marketplace_portal.Models.ProductSummaryModel
+@using Marketplace_portal.Models;
 @using Newtonsoft.Json;
 @{
 
@@ -17,10 +18,85 @@
 <body>
     <div>
 
-        [PropertyName, IsType, Value, HasMinMax, Max, Min]
+        <h1>Product Summary</h1>
         @{
+
+            <table>
+                <tr>
+                    <th>DESCRIPTION</th>
+                </tr>
+                <tr>
+                    <td>Manufacturer</td>
+                    <td>@Model.description[0]</td>
+                </tr>
+                <tr>
+                    <td>Series</td>
+                    <td>@Model.description[1]</td>
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td>@Model.description[2]</td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th>TYPE</th>
+                </tr>
+                @for (int i = 0; i < Model.properties.Count(); i++)
+                {
+                    if (Model.properties[i][1].Equals("1"))
+                    {
+                        <tr>
+                            <td>@Model.properties[i][0]</td>
+                            <td>@Model.properties[i][2]</td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    <td>Model Year</td>
+                    <td>@Model.description[3]
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th>TECHNICAL SPECIFICATIONS</th>
+                </tr>
+                @for (int i = 0; i < Model.properties.Count(); i++)
+                {
+                    if (Model.properties[i][1].Equals("0"))
+                    {
+                        <tr>
+                            <td>@Model.properties[i][0]</td>
+                            @if(Model.properties[i][3] == "1") {
+                                <td>Min</td>
+                                <td>@Model.properties[i][5]</td>
+                                <td>Max</td>
+                                <td>@Model.properties[i][4]</td>
+                            }
+                            else {
+                                <td>@Model.properties[i][0]</td>
+                                <td>@Model.properties[i][2].</td>
+                            }
+                        </tr>
+                    }
+                }
+            </table>
+
+
+            @*<p>[ManufacturerName, Series, Model, ModelYear]</p>
+            foreach(string label in @Model.description)
+            {
+                <p>@label</p>
+            }*@
+            @*<br /><br />
+            <p>[PropertyName, IsType, Value, HasMinMax, Max, Min]</p>
             foreach (string[] property in propertiesObject.properties)
             {
+
+
+
                 <p>@property[0]</p>
                 <p>@property[1]</p>
                 <p>@property[2]</p>
@@ -28,8 +104,9 @@
                 <p>@property[4]</p>
                 <p>@property[5]</p>
                 <br /><br />
-            }
+            }*@
         }
     </div>
 </body>
 </html>
+
