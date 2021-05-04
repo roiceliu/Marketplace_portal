@@ -78,6 +78,14 @@ namespace MarketplacePortal_Service
             return uow.CompareRepository().GetProductsByProductID(productID);
         }
 
+        //get manufacturer name from <tblManufacturer> using manufacturer id 
+
+        public string GetManufacturerNameByID(int manufacturerID)
+        {
+            return uow.CompareRepository().GetManufacturerNameByID(manufacturerID);
+
+        }
+
         public void Save()
         {
 

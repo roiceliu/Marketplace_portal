@@ -24,11 +24,12 @@ namespace Marketplace_portal.Controllers
             //get current product using productID
             List<tblProduct> product = fservice.GetProductsByProductID(productId);
 
-            //select specific columns from the current product row
+            //select specific columns for current product
             var img = product.Select(x => x.ProductImage);
             var model = product.Select(x => x.Model);
             var modelYear = product.Select(x => x.ModelYear);
-            var manufacturerId = product.Select(x => x.ManufacturerID);
+            int manufacturerId = (int)product.Select(x => x.ManufacturerID).FirstOrDefault();
+            string manufacturerName = fservice.GetManufacturerNameByID(manufacturerId);
 
 
 

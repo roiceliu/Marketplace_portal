@@ -177,6 +177,23 @@ namespace MarketplacePortal_Repository
             return productInfo;
         }
 
+        //get manufacturer name from <tblManufacturer> using manufacturer id 
+        public string GetManufacturerNameByID(int manufacturerID)
+        {
+            var query = from manufacturer in context.Set<tblManufacturer>()
+                        where manufacturer.ManufacturerID == manufacturerID
+                        select manufacturer;
+
+            string name = "";
+
+            foreach (var item in query)
+            {
+                name = item.ManufacturerName;
+            }
+            return name;
+
+        }
+
 
     }
 }
