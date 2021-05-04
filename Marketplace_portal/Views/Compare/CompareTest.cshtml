@@ -1,4 +1,5 @@
-﻿@model Marketplace_portal.Models.CompareList
+﻿@using Marketplace_portal.Models;
+@model Marketplace_portal.Models.CompareList
 
 @{
     ViewBag.Title = "CompareTest";
@@ -7,12 +8,14 @@
 <h2>CompareTest</h2>
 
 <table>
-    @*@foreach(ProductModel item in Model.ProductList)
-            {
-                <tr>
-                   item.ManufacturerName 
-                </tr>
-            }*@
+    @foreach (ProductModel item in Model.ProductModels)
+        {
+            <tr>
+               <td>@item.ManufacturerName</td>
+               
+                <td>@item.Series</td>
+            </tr>
+        }
 
 </table>
 

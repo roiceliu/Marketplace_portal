@@ -18,25 +18,31 @@ namespace Marketplace_portal.Controllers
 
         public ActionResult Test()
         {
-            List<int> testList = new List<int>();
-            testList.Add(1);
-            testList.Add(2);
-            testList.Add(3);
-            return RedirectToAction("CompareAltController", testList);
+            //List<int> testList = new List<int>();
+            //testList.Add(1);
+            //testList.Add(2);
+            //testList.Add(3);
+            TempData["testList"] = new int[] { 1, 2, 3 };
+            return RedirectToAction("CompareProduct", "Compare");
         }
 
         //Main functional part
-        public ActionResult CompareProduct(List<int> IdList)
+        public ActionResult CompareProduct(int[] IdList)
         {
+            IdList = (int[])TempData["testList"];
             CompareList list = new CompareList();
+            List<ProductModel> productModels = new List<ProductModel>();
+            
+
             foreach(int id in IdList)
             {
                 ProductModel item = GetModelByID(id);
-                list.ProductList.Add(item);
+                productModels.Add(item);
             }
 
+            list.ProductModels = productModels;
             //ViewBag.Message = product;
-            return View(list);
+            return View("CompareTest",list);
         }
 
         //get product properties mapped to productModel
@@ -60,13 +66,13 @@ namespace Marketplace_portal.Controllers
                 MountingLocation = productProperties[2].Value,
                 Accessories = productProperties[3].Value,
                 AirFlow = productProperties[4].Value,
-                Power = productProperties[5].Value,
-                OperatingVoltage = productProperties[6].Value,
-                NumberFanSpeed = productProperties[8].Value,
-                MaxSpeed = productProperties[9].Value,
-                FanSpeed = productProperties[7].Value,
-                FanSweep = productProperties[10].Value,
-                Height = productProperties[11].Value,
+                //Power = productProperties[5].Value,
+                //OperatingVoltage = productProperties[6].Value,
+                //NumberFanSpeed = productProperties[8].Value,
+                //MaxSpeed = productProperties[9].Value,
+                //FanSpeed = productProperties[7].Value,
+                //FanSweep = productProperties[10].Value,
+                //Height = productProperties[11].Value,
                 Weight = productProperties[12].Value,
                 Image = currProduct.Select(x => x.ProductImage).FirstOrDefault()
             };

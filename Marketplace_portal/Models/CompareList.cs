@@ -7,6 +7,6 @@ namespace Marketplace_portal.Models
 {
     public class CompareList
     {
-        public List<ProductModel> ProductList { get; set; }
+        public IEnumerable<ProductModel> ProductModels { get; set; }
     }
 }
