@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm("Login", "Login", FormMethod.Post, new {@class="loginForm" }))
 {
-    @Html.TextBoxFor(m => m.UserName, new {placeholder ="Username or Email"  });
+    @Html.TextBoxFor(m => m.UserName, new {placeholder ="Username or Email"  })
     @Html.PasswordFor(m=>m.Password, new { placeholder = "Password" })
 
     <p>@ViewData["errorMessage"]</p>
