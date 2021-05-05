@@ -17,21 +17,21 @@ namespace Marketplace_portal.Controllers
         FilterService fservice = new FilterService();
 
 
-        public ActionResult Test()
+        public ActionResult Test(int[] Ids)
         {
             //List<int> testList = new List<int>();
             //testList.Add(1);
             //testList.Add(2);
             //testList.Add(3);
 
-            var productvalues = (from )
+            //var productvalues = (from )
 
 
-            int[] ids = new int[] { 1, 2, 5 };
+            //int[] ids = new int[] { 1, 2, 5 };
 
 
 
-            return View(ids);
+            return View(Ids);
         }
 
 
