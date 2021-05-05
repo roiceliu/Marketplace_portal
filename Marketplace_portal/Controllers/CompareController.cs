@@ -16,7 +16,7 @@ namespace Marketplace_portal.Controllers
         JooleEntities context = new JooleEntities();
         FilterService fservice = new FilterService();
 
-        public ActionResult Test()
+        public ActionResult CompareTest()
         {
             //List<int> testList = new List<int>();
             //testList.Add(1);
