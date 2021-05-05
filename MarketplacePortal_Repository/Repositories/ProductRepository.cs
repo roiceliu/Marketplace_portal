@@ -52,5 +52,23 @@ namespace MarketplacePortal_Repository
             return products;
         }
 
+        //public List<tblProduct> GetProductByDepartment(string departmentName)
+        //{
+
+        //    var query = from tblSubcategory in context.Set<tblSubcategory>()
+        //                join tblProduct in context.Set<tblProduct>()
+        //                    on new { Id = (int?)tblSubcategory.SubcategoryID, tblSubcategory.SubcategoryName }
+        //                    equals new { Id = tblProduct.SubcategoryID, SubcategoryName = subcategoryname }
+        //                select new { tblProduct };
+
+        //    List<tblProduct> products = new List<tblProduct>();
+
+        //    foreach (var item in query)
+        //    {
+        //        products.Add(item.tblProduct);
+        //    }
+        //    return products;
+        //}
+
     }
 }

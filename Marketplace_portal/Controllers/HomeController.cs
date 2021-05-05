@@ -9,7 +9,7 @@ using MarketplacePortal_Service;
 namespace Marketplace_portal.Controllers
 {
     public class HomeController : Controller
-    {
+    {/*
         public ActionResult Index()
         {
 
@@ -19,7 +19,17 @@ namespace Marketplace_portal.Controllers
 
 
             return View(departments);
-        }
+        }*/
+        /*public ActionResult IndexTwo()
+        {
+
+            List<tblManufacturer> manufacturers = new List<tblManufacturer>();
+            Service service = new Service();
+            manufacturers = service.GetAllManufacturers();
+
+
+            return View(manufacturers);
+        }*/
 
         public ActionResult About()
         {

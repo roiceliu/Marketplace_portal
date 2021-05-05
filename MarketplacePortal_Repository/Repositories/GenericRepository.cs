@@ -78,5 +78,9 @@ namespace MarketplacePortal_Repository
             return dbSet.AsEnumerable<TEntity>();
         }
 
+        public tblProduct GetProductByID(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

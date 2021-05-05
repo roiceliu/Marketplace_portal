@@ -127,17 +127,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\FilterController.cs" />
+    <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductSummaryController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ProductSearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\FilterViewModel.cs" />
+    <Compile Include="Models\ProductSummaryModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
-    <Compile Include="Models\ProductSearch.cs" />
+    <Compile Include="Models\ProductSearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +148,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSSStyles\Login.css" />
+    <Content Include="Content\CSSStyles\main.css" />
+    <Content Include="Content\CSSStyles\Register.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -179,12 +185,17 @@
     <Content Include="Views\Filter\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Success.cshtml" />
-    <Content Include="Views\Registration\Register.cshtml" />
+    <Content Include="Views\Compare\CompareProduct.cshtml" />
     <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
+    <Content Include="Views\ProductSummary\Index.cshtml" />
+    <Content Include="Views\Registration\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="UserImages\" />
+    <Folder Include="Views\AddTo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -203,6 +214,10 @@
     <ProjectReference Include="..\MarketplacePortal_DAL\MarketplacePortal_DAL.csproj">
       <Project>{f7c7ef6e-3045-4e13-a645-8b1d6ad8c8cb}</Project>
       <Name>MarketplacePortal_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarketplacePortal_Repository\MarketplacePortal_Repository.csproj">
+      <Project>{785B5A4A-2772-4204-AF3F-17BD5E9B57ED}</Project>
+      <Name>MarketplacePortal_Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\MarketplacePortal_Service\MarketplacePortal_Service.csproj">
       <Project>{c5c446d5-ad4c-4e2f-8708-428ffead5685}</Project>
