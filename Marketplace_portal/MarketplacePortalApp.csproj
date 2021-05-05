@@ -149,6 +149,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CSSStyles\Banner.css" />
+    <Content Include="Content\CSSStyles\Layout.css" />
     <Content Include="Content\CSSStyles\Login.css" />
     <Content Include="Content\CSSStyles\main.css" />
     <Content Include="Content\CSSStyles\ProductSearch.css" />
@@ -193,7 +194,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Success.cshtml" />
     <Content Include="Views\Compare\CompareProduct.cshtml" />
-    <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
+    <Content Include="Views\ProductSearch\LayoutTest.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
     <Content Include="Views\ProductSummary\Index.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />

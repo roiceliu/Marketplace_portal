@@ -25,6 +25,8 @@ namespace Marketplace_portal.Controllers
             };
 
             ViewData["productObject"] = p;
+            ViewBag.Title = "Product Search";
+            Session.Add("productObject", p);
             //ViewData["productNames"] = p.productNames;
             return View();
         }

@@ -1,31 +1,18 @@
 ﻿@using Marketplace_portal.Models;
 @using Newtonsoft.Json;
 
-@{ ProductSearchModel productObject = ViewData["productObject"] as ProductSearchModel;
+@{ 
+    ProductSearchModel productObject = Session["productObject"] as ProductSearchModel;
 
-                //string[] productNames = (string[])ViewData["productNames"];
-                //String[] productsNames = new string[Products.products.Count()];
-
-                //for (var i = 0; i < Products.products.Count(); i++)
-                //{
-                //    productsNames[i] = Products.products[i].ProductName;
-                //}
-
-                //foreach(tblProduct p in Products){
-                //    productsNames.Add(p.ProductName);
-                //}
-
-                //productsNames = List.ToArray();
-
-                Layout = null;
-    }
+    Layout = null;
+}
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title - Joole</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -39,7 +26,6 @@
 
     <div class="center">
         <form action="">
-
             <select name="departments" id="departments" class="dropDownBox" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <option value="All" selected disabled hidden>Departments</option>
                 <option value="All">All</option>

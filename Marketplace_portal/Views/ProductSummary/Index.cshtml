@@ -45,7 +45,7 @@
                 </tr>
                 @for (int i = 0; i < Model.properties.Count(); i++)
                 {
-                    if (Model.properties[i][1].Equals("1"))
+                    if (Model.properties[i][1].Equals("1")) //Checks if type
                     {
                         <tr>
                             <td>@Model.properties[i][0]</td>
@@ -65,18 +65,17 @@
                 </tr>
                 @for (int i = 0; i < Model.properties.Count(); i++)
                 {
-                    if (Model.properties[i][1].Equals("0"))
+                    if (Model.properties[i][1].Equals("0")) //Checks if Tech Spec
                     {
                         <tr>
                             <td>@Model.properties[i][0]</td>
-                            @if(Model.properties[i][3] == "1") {
+                            @if(Model.properties[i][3] == "1") { //Checks if has Min or Max
                                 <td>Min</td>
                                 <td>@Model.properties[i][5]</td>
                                 <td>Max</td>
                                 <td>@Model.properties[i][4]</td>
                             }
                             else {
-                                <td>@Model.properties[i][0]</td>
                                 <td>@Model.properties[i][2]</td>
                             }
                         </tr>
