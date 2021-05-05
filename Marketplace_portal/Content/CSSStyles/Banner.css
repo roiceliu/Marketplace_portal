@@ -1,0 +1,14 @@
+﻿.center {
+    /*margin-top:10%;
+    width: 100%;*/
+    /*margin-bottom:25%;*/
+    /*margin-left: 32.5%;*/
+}
+.trueCenter {
+    margin-left:6.25%;
+}
+
+.myCenter {
+    width:100%;
+    margin:auto;
+}
