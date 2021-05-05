@@ -30,7 +30,8 @@ namespace Marketplace_portal.Controllers
         //Main functional part
         public ActionResult CompareProduct(int[] IdList)
         {
-            IdList = (int[])TempData["testList"];
+
+            IdList = new int[3];
             CompareList list = new CompareList();
             List<ProductModel> productModels = new List<ProductModel>();
             

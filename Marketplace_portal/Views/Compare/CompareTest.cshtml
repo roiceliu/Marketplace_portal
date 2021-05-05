@@ -41,7 +41,8 @@
             <tr>
                 <th scope="col"></th>
                 @{
-                <th scope="col"> <img id="fanImage1" src="~/ProductImages/" + @Model.ProductModels.ElementAt(index).ProductImage width="200" height="200"></th>
+                    string imgsrc = "~/" + @Model.ProductModels.ElementAt(index).ProductImage;
+                    <th scope="col"> <img id="fanImage1" src=@imgsrc width="200" height="200"></th>
                 }
             </tr>
         </thead>
