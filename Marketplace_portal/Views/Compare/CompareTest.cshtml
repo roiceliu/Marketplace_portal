@@ -33,25 +33,26 @@
             Mechanical > HVAC Fans > Compare
         </div>
     </div>
-    <table class="table table-bordered" width="100%">
+    <div class="container" style="display: flex !important;">
         @foreach (ProductModel item in Model.ProductModels)
-        {@*
-                <tr>
-                    <td>@item.ManufacturerName</td>
-
-                    <td>@item.Series</td>
-                </tr>
-        *@
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col"> <img id="fanImage1" src="~/ProductImages/fan1.jpg" width="200" height="200"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th colspan="3" class="active">DESCRIPTION</th>
-            </tr>
+        {
+            @*
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"> <img id="fanImage1" src="~/ProductImages/fan1.jpg" width="200" height="200"></th>
+                    </tr>
+                </thead>
+            *@
+            @* Categories *@
+        <div class="col-sm-4">
+            <div>DESCRIPTION</div>
+            <div>Manufacture</div>
+            <div>Series</div>
+            <div>DESCRIPTION</div>
+            <div>DESCRIPTION</div>
+            <div>DESCRIPTION</div>
+            <div>DESCRIPTION</div>
             <tr>
                 <th scope="row" class="active">Manufacture</th>
                 <td class="col-3">@item.ManufacturerName</td>
@@ -182,9 +183,9 @@
                 <th scope="row" class="active">Weight (llbs)</th>
                 <td>@item.Weight</td>
             </tr>
-        </tbody>
-    }
-    </table>
+        </div>
+        }
+    </div>
 
     <div>
 
