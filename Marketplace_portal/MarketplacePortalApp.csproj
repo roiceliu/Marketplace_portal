@@ -202,9 +202,9 @@
     <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
     <Content Include="Views\ProductSummary\Index.cshtml" />
-    <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\Compare\CompareTest.cshtml" />
     <Content Include="Views\Compare\Test.cshtml" />
+    <Content Include="Views\Registration\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Filter\_Products.cshtml" />
