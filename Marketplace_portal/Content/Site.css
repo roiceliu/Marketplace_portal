@@ -25,6 +25,11 @@ textarea {
 
 #ProductType {
     display: inline-block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
 }
 #ProductDiv {
     display: inline-block;
@@ -33,10 +38,10 @@ textarea {
     display: inline-block;
 }
 .MaxBox {
-    width:30px;
+    width:38px;
 }
 .MinBox {
-    width:30px;
+    width:38px;
 }
 .SliderBox{
     width:250px;
@@ -46,5 +51,32 @@ textarea {
 }
 .productImg {
     width: 200px;
-    height:200px;
+    height:175px;
+}
+.productDiv {
+    display: inline-block;
+    border:solid;
+    border-color: grey;
+    padding: 10px;
+    text-align:center;
+    color:black;
+    width: 230px;
+}
+a:hover, a:visited, a:link, a:active .productDiv {
+    text-decoration: none;
+}
+.divButton{
+    width:70px;
+}
+.pduct {
+    width: 150px;
+    text-align:center;
+}
+.pject {
+    text-align: center;
+    width: 150px;
+}
+.srch {
+    text-align: center;
+    
 }
