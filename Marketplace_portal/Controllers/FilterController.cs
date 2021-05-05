@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MarketplacePortal_DAL;
 using MarketplacePortal_Service;
 using Marketplace_portal.Models;
+using System.Web.Http;
 
 namespace Marketplace_portal.Controllers
 {
@@ -16,11 +17,49 @@ namespace Marketplace_portal.Controllers
         
         List<string> types = new List<string>();
 
+        
 
-        // GET: Filter
-        public ActionResult Index()
+        public ActionResult Test( int[] Ids)
         {
+            /*string id1 = Request.QueryString["id1"].ToString();
+            string id2 = Request.QueryString["id2"].ToString();
+            string id3 = Request.QueryString["id3"].ToString();
+            ViewData["id1"] = id1;
+            ViewData["id2"] = id2;
+            ViewData["id3"] = id3;*/
             
+
+            List<String> ids = new List<string>();
+            if (Ids[0]==-1) { 
+            
+            }
+            else
+            {
+                foreach(int num in Ids)
+                {
+                    ids.Add(num.ToString());
+                }
+            }
+            
+            return View(ids);
+        }
+
+        public ActionResult TestProductDetail(int id)
+        {
+            int id1 = id;
+            ViewData["id"] = id;
+
+            return View();
+        }
+            // GET: Filter
+            public ActionResult Fans(string state, string dropdown, int? yearmin, int? yearmax, int? airmin, int? airmax, int? powermin, int? powermax, int? soundmax, int? soundmin, int? fanmax, int? fanmin)
+        {
+
+            //var searchCriteria = Session["searchCriteria"] as String;
+
+            //var saveSate = ViewData["saved"] as String;
+
+           
             
             viewModel.subcategory = "Fans";
             Session["subcategory"] = "Fans";
@@ -32,25 +71,81 @@ namespace Marketplace_portal.Controllers
                 viewModel.productTypes.Add(type);
 
             }
-            
+
+            //Manage save states
+            if (state == null)
+            {
+                ViewData["saved"] = "Original";
+                ViewData["dropDown"] = "       ";
+                ViewData["yearMin"] = "";
+                ViewData["yearMax"] = "";
+                ViewData["airmin"] = 10;
+                ViewData["airmax"] = 90;
+                ViewData["powermin"] = 10;
+                ViewData["powermax"] = 90;
+                ViewData["soundmin"] = 10;
+                ViewData["soundmax"] = 90;
+                ViewData["fanmin"] = 10;
+                ViewData["fanmax"] = 90;
+            }
+            if (state == "true")
+            {
+
+                ViewData["saved"] = "Saved On";
+                ViewData["dropDown"] = dropdown;
+                viewModel.productTypes.Remove(dropdown);
+                ViewData["yearMin"] = yearmin;
+                ViewData["yearMax"] = yearmax;
+                ViewData["airmin"] = airmin;
+                ViewData["airmax"] = airmax;
+                ViewData["powermin"] = powermin;
+                ViewData["powermax"] = powermax;
+                ViewData["soundmin"] = soundmin;
+                ViewData["soundmax"] = soundmax;
+                ViewData["fanmin"] = fanmin;
+                ViewData["fanmax"] = fanmax;
+
+            }
+
+            if (state == "false")
+            {
+
+                ViewData["saved"] = "Saved On";
+                ViewData["dropDown"] = dropdown;
+                viewModel.productTypes.Remove(dropdown);
+                ViewData["yearMin"] = yearmin;
+                ViewData["yearMax"] = yearmax;
+                ViewData["airmin"] = airmin;
+                ViewData["airmax"] = airmax;
+                ViewData["powermin"] = powermin;
+                ViewData["powermax"] = powermax;
+                ViewData["soundmin"] = soundmin;
+                ViewData["soundmax"] = soundmax;
+                ViewData["fanmin"] = fanmin;
+                ViewData["fanmax"] = fanmax;
+
+            }
+
             //add temp values for product type dropdownlist
-           
+
             /*viewModel.productTypes.Add("Roof");
             viewModel.productTypes.Add("Commercial");
             viewModel.productTypes.Add("Non Commercial");
             viewModel.productTypes.Add("With Light");*/
 
+            ViewData["select"] = "     ";
+
             return View(viewModel);
         }
 
-        public ActionResult _Products() {
+            public ActionResult _Products() {
 
             if (viewModel.products.Count > 0)
             {
                 viewModel.products.Clear();
             }
 
-  
+            //string save = Request.QueryString["save"].ToString();
 
             string type = Request.QueryString["type"].ToString();
             float airFlowMax = float.Parse(Request.QueryString["airFlowMax"].ToString());
@@ -278,6 +373,7 @@ namespace Marketplace_portal.Controllers
 
                     String div = "";
                     IHtmlString str = new HtmlString(div);
+                    int checkBoxID = 1;
                     foreach (var Data in viewModel.products)
                     {
                         String airflowValue = "";
@@ -312,21 +408,42 @@ namespace Marketplace_portal.Controllers
                             }
                         }
 
-                        div = "<a href=\"/Filter/ProductDetail/" + Data.ProductID.ToString() + "\" id=\"ProductDiv\" > "
-                              + "<div>"
+                        div = "<a href=\"/Filter/TestProductDetail/" + Data.ProductID.ToString() + "\" id=\"ProductDiv\" > "
+                              + "<div class = \"productDiv\">"
                               + "<div> <img class = \"productImg\" runat=\"server\" src=\"../../" + Data.ProductImage + "\"alt=\"Fan Image\" > </div>"
-                              + "<div>" + Data.ProductName + "</div>"
-                              + "<div>" + airflowValue + " </div>"
-                              + "<div>" + maxPowerValue + "</div>"
-                              + "<div>" + soundMaxValue + "</div>"
-                              + "<div>" + fanSweepDiameterValue + "</div>"
+                              + "<div><b>" + Data.ProductName + "</b></div>"
+                              + "<div><b>" + Data.Series + "</b></div>"
+                              + "<div><b>" + Data.Model + "</b></div>"
+                              + "&nbsp"
+                              + "&nbsp"
+                              + "<div>" + airflowValue + " CFM </div>"
+                              + "&nbsp"
+                              + "<div>" + maxPowerValue + " W at max speed</div>"
+                              + "&nbsp"
+                              + "<div>" + soundMaxValue + " dBA at max speed</div>"
+                              + "&nbsp"
+                              + "<div>" + fanSweepDiameterValue + " fan sweep diamter</div>"
+                              + "&nbsp"
+                              + "<div>"
+                                + "<input type=\"checkbox\" id=\"checkbox"+ checkBoxID+ "\" name=\"checkbox"+ checkBoxID+"\" value=\"" +Data.ProductID +"\">"
+                                + "<label for=\"checkbox" +checkBoxID+"\"> Compare </label>"
+                                + "&nbsp"
+                                + "<input class=\"divButton\" type = \"button\" value = \"Add to\" disabled>"
                               + "</div>"
-                              + "</a>";
+                              + "</div>"                         
+                              + "</a>"
+                              + "&nbsp"
+                              + "&nbsp"
+                              + "&nbsp"
+                              + "&nbsp";
                         str = new HtmlString(div);
 
 
                         viewModel.listOfDivs.Add(str);
-
+                        checkBoxID++;
+                        if (checkBoxID > 3) {
+                            break;
+                        }
                     }
 
                 }
