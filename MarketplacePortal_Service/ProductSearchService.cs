@@ -29,9 +29,9 @@ namespace MarketplacePortal_Service
 
         public String[] getProductNames()
         {
-            tblProduct[] products = (tblProduct[]) getProducts().ToArray();
+            tblProduct[] products = (tblProduct[])getProducts().ToArray();
             string[] productNames = new string[products.Length];
-            for(var i = 0; i < products.Length; i++)
+            for (var i = 0; i < products.Length; i++)
             {
                 productNames[i] = products[i].ProductName;
             }
@@ -93,9 +93,9 @@ namespace MarketplacePortal_Service
             tblSubcategory[] subcategories = (tblSubcategory[])getSubcategories().ToArray();
             Dictionary<int, string> departmentsDict = getDepartments().ToDictionary(x => x.DepartmentID, x => x.DepartmentName);
 
-            for(int i = 0; i < subcategories.Length; i++)
+            for (int i = 0; i < subcategories.Length; i++)
             {
-                if(!subCategoryDepartmentDict.ContainsKey(subcategories[i].SubcategoryID.ToString()))
+                if (!subCategoryDepartmentDict.ContainsKey(subcategories[i].SubcategoryID.ToString()))
                 {
                     //DepartmentID is a nullable int, so we append .Value to the end. We should change this in our
                     //database so it can't be null. Since if it ever is, this'll default to 0 and we'll get unexpected behavior
