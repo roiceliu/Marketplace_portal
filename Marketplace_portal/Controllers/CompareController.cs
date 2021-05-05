@@ -23,7 +23,7 @@ namespace Marketplace_portal.Controllers
             //testList.Add(2);
             //testList.Add(3);
             //List<String> ids = new List<String>();
-            TempData["testList"] = new int[] { 1 };
+            TempData["testList"] = Ids;
             return RedirectToAction("CompareProduct", "Compare");
         }
 
@@ -62,6 +62,7 @@ namespace Marketplace_portal.Controllers
                 Series = currProduct.Select(x => x.Series).FirstOrDefault(),
                 Model = currProduct.Select(x => x.Model).FirstOrDefault(),
                 ModelYear = currProduct.Select(x => x.ModelYear).FirstOrDefault(),
+                ProductImage = currProduct.Select(x => x.ProductImage).FirstOrDefault(),
                 UseType = productProperties[0].Value,
                 Application = productProperties[1].Value,
                 MountingLocation = productProperties[2].Value,

@@ -159,7 +159,7 @@
 
 
 
-            var url = '@Url.Action("Test", "Filter")'
+            var url = '@Url.Action("CompareTest", "Compare")'
 
             if ($("#checkbox1").prop("checked") == true) {
                 var productIDId1 = $("#checkbox1").val();
@@ -182,35 +182,35 @@
 
             if (productIDId1 != "-1" && productIDId2 !="-1" && productIDId3 !="-1") {
 
-                url = '@Url.Action("Test", "Filter")?ids=' + productIDId1 + '&ids=' + productIDId2 + '&ids=' + productIDId3;
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId1 + '&ids=' + productIDId2 + '&ids=' + productIDId3;
             }
             if (productIDId1 == "-1" && productIDId2 !="-1" && productIDId3 !="-1") {
 
-                url = '@Url.Action("Test", "Filter")?ids=' + productIDId2 + '&ids=' + productIDId3;
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId2 + '&ids=' + productIDId3;
             }
             if (productIDId1 == "-1" && productIDId2 =="-1" && productIDId3 !="-1") {
 
-                url = '@Url.Action("Test", "Filter")?ids=' + productIDId3;
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId3;
             }
             if (productIDId1 == "-1" && productIDId2 =="-1" && productIDId3 =="-1") {
 
-                url = '@Url.Action("Test", "Filter")?ids=-1';
+                url = '@Url.Action("CompareTest", "Compare")?ids=-1';
             }
             if (productIDId1 != "-1" && productIDId2 =="-1" && productIDId3 !="-1") {
 
-                url = '@Url.Action("Test", "Filter")?ids=' + productIDId1 + '&ids=' + productIDId3;
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId1 + '&ids=' + productIDId3;
             }
             if (productIDId1 != "-1" && productIDId2 !="-1" && productIDId3 =="-1") {
 
-                url = '@Url.Action("Test", "Filter")?ids=' + productIDId1 + '&ids=' + productIDId2;
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId1 + '&ids=' + productIDId2;
             }
             if (productIDId1 != "-1" && productIDId2 =="-1" && productIDId3 =="-1") {
 
-                url = '@Url.Action("Test", "Filter")?ids=' + productIDId1;
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId1;
             }
             if (productIDId1 == "-1" && productIDId2 !="-1" && productIDId3 =="-1") {
 
-                url = '@Url.Action("Test", "Filter")?ids='+ productIDId2;
+                url = '@Url.Action("CompareTest", "Compare")?ids='+ productIDId2;
             }
 
 

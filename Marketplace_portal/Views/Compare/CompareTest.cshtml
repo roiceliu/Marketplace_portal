@@ -40,7 +40,9 @@
         <thead>
             <tr>
                 <th scope="col"></th>
-                <th scope="col"> <img id="fanImage1" src="~/ProductImages/fan1.jpg" width="200" height="200"></th>
+                @{
+                <th scope="col"> <img id="fanImage1" src="~/ProductImages/" + @Model.ProductModels.ElementAt(index).ProductImage width="200" height="200"></th>
+                }
             </tr>
         </thead>
         <tbody>
