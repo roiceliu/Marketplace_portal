@@ -145,6 +145,7 @@
     <Compile Include="Models\CompareList.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
+    <Compile Include="Models\ProductPropertyValueModel.cs" />
     <Compile Include="Models\ProductSummaryModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
@@ -204,6 +205,7 @@
     <Content Include="Views\ProductSummary\Index.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\Compare\CompareTest.cshtml" />
+    <Content Include="Views\Compare\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Filter\_Products.cshtml" />

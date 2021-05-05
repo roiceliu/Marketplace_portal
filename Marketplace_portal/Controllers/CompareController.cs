@@ -16,6 +16,25 @@ namespace Marketplace_portal.Controllers
         JooleEntities context = new JooleEntities();
         FilterService fservice = new FilterService();
 
+
+        public ActionResult Test()
+        {
+            //List<int> testList = new List<int>();
+            //testList.Add(1);
+            //testList.Add(2);
+            //testList.Add(3);
+
+            var productvalues = (from )
+
+
+            int[] ids = new int[] { 1, 2, 5 };
+
+
+
+            return View(ids);
+        }
+
+
         public ActionResult CompareTest()
         {
             //List<int> testList = new List<int>();
@@ -29,7 +48,8 @@ namespace Marketplace_portal.Controllers
         //Main functional part
         public ActionResult CompareProduct(int[] IdList)
         {
-            IdList = (int[])TempData["testList"];
+
+            IdList = new int[] { 3 };
             CompareList list = new CompareList();
             List<ProductModel> productModels = new List<ProductModel>();
             

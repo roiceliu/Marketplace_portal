@@ -14,10 +14,14 @@ namespace Marketplace_portal.Controllers
     {
         FilterViewModel viewModel = new FilterViewModel();
         FilterService fservice = new FilterService();
-        
+
         List<string> types = new List<string>();
 
         
+        
+
+
+
 
         public ActionResult Test( int[] Ids)
         {

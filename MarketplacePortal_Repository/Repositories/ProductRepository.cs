@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarketplacePortal_DAL;
 
+
 namespace MarketplacePortal_Repository
 {
     public class ProductRepository:GenericRepository<tblProduct>
@@ -14,7 +15,9 @@ namespace MarketplacePortal_Repository
             
         }
 
-        public List<tblProduct> GetProductsBetweenModelYear(int min, int max)
+
+
+            public List<tblProduct> GetProductsBetweenModelYear(int min, int max)
         {
 
             var query = from product in context.Set<tblProduct>()
