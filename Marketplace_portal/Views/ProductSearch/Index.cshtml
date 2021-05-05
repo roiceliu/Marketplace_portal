@@ -1,26 +1,23 @@
 ﻿@using Marketplace_portal.Models;
 @using Newtonsoft.Json;
 
-@{
-    ProductSearchModel productObject = ViewData["productObject"] as ProductSearchModel;
+@{ ProductSearchModel productObject = ViewData["productObject"] as ProductSearchModel;
 
-    //string[] productNames = (string[])ViewData["productNames"];
-    //String[] productsNames = new string[Products.products.Count()];
+                //string[] productNames = (string[])ViewData["productNames"];
+                //String[] productsNames = new string[Products.products.Count()];
 
-    //for (var i = 0; i < Products.products.Count(); i++)
-    //{
-    //    productsNames[i] = Products.products[i].ProductName;
-    //}
+                //for (var i = 0; i < Products.products.Count(); i++)
+                //{
+                //    productsNames[i] = Products.products[i].ProductName;
+                //}
 
-    //foreach(tblProduct p in Products){
-    //    productsNames.Add(p.ProductName);
-    //}
+                //foreach(tblProduct p in Products){
+                //    productsNames.Add(p.ProductName);
+                //}
 
-    //productsNames = List.ToArray();
+                //productsNames = List.ToArray();
 
-    Layout = null;
-
-}
+                Layout = null; }
 
 <!DOCTYPE html>
 
@@ -39,12 +36,9 @@
         <select name="departments" id="departments">
             <option value="All" selected disabled hidden>Departments</option>
             <option value="All">All</option>
-            @{
-                foreach (string departmentName in productObject.departmentNames)
-                {
-                    <option value="@departmentName">@departmentName</option>
-                }
-            }
+            @{ foreach (string departmentName in productObject.departmentNames)
+                            {
+                <option value="@departmentName">@departmentName</option> } }
         </select>
 
         <input id="autocomplete" placeholder="Search">

@@ -3,7 +3,7 @@
 @using Newtonsoft.Json;
 @{
 
-    ProductSummaryModel propertiesObject = ViewData["propertiesObject"] as ProductSummaryModel;
+    //ProductSummaryModel propertiesObject = ViewData["propertiesObject"] as ProductSummaryModel;
 
     Layout = null;
 }
@@ -77,7 +77,7 @@
                             }
                             else {
                                 <td>@Model.properties[i][0]</td>
-                                <td>@Model.properties[i][2].</td>
+                                <td>@Model.properties[i][2]</td>
                             }
                         </tr>
                     }
