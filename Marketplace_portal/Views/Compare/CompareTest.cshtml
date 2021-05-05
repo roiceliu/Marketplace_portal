@@ -41,8 +41,13 @@
             <tr>
                 <th scope="col"></th>
                 @{
-                    string imgsrc = "~/" + @Model.ProductModels.ElementAt(index).ProductImage;
-                    <th scope="col"> <img id="fanImage1" src=@imgsrc width="200" height="200"></th>
+                    while (index < modelLength)
+                    {
+                        string imgsrc = "../.." + @Model.ProductModels.ElementAt(index).ProductImage;
+                        <td scope="col"> <img class="center-block" src=@imgsrc width="200" height="400"></td>
+                        index++;
+                    }
+                    index = 0;
                 }
             </tr>
         </thead>
