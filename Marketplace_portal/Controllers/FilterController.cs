@@ -17,11 +17,6 @@ namespace Marketplace_portal.Controllers
 
         List<string> types = new List<string>();
 
-        
-        
-
-
-
 
         public ActionResult Test( int[] Ids)
         {
