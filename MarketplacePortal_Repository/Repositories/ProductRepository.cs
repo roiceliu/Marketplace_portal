@@ -12,6 +12,8 @@ namespace MarketplacePortal_Repository
     {
         
         public ProductRepository(JooleEntities context) : base(context) {
+
+            
             
         }
 

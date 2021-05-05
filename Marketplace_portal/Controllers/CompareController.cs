@@ -15,6 +15,7 @@ namespace Marketplace_portal.Controllers
         // GET: Compare
         JooleEntities context = new JooleEntities();
         FilterService fservice = new FilterService();
+        
 
 
         public ActionResult Test(int[] Ids)
@@ -24,7 +25,11 @@ namespace Marketplace_portal.Controllers
             //testList.Add(2);
             //testList.Add(3);
 
-            //var productvalues = (from )
+            
+
+
+            
+            
 
 
             //int[] ids = new int[] { 1, 2, 5 };

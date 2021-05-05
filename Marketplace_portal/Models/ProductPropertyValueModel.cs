@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Marketplace_portal.Models
+namespace Marketplace_portal_DAL
 {
     public class ProductPropertyValueModel
     {
