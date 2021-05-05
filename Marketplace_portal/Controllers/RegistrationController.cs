@@ -16,7 +16,7 @@ namespace Marketplace_portal.Controllers
         // GET: Registration
         public ActionResult Register()
         {
-            return View();
+            return PartialView(new UserRegister()); //had to change here to make it work-Mark
         }
 
         [HttpPost]
