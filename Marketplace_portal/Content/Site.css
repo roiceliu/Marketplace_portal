@@ -36,6 +36,14 @@ textarea {
 }
 .MakeBlock {
     display: inline-block;
+
+}
+.MakeBl {
+    display: inline-block;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
 }
 .MaxBox {
     width:38px;
@@ -50,16 +58,16 @@ textarea {
     width: 30px;
 }
 .productImg {
-    width: 200px;
+ /*   width: 200px;*/
     height:175px;
 }
 .productDiv {
     display: inline-block;
-    border:solid;
-    border-color: grey;
+    border: solid;
+    border-color: #80808040;
     padding: 10px;
-    text-align:center;
-    color:black;
+    text-align: center;
+    color: black;
     width: 230px;
 }
 a:hover, a:visited, a:link, a:active .productDiv {
@@ -69,14 +77,96 @@ a:hover, a:visited, a:link, a:active .productDiv {
     width:70px;
 }
 .pduct {
-    width: 150px;
-    text-align:center;
+    text-align: center;
+    border: 1px solid #d1d1d1;
 }
 .pject {
     text-align: center;
-    width: 150px;
+    border: 1px solid #d1d1d1;
 }
 .srch {
     text-align: center;
-    
+    width: 100%;
+
+    margin: 10px;
+}
+
+input.divButton {
+    background-color: #5bc0de;
+    margin-right: 10px;
+    color: #fff;
+    float: right;
+}
+
+input#checkbox1 {
+    float: left;
+}
+input#checkbox2 {
+    float: left;
+}
+input#checkbox3 {
+    float: left;
+}
+.col-md-4 {
+    background-color: #f8f8f8;
+    border: 1px solid #c3c3c3;
+    padding: 0px;
+}
+
+.save_clear {
+    float: right;
+    padding-right: 19px;
+}
+select#ProductType {
+    background: #f8f8f8;
+    width: 50%;
+    float: right;
+    margin: 0;
+    border: none;
+}
+
+.inline {
+    display: inline;
+    float: left;
+    font-weight: 300;
+
+    padding-right: 60px;
+    margin-left: 10px;
+}
+
+    .inline h5 {
+        font-weight: 700;
+    }
+label.MakeBlock {
+    height: 34px;
+    text-align: center;
+    padding: 10px;
+}
+.model-year {
+    display: inline-block;
+    border-top: 1px solid #c3c3c3;
+    border-bottom: 1px solid #c3c3c3;
+    padding-left: unset;
+    padding-right: unset;
+    padding-top: 10px;
+}
+h4{
+    padding-left: 10px;
+}
+.tech-spec h5 {
+    padding-left: 20px;
+}
+.scroll-bar {
+    margin-left: 20px;
+}
+.tech-spec h4 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c3c3c3;
+}
+label {
+    float: left;
+}
+
+input.divButton {
+    border-radius: 4px;
 }
