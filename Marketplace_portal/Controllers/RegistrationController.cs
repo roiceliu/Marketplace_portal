@@ -17,7 +17,7 @@ namespace Marketplace_portal.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return PartialView("Register");
+            return PartialView( new UserRegister());
         }
 
         [HttpPost]

@@ -13,6 +13,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/Site.css">
     <title>Index</title>
 </head>
 <body>
@@ -26,15 +27,15 @@
                     <th>DESCRIPTION</th>
                 </tr>
                 <tr>
-                    <td>Manufacturer</td>
+                    <td class="descData">Manufacturer</td>
                     <td>@Model.description[0]</td>
                 </tr>
                 <tr>
-                    <td>Series</td>
+                    <td class="descData">Series</td>
                     <td>@Model.description[1]</td>
                 </tr>
                 <tr>
-                    <td>Model</td>
+                    <td class="descData">Model</td>
                     <td>@Model.description[2]</td>
                 </tr>
             </table>
@@ -75,8 +76,7 @@
                                 <td>Max</td>
                                 <td>@Model.properties[i][4]</td>
                             }
-                            else {
-                                <td>@Model.properties[i][0]</td>
+                            else {                         
                                 <td>@Model.properties[i][2]</td>
                             }
                         </tr>
