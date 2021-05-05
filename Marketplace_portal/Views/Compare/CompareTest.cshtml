@@ -3,6 +3,9 @@
 
 @{
     ViewBag.Title = "CompareTest";
+    int modelLength = Model.ProductModels.Count();
+    int index = 0;
+    Console.WriteLine(index);
 }
 
 <!DOCTYPE html>
@@ -34,18 +37,12 @@
         </div>
     </div>
     <table class="table table-bordered" width="100%">
-        @foreach (ProductModel item in Model.ProductModels)
-        {@*
-                <tr>
-                    <td>@item.ManufacturerName</td>
-
-                    <td>@item.Series</td>
-                </tr>
-        *@
         <thead>
             <tr>
                 <th scope="col"></th>
-                <th scope="col"> <img id="fanImage1" src="~/ProductImages/fan1.jpg" width="200" height="200"></th>
+                @{
+                <th scope="col"> <img id="fanImage1" src="~/ProductImages/" + @Model.ProductModels.ElementAt(index).ProductImage width="200" height="200"></th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -54,143 +51,265 @@
             </tr>
             <tr>
                 <th scope="row" class="active">Manufacture</th>
-                <td class="col-3">@item.ManufacturerName</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).ManufacturerName</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="active">Series</th>
-                <td class="col-3">@item.Series</td>
+                @{
+                    Console.WriteLine("before = " + index);
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).Series</td>
+                        index++;
+                    }
+                    index = 0;
+                    Console.WriteLine("after = " + index);
+                }
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Model</th>
-                <td class="col-md-3">@item.Model</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).Model</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th colspan="3" class="active">TYPE</th>
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Use Type</th>
-                <td class="col-md-3">@item.UseType</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).UseType</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Application</th>
-                <td class="col-md-3">@item.Application</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).Application</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Mounting Location</th>
-                <td class="col-md-3">@item.MountingLocation</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).MountingLocation</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Accessories</th>
-                <td class="col-3">@item.Accessories</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).Accessories</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Model Year</th>
-                <td class="col-md-3">@item.ModelYear</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).ModelYear</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th colspan="3" class="active">TECHNICAL SPECIFICATIONS</th>
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Air Flow (CFM)</th>
-                <td class="col-3">@item.AirFlow </td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).AirFlow</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Power (W)</th>
-                <td class="col-md-3">
-                    @*product 1 min max*@
-                    <table width="100%" class="text-center">
-                        <tr>
-                            <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">@item.PowerMin</td>
-                        </tr>
-                    </table>
-                    <table width="100%" class="text-center">
-                        <tr>
-                            <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">@item.PowerMax</td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+                @*product 1 min max*@
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-md-3">
+                            <table width="100%" class="text-center">
+                                <tr class="text-center">
+                                    <th scope="col" class="col-md-3 active">Min</th>
+                                    <td class="col-3">@Model.ProductModels.ElementAt(index).PowerMin</td>
+                                </tr>
+                            </table>
+
+                            <table width="100%" class="text-center">
+                                <tr>
+                                    <th scope="col" class="col-md-3 active">Max</th>
+                                    <td class="col-3">@Model.ProductModels.ElementAt(index).PowerMax</td>
+                                </tr>
+                            </table>
+                        </td>
+                        index++;
+                    }
+                    index = 0;
+                  }
+             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Operating Voltage (VAC)</th>
-                <td class="col-md-3">
-                    @*product 1 min max*@
-                    <table width="100%" class="text-center">
-                        <tr>
-                            <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">@item.OperatingVoltageMin </td>
-                        </tr>
-                    </table>
-                    <table width="100%" class="text-center">
-                        <tr>
-                            <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">@item.OperatingVoltageMax </td>
-                        </tr>
-                    </table>
-                </td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-md-3">
+                            <table width="100%" class="text-center">
+                                <tr class="text-center">
+                                    <th scope="col" class="col-md-3 active">Min</th>
+                                    <td class="col-3">@Model.ProductModels.ElementAt(index).OperatingVoltageMin</td>
+                                </tr>
+                            </table>
+
+                            <table width="100%" class="text-center">
+                                <tr>
+                                    <th scope="col" class="col-md-3 active">Max</th>
+                                    <td class="col-3">@Model.ProductModels.ElementAt(index).OperatingVoltageMax</td>
+                                </tr>
+                            </table>
+                        </td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Fan Speed (RPM)</th>
-                <td class="col-md-3">
-                    @*product 1 min max*@
-                    <table width="100%" class="text-center">
-                        <tr>
-                            <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">@item.FanSpeedMin </td>
-                        </tr>
-                    </table>
-                    <table width="100%" class="text-center">
-                        <tr>
-                            <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">@item.FanSpeedMax </td>
-                        </tr>
-                    </table>
-                </td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-md-3">
+                            <table width="100%" class="text-center">
+                                <tr class="text-center">
+                                    <th scope="col" class="col-md-3 active">Min</th>
+                                    <td class="col-3">@Model.ProductModels.ElementAt(index).FanSpeedMin</td>
+                                </tr>
+                            </table>
+
+                            <table width="100%" class="text-center">
+                                <tr>
+                                    <th scope="col" class="col-md-3 active">Max</th>
+                                    <td class="col-3">@Model.ProductModels.ElementAt(index).FanSpeedMax</td>
+                                </tr>
+                            </table>
+                        </td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="active">Number of fan speeds</th>
-                <td>@item.NumberFanSpeed </td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).NumberFanSpeed</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="active">Sound at max speed (dBA)</th>
-                <td>@item.MaxSpeed </td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).MaxSpeed</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="active">Fan sweep diameter (in)</th>
-                <td>@item.FanSweep</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).FanSweep</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Height (in)</th>
-                <td class="col-md-3">
-                    @*product 1 min max*@
-                    <table width="100%" class="text-center">
-                        <tr>
-                            <th scope="col" class="col-md-3 active">Min</th>
-                            <td class="col-md-3">@item.HeightMin</td>
-                        </tr>
-                    </table>
-                    <table width="100%" class="text-center">
-                        <tr>
-                            <th scope="col" class="col-md-3 active">Max</th>
-                            <td class="col-md-3">@item.HeightMax</td>
-                        </tr>
-                    </table>
-                </td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-md-3">
+                            <table width="100%" class="text-center">
+                                <tr class="text-center">
+                                    <th scope="col" class="col-md-3 active">Min</th>
+                                    <td class="col-3">@Model.ProductModels.ElementAt(index).HeightMin</td>
+                                </tr>
+                            </table>
+
+                            <table width="100%" class="text-center">
+                                <tr>
+                                    <th scope="col" class="col-md-3 active">Max</th>
+                                    <td class="col-3">@Model.ProductModels.ElementAt(index).HeightMax</td>
+                                </tr>
+                            </table>
+                        </td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
             <tr>
                 <th scope="row" class="active">Weight (llbs)</th>
-                <td>@item.Weight</td>
+                @{
+                    while (index < modelLength)
+                    {
+                        <td class="col-3 text-center">@Model.ProductModels.ElementAt(index).Weight</td>
+                        index++;
+                    }
+                    index = 0;
+                }
             </tr>
         </tbody>
-    }
+    
     </table>
 
     <div>
-
+        @*
         <a id="btn_add" href="@Url.Action(" Add", "AddToCart" )" class="btn btn-info btn-lg" style="margin-left:60px">
             <span class="addto" onclick="SaveItem()"> </span> Add To
-        </a>
+        </a>*@
     </div>
 </body>
 </html>

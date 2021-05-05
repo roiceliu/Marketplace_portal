@@ -9,6 +9,7 @@ namespace Marketplace_portal.Models
     public class ProductModel
     {
         public String ManufacturerName { get; set; }
+        public String ProductImage { get; set; }
         public String Series { get; set; }
         public String Model { get; set; }
         public String ModelYear { get; set; }
