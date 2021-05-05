@@ -25,6 +25,18 @@ namespace Marketplace_portal.Controllers
                 subCategoryDepartmentDict = productSearchService.getSubcategoryDepartmentDict()
             };
 
+//            //Get list of products
+//            Service s = new Service();
+//            List<tblProduct> products = s.GetAllProducts();
+//            ViewData["products"] = products;
+//            return View();
+//        }
+ //           //Get list of products
+ //           Service s = new Service();
+ //           IEnumerable<tblProduct> products = s.GetAllProducts();
+//            ViewData["products"] = products;
+ //           return View();
+ //       }
             ////Get list of products
             //Service s = new Service();
             //List<tblProduct> products = s.GetAllProducts();

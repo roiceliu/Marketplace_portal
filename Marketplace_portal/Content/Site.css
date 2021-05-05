@@ -22,3 +22,29 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#ProductType {
+    display: inline-block;
+}
+#ProductDiv {
+    display: inline-block;
+}
+.MakeBlock {
+    display: inline-block;
+}
+.MaxBox {
+    width:30px;
+}
+.MinBox {
+    width:30px;
+}
+.SliderBox{
+    width:250px;
+}
+.ModelYear {
+    width: 30px;
+}
+.productImg {
+    width: 200px;
+    height:200px;
+}

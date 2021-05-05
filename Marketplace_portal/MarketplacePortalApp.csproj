@@ -136,6 +136,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompareList.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\ProductSummaryModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -149,12 +151,17 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CSSStyles\Login.css" />
+    <Content Include="Content\Filter.css" />
     <Content Include="Content\CSSStyles\main.css" />
     <Content Include="Content\CSSStyles\Register.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ProductImages\fan1.jpg" />
+    <Content Include="ProductImages\Fan2.jpg" />
+    <Content Include="ProductImages\fan3.jpg" />
+    <Content Include="ProductImages\fan4.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -185,17 +192,20 @@
     <Content Include="Views\Filter\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Success.cshtml" />
-    <Content Include="Views\Compare\CompareProduct.cshtml" />
+    <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
     <Content Include="Views\ProductSummary\Index.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
+    <Content Include="Views\Compare\CompareTest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Filter\_Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
     <Folder Include="UserImages\" />
-    <Folder Include="Views\AddTo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

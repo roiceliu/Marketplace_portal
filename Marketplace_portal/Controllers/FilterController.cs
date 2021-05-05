@@ -11,26 +11,332 @@ namespace Marketplace_portal.Controllers
 {
     public class FilterController : Controller
     {
+        FilterViewModel viewModel = new FilterViewModel();
+        FilterService fservice = new FilterService();
+        
+        List<string> types = new List<string>();
+
+
         // GET: Filter
         public ActionResult Index()
         {
-            FilterViewModel viewModel = new FilterViewModel();
-            FilterService fservice = new FilterService();
+            
+            
+            viewModel.subcategory = "Fans";
+            Session["subcategory"] = "Fans";
+            //get different types for subclass
+            types = fservice.GetTypesBySubcategory(viewModel.subcategory);
 
-            //add products with type roof
-            viewModel.products = fservice.GetProductsByProductType("Roof");
+            foreach (string type in types) 
+            {
+                viewModel.productTypes.Add(type);
 
-            //add temp values for product types
-            /*
-            viewModel.productTypes.Add("Roof");
+            }
+            
+            //add temp values for product type dropdownlist
+           
+            /*viewModel.productTypes.Add("Roof");
             viewModel.productTypes.Add("Commercial");
             viewModel.productTypes.Add("Non Commercial");
-
-            ViewBag.ProductTypes = new SelectList(viewModel.productTypes);
-
-            */
+            viewModel.productTypes.Add("With Light");*/
 
             return View(viewModel);
         }
+
+        public ActionResult _Products() {
+
+            if (viewModel.products.Count > 0)
+            {
+                viewModel.products.Clear();
+            }
+
+  
+
+            string type = Request.QueryString["type"].ToString();
+            float airFlowMax = float.Parse(Request.QueryString["airFlowMax"].ToString());
+            float airFlowMin = float.Parse(Request.QueryString["airFlowMin"].ToString());
+
+            float maxPowerMax = float.Parse(Request.QueryString["maxPowerMax"].ToString());
+            float maxPowerMin = float.Parse(Request.QueryString["maxPowerMin"].ToString());
+
+            float soundSpeedMax = float.Parse(Request.QueryString["soundSpeedMax"].ToString());
+            float soundSpeedMin = float.Parse(Request.QueryString["soundSpeedMin"].ToString());
+
+            float fanSweepMax = float.Parse(Request.QueryString["fanSweepMax"].ToString());
+            float fanSweepMin = float.Parse(Request.QueryString["fanSweepMin"].ToString());
+
+            int yearMax;
+            if (!int.TryParse(Request.QueryString["yearMax"].ToString(), out yearMax)) {
+                yearMax = Int32.MaxValue;
+            }
+            int yearMin;
+            if (!int.TryParse(Request.QueryString["yearMin"].ToString(), out yearMin))
+            {
+                yearMin = Int32.MinValue;
+            }
+
+
+
+            //get unfiltered products
+
+            //get products by type
+            List <tblProduct> productsByType = fservice.GetProductsByProductType(type);
+
+            //get products by property name
+            List<tblProduct> productsByPropertyName = fservice.GetProductsByPropertyName("Air Flow");
+            List<tblProduct> productsByPropertyName2 = fservice.GetProductsByPropertyName("Power");
+            List<tblProduct> productsByPropertyName3 = fservice.GetProductsByPropertyName("Sound at Max Speed");
+            List<tblProduct> productsByPropertyName4 = fservice.GetProductsByPropertyName("Fan Sweep Diameter");
+
+            //get products by model year
+            List<tblProduct> productsByBetweenModelYear = new List<tblProduct>();
+            if ( yearMin< yearMax)
+            {
+                productsByBetweenModelYear = fservice.GetProductsBetweenModelYear( yearMin, yearMax);
+            }
+            else if (yearMin > yearMax)
+            {
+                productsByBetweenModelYear = fservice.GetProductsBetweenModelYear(yearMax, yearMin);
+            }
+            else
+            {
+                productsByBetweenModelYear = fservice.GetProductsBetweenModelYear(yearMax, yearMin);
+            }
+
+
+            //filter code
+
+
+            viewModel.propertyValues = fservice.GetAlltblPropertyValues().ToList();
+
+
+
+            //filter by min max Airflow
+            List<tblProduct> productsByAirFlowMinMax = new List<tblProduct>();
+            int idAirFlowProp = fservice.GetPropertyIDByName("Air Flow");
+            
+
+            for (int i = 0; i < productsByPropertyName.Count; i++)
+            {
+                for (int j = 0; j < viewModel.propertyValues.Count; j++)
+                {
+                    float airFlowValue;
+                    
+
+                    bool success = float.TryParse(viewModel.propertyValues[j].Value, out airFlowValue);
+                    
+
+                    if ((productsByPropertyName[i].ProductID == viewModel.propertyValues[j].ProductID) & (airFlowValue >= airFlowMin) & (airFlowValue <= airFlowMax) & (viewModel.propertyValues[j].PropertyID==idAirFlowProp))
+                     {
+                        productsByAirFlowMinMax.Add(productsByPropertyName[i]);
+                        continue;
+
+                     }
+
+                }
+ 
+            }
+
+            //filter max Power
+            List<tblProduct> productsByPowerMinMax = new List<tblProduct>();
+            int idMaxPowerProp = fservice.GetPropertyIDByName("Power");
+
+            for (int i = 0; i < productsByPropertyName2.Count; i++)
+            {
+                for (int j = 0; j < viewModel.propertyValues.Count; j++)
+                {
+                    //float maxPowerValue = (float)viewModel.propertyValues[j].Max;
+
+                    if ((productsByPropertyName2[i].ProductID == viewModel.propertyValues[j].ProductID) & (viewModel.propertyValues[j].Max >= maxPowerMin) & (viewModel.propertyValues[j].Max <= maxPowerMax) & (viewModel.propertyValues[j].PropertyID == idMaxPowerProp))
+                    {
+                        productsByPowerMinMax.Add(productsByPropertyName2[i]);
+                        continue;
+
+                    }
+
+                }
+
+            }
+
+            //filter by sound at max speed
+            List<tblProduct> productsSoundMinMax = new List<tblProduct>();
+            int idSoundProp = fservice.GetPropertyIDByName("Sound at Max Speed");
+
+
+            for (int i = 0; i < productsByPropertyName3.Count; i++)
+            {
+                for (int j = 0; j < viewModel.propertyValues.Count; j++)
+                {
+                    float soundValue;
+
+
+                    bool success = float.TryParse(viewModel.propertyValues[j].Value, out soundValue);
+
+
+                    if ((productsByPropertyName3[i].ProductID == viewModel.propertyValues[j].ProductID) & (soundValue >= soundSpeedMin) & (soundValue <= soundSpeedMax) & (viewModel.propertyValues[j].PropertyID == idSoundProp))
+                    {
+                        productsSoundMinMax.Add(productsByPropertyName3[i]);
+                        continue;
+
+                    }
+
+                }
+
+            }
+
+
+            //filter by fan sweep diameter
+            List<tblProduct> productsByFanSweepMinMax = new List<tblProduct>();
+            int idFanSweepProp = fservice.GetPropertyIDByName("Fan Sweep Diameter");
+
+
+            for (int i = 0; i < productsByPropertyName4.Count; i++)
+            {
+                for (int j = 0; j < viewModel.propertyValues.Count; j++)
+                {
+                    float fanSweepValue;
+
+
+                    bool success = float.TryParse(viewModel.propertyValues[j].Value, out fanSweepValue);
+
+
+                    if ((productsByPropertyName4[i].ProductID == viewModel.propertyValues[j].ProductID) & (fanSweepValue >= fanSweepMin) & (fanSweepValue <= fanSweepMax) & (viewModel.propertyValues[j].PropertyID == idFanSweepProp))
+                    {
+                        productsByFanSweepMinMax.Add(productsByPropertyName4[i]);
+                        continue;
+
+                    }
+
+                }
+
+            }
+
+
+
+
+            var ids = productsByType.Select(x => x.ProductID).Intersect(productsByAirFlowMinMax.Select(x => x.ProductID));
+            var filteredProducts = productsByType.Where(x => ids.Contains(x.ProductID));
+
+            var ids2 = filteredProducts.Select(x => x.ProductID).Intersect(productsByPowerMinMax.Select(x => x.ProductID));
+            var filteredProducts2 = filteredProducts.Where(x => ids2.Contains(x.ProductID));
+
+            var ids3 = filteredProducts2.Select(x => x.ProductID).Intersect(productsSoundMinMax.Select(x => x.ProductID));
+            var filteredProducts3 = filteredProducts2.Where(x => ids3.Contains(x.ProductID));
+
+            var ids4 = filteredProducts3.Select(x => x.ProductID).Intersect(productsByFanSweepMinMax.Select(x => x.ProductID));
+            var filteredProducts4 = filteredProducts3.Where(x => ids4.Contains(x.ProductID));
+
+            var ids5 = filteredProducts4.Select(x => x.ProductID).Intersect(productsByBetweenModelYear.Select(x => x.ProductID));
+            var filteredProducts5 = filteredProducts4.Where(x => ids5.Contains(x.ProductID));
+
+
+            //assign products to show
+            viewModel.products = filteredProducts5.ToList<tblProduct>();
+
+
+
+
+
+            viewModel.property = fservice.GetAllProperty().ToList();
+
+            //get details of products
+
+
+
+            if (viewModel.products != null)
+            {
+                if (Convert.ToString(@Session["subcategory"]) == "Fans")
+                {
+                    var airflowKey = -1;
+                    var maxPowerKey = -1;
+                    var soundMaxKey = -1;
+                    var fanSweepDiameterKey = -1;
+
+
+                    for (int i = 0; i < viewModel.property.Count; i++)
+                    {
+                        if (Convert.ToString(viewModel.property[i].PropertyName) == "Air Flow")
+                        {
+                            airflowKey = viewModel.property[i].PropertyID;
+                        }
+
+                        if (Convert.ToString(viewModel.property[i].PropertyName) == "Power")
+                        {
+                            maxPowerKey = viewModel.property[i].PropertyID;
+                        }
+
+                        if (Convert.ToString(viewModel.property[i].PropertyName) == "Sound at Max Speed")
+                        {
+                            soundMaxKey = viewModel.property[i].PropertyID;
+                        }
+
+                        if (Convert.ToString(viewModel.property[i].PropertyName) == "Fan Sweep Diameter")
+                        {
+                            fanSweepDiameterKey = viewModel.property[i].PropertyID;
+                        }
+                    }
+
+                    String div = "";
+                    IHtmlString str = new HtmlString(div);
+                    foreach (var Data in viewModel.products)
+                    {
+                        String airflowValue = "";
+                        float maxPowerValue = -1.1f;
+                        String soundMaxValue = "";
+                        String fanSweepDiameterValue = "";
+                        
+
+                        for (int i = 0; i < viewModel.propertyValues.Count; i++)
+                        {
+
+                            if ((Data.ProductID == viewModel.propertyValues[i].ProductID) & (viewModel.propertyValues[i].PropertyID == airflowKey))
+                            {
+
+                                airflowValue = viewModel.propertyValues[i].Value;
+                            }
+                            if ((Data.ProductID == viewModel.propertyValues[i].ProductID) & (viewModel.propertyValues[i].PropertyID == maxPowerKey))
+                            {
+
+                                maxPowerValue = (float)viewModel.propertyValues[i].Max;
+                            }
+                            if ((Data.ProductID == viewModel.propertyValues[i].ProductID) & (viewModel.propertyValues[i].PropertyID == soundMaxKey))
+                            {
+
+                                soundMaxValue = viewModel.propertyValues[i].Value;
+                            }
+
+                            if ((Data.ProductID == viewModel.propertyValues[i].ProductID) & (viewModel.propertyValues[i].PropertyID == fanSweepDiameterKey))
+                            {
+
+                                fanSweepDiameterValue = viewModel.propertyValues[i].Value;
+                            }
+                        }
+
+                        div = "<a href=\"/Filter/ProductDetail/" + Data.ProductID.ToString() + "\" id=\"ProductDiv\" > "
+                              + "<div>"
+                              + "<div> <img class = \"productImg\" runat=\"server\" src=\"../../" + Data.ProductImage + "\"alt=\"Fan Image\" > </div>"
+                              + "<div>" + Data.ProductName + "</div>"
+                              + "<div>" + airflowValue + " </div>"
+                              + "<div>" + maxPowerValue + "</div>"
+                              + "<div>" + soundMaxValue + "</div>"
+                              + "<div>" + fanSweepDiameterValue + "</div>"
+                              + "</div>"
+                              + "</a>";
+                        str = new HtmlString(div);
+
+
+                        viewModel.listOfDivs.Add(str);
+
+                    }
+
+                }
+            }
+
+
+                    return PartialView(viewModel);
+        
+        }
+
+       
     }
 }
