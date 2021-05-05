@@ -22,7 +22,8 @@ namespace Marketplace_portal.Controllers
             //testList.Add(1);
             //testList.Add(2);
             //testList.Add(3);
-            TempData["testList"] = new int[] { 1, 2, 3 };
+            //List<String> ids = new List<String>();
+            TempData["testList"] = new int[] { 1 };
             return RedirectToAction("CompareProduct", "Compare");
         }
 
