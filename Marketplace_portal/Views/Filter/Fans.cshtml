@@ -91,14 +91,16 @@
            
 
         </div>
-        <div class="col-md-8">
-            <p><b>Electrical > </b> Fans</p>
-            <div id="product_list_container">products will display here</div>
+    <div class="col-md-8">
+        <p><b>Electrical > </b> Fans</p>
+        <div id="product_list_container">products will display here</div>
+        @*
             &nbsp;
-            <div>
-                <input id="CompareButton" class="divButton" type="submit" value="Compare">
-            </div>
+        <div>
+            <input id="CompareButton" class="divButton" type="submit" value="Compare">
         </div>
+        *@
+    </div>
 
     </div>
 <script>
@@ -153,12 +155,8 @@
 
 
 
-
-
-        $('#CompareButton').click(function () {
-
-
-
+        $(document).on('click', '#CompareButton', function () {
+            
             var url = '@Url.Action("CompareTest", "Compare")'
 
             if ($("#checkbox1").prop("checked") == true) {

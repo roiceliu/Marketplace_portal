@@ -14,10 +14,14 @@ namespace Marketplace_portal.Controllers
     {
         FilterViewModel viewModel = new FilterViewModel();
         FilterService fservice = new FilterService();
-        
+
         List<string> types = new List<string>();
 
         
+        
+
+
+
 
         public ActionResult Test( int[] Ids)
         {
@@ -424,14 +428,15 @@ namespace Marketplace_portal.Controllers
                               + "&nbsp"
                               + "<div>" + fanSweepDiameterValue + " fan sweep diamter</div>"
                               + "&nbsp"
+                              + "</a>"
                               + "<div>"
                                 + "<input type=\"checkbox\" id=\"checkbox"+ checkBoxID+ "\" name=\"checkbox"+ checkBoxID+"\" value=\"" +Data.ProductID +"\">"
                                 + "<label for=\"checkbox" +checkBoxID+"\"> Compare </label>"
                                 + "&nbsp"
-                                + "<input class=\"divButton\" type = \"button\" value = \"Add to\" disabled>"
+                                + "<input id = \"CompareButton\" class=\"divButton\" type = \"submit\" value = \"Add\" >"
                               + "</div>"
                               + "</div>"                         
-                              + "</a>"
+                              
                               + "&nbsp"
                               + "&nbsp"
                               + "&nbsp"
