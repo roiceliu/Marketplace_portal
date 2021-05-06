@@ -1,13 +1,13 @@
-﻿body {
+﻿/*body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
+}*/
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
+}*/
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -21,4 +21,152 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#ProductType {
+    display: inline-block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+#ProductDiv {
+    display: inline-block;
+}
+.MakeBlock {
+    display: inline-block;
+
+}
+.MakeBl {
+    display: inline-block;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+.MaxBox {
+    width:38px;
+}
+.MinBox {
+    width:38px;
+}
+.SliderBox{
+    width:250px;
+}
+.ModelYear {
+    width: 30px;
+}
+.productImg {
+ /*   width: 200px;*/
+    height:175px;
+}
+.productDiv {
+    display: inline-block;
+    border: solid;
+    border-color: #80808040;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    width: 230px;
+}
+a:hover, a:visited, a:link, a:active .productDiv {
+    text-decoration: none;
+}
+.divButton{
+    width:70px;
+}
+.pduct {
+    text-align: center;
+    border: 1px solid #d1d1d1;
+}
+.pject {
+    text-align: center;
+    border: 1px solid #d1d1d1;
+}
+.srch {
+    text-align: center;
+    width: 100%;
+
+    margin: 10px;
+}
+
+input.divButton {
+    background-color: #5bc0de;
+    margin-right: 10px;
+    color: #fff;
+    float: right;
+}
+
+input#checkbox1 {
+    float: left;
+}
+input#checkbox2 {
+    float: left;
+}
+input#checkbox3 {
+    float: left;
+}
+.col-md-4 {
+    background-color: #f8f8f8;
+    border: 1px solid #c3c3c3;
+    padding: 0px;
+}
+
+.save_clear {
+    float: right;
+    padding-right: 19px;
+}
+select#ProductType {
+    background: #f8f8f8;
+    width: 50%;
+    float: right;
+    margin: 0;
+    border: none;
+}
+
+.inline {
+    display: inline;
+    float: left;
+    font-weight: 300;
+
+    padding-right: 60px;
+    margin-left: 10px;
+}
+
+    .inline h5 {
+        font-weight: 700;
+    }
+label.MakeBlock {
+    height: 34px;
+    text-align: center;
+    padding: 10px;
+}
+.model-year {
+    display: inline-block;
+    border-top: 1px solid #c3c3c3;
+    border-bottom: 1px solid #c3c3c3;
+    padding-left: unset;
+    padding-right: unset;
+    padding-top: 10px;
+}
+h4{
+    padding-left: 10px;
+}
+.tech-spec h5 {
+    padding-left: 20px;
+}
+.scroll-bar {
+    margin-left: 20px;
+}
+.tech-spec h4 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c3c3c3;
+}
+label {
+    float: left;
+}
+
+input.divButton {
+    border-radius: 4px;
 }

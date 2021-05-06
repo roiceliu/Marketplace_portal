@@ -1,0 +1,196 @@
+﻿body {
+    padding-top: 0px;
+}
+
+.banner {
+    /*    flex: auto;
+    margin-top: 0px;
+    padding-top: 0px;
+    border-top: 0px;*/
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: 125px;
+    background: linear-gradient(180deg, #357CAA 0%, rgba(53, 124, 170, 0.88573) 28.24%, rgba(53, 124, 170, 0) 100%);
+    background-repeat: no-repeat;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.logo {
+    /*position:relative;*/
+}
+
+.logoImg {
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 150px;
+    height: 75px;
+    /*display:none;*/
+    /*position:absolute;*/
+    /*    top:0px;
+    left:0px;*/
+}
+
+.bannerNavBox {
+    /*    align-self:flex-end;*/
+    /*margin-top: 120px;*/
+}
+
+.bannerNav {
+    margin-left: 30px;
+    list-style-type: none;
+    /*    display:flex;*/
+}
+
+.banner li {
+    display: inline;
+    background-color: red;
+    margin-left: 1em;
+}
+
+.profilePicture {
+    background-color: grey;
+    margin-right: 50px;
+    margin-top: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.centerSearch {
+    align-self: center;
+    margin: auto;
+    /*width: 100%;*/
+    /*margin-bottom:25%;*/
+    /*    flex:auto;
+    margin:auto;*/
+    /*text-align:center;*/
+    /*justify-content:center;*/
+}
+
+.dropDownBox {
+    width: 200px;
+    height: 35px;
+    background-color: #327AB9;
+    background-image: url("../Images/DownArrow.svg");
+    background-position: calc(95%), calc(35%);
+    background-size: 10%;
+    color: aliceblue;
+    border: 0px;
+    border-radius: 5px;
+    outline: 0px;
+    /*background-position-x: calc(95%);*/
+    /*background-position:*/
+    /*    background-image: linear-gradient(45deg, transparent 50%, black 60%), linear-gradient(135deg, black 40%, transparent 50%);
+    background-position: calc(100% - 30px) 14px, calc(100% - 20px) 14px, 100% 0;
+    background-size: 10px 10px, 10px 10px;*/
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-weight: bold;
+    padding-left: 40px;
+}
+
+option:hover {
+    background-color: aliceblue;
+}
+
+#loginBtn {
+    background: url("../Images/SearchIcon.svg");
+    background-repeat: no-repeat;
+    background-color: #327AB9;
+    background-size: cover;
+    height: 33px;
+    width: 33px;
+    margin-left: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 7px;
+    border-color: #327AB9;
+}
+
+#autocomplete {
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    background-image: url("../Images/DownArrow.svg");
+    background-position: calc(99%), calc(35%);
+    background-size: 8%;
+    background-repeat: no-repeat;
+}
+
+*:focus {
+    box-shadow: 0px 0px 3pt 1pt aliceblue;
+}
+
+.ui-autocomplete {
+    font-weight: bold;
+    position: static;
+    top: 0%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    display: none;
+    min-width: 160px;
+    padding: 0px 0px;
+    margin: 0 0 0px 0px;
+    list-style: none;
+    background-color: #ffffff;
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    *border-right-width: 2px;
+    *border-bottom-width: 2px;
+}
+
+.ui-menu-item > a.ui-corner-all {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: #555555;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.ui-state-hover, .ui-state-active {
+    color: white;
+    text-decoration: none;
+    background-color: #327AB9;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    background-image: none;
+}
+
+/*.ui-state-hover, .ui-state-active {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0088cc;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    background-image: none;
+}*/
+
+.ui-helper-hidden-accessible {
+    position: absolute;
+    left: -999em;
+}

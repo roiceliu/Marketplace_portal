@@ -9,24 +9,14 @@ namespace Marketplace_portal.Models
 {
     public class ProductSearchModel
     {
-        public List<tblProduct> products { get; set; }
-        public String[] productNames { get; set; }
+
         public int[] productSubcategoryIDs { get; set; }
+        public int[] subcategoryIDs { get; set; }
         public String[] departmentNames { get; set; }
+        public String[] subcategoryNames { get; set; }
         public Dictionary<string, string> subCategoryDepartmentDict { get; set; }
 
-        //[Key]
-        //public int ProductID { get; set; }
-        //public int ManufacturerID { get; set; }
-        //public int SubcategoryID { get; set; }
-
-        //public string ProductName { get; set; }
-
-        //public string ProductImage { get; set; }
-
-        //public string Model { get; set; }
-        //public string ModelYear { get; set; }
-        //public string Series { get; set; }
-
+        //public List<tblProduct> products { get; set; }
+        //public String[] productNames { get; set; }
     }
 }

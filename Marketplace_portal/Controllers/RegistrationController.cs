@@ -17,7 +17,7 @@ namespace Marketplace_portal.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return PartialView("Register");
+            return PartialView( new UserRegister());
         }
 
         [HttpPost]
@@ -32,10 +32,14 @@ namespace Marketplace_portal.Controllers
                 string FileExtension = Path.GetExtension(user.ImageFile.FileName);
 
                 //setting up image path for user
-                FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+                FileName = FileName.Trim() + FileExtension;
                 //get config upload path
-                string UploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
-                user.ImagePath = UploadPath + FileName;
+
+                //string UploadPath = ConfigurationManager.AppSettings["UserImagePath"].ToString();
+               
+                var UploadPath = Path.Combine(Server.MapPath("~/UserImages"), FileName);
+                user.ImagePath = UploadPath;
+
                 //To copy and save file into project "UserImages" path
                 user.ImageFile.SaveAs(user.ImagePath);
 

@@ -1,5 +1,4 @@
-﻿
-@model Marketplace_portal.Models.UserRegister
+﻿@model Marketplace_portal.Models.UserRegister
 
 @{
     ViewBag.Title = "Register";
@@ -123,12 +122,10 @@
         $("#imageInput").change(function () {
             readURL(this);
         })
-
         function readURL(input) {
             var file = input.files;
             if (file && file[0]) {
                 var reader = new FileReader();
-
                 reader.onload = function (e) {
                     $("#profile_image").attr('src', e.target.result);
                     $("#profile_image").attr('alt', 'User Profile Image');
@@ -137,6 +134,4 @@
             }
         }
     });
-
-
 </script>

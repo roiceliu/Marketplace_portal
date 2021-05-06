@@ -1,0 +1,99 @@
+﻿@using Marketplace_portal.Models;
+@using Newtonsoft.Json;
+
+@{
+    ProductSearchModel productObject = Session["productObject"] as ProductSearchModel;
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Joole</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    @*<link rel="stylesheet" href="~/Content/CSSStyles/Login.css">*@
+    @*<link rel="stylesheet" href="~/Content/CSSStyles/ProductSearch.css">*@
+    <link rel="stylesheet" href="~/Content/CSSStyles/Banner2.css" />
+</head>
+<body>
+
+    <div class="banner">
+        <div class="logo">
+            <img src="~/Content/Images/JooleBanner.png" class="logoImg" />
+        </div>
+        <div class="centerSearch">
+            <form action="/Filter/Subcategory/" method="post">
+                <select name="departments" id="departments" class="dropDownBox" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option value="All" selected disabled hidden>Departments</option>
+                    <option value="All">All</option>
+                    @{ foreach (string departmentName in productObject.departmentNames)
+                        {
+                            <option name="@departmentName" value="@departmentName">@departmentName</option>
+                        } }
+                </select>
+                <input id="autocomplete" name="autocomplete" placeholder="Search">
+                <input type="submit" id="loginBtn" value="">
+
+            </form>
+        </div>
+        <div>
+            <img class="profilePicture" />
+        </div>
+    </div>
+
+    
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+    var searchList;
+    var departmentNameLookup;
+    var productNames;
+    var subcategoryIDs;
+
+    $(document).ready(function () {
+        searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.subcategoryNames));
+        departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict));
+        subcategoryNames = @Html.Raw(JsonConvert.SerializeObject(productObject.subcategoryNames));
+        subcategoryIDs = @Html.Raw(JsonConvert.SerializeObject(productObject.subcategoryIDs));
+        $("#departments").val("All");
+        populateSearchList("All");
+        autocomplete()
+    });
+
+
+    $("#departments").change(function () {
+        populateSearchList($("#departments").val());
+    });
+
+    function populateSearchList(departmentSelection) {
+        searchList = [];
+        if (departmentSelection == "All") {
+            searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.subcategoryNames));
+            autocomplete()
+            return;
+        }
+
+        for (var i = 0; i < subcategoryIDs.length; i++) {
+            if (departmentNameLookup[subcategoryIDs[i]] == departmentSelection) {
+                searchList.push(subcategoryNames[i]);
+            }
+        }
+        autocomplete()
+    }
+    function autocomplete() {
+        $("#autocomplete").autocomplete({
+            minLength: 0,
+            source: searchList
+        }).on('focus', function () { $(this).keydown();});
+    }
+</script>

@@ -10,55 +10,11 @@ using System.Threading.Tasks;
 namespace MarketplacePortal_Service
 {
 
-    //public interface IProductSearchService
-    //{
-    //    IEnumerable<tblTechSpecsFilter> GetAllTblTechSpecsFilter();
-    //    tblProduct GetAll();
-
-    //}
-
     public class ProductSearchService
     {
         readonly UnitOfWork uow = new UnitOfWork();
 
-        public IEnumerable<tblProduct> getProducts()
-        {
-            IRepository<tblProduct> productRepository = uow.ProductRepository;
-            return productRepository.GetAll();
-        }
 
-        public String[] getProductNames()
-        {
-            tblProduct[] products = (tblProduct[]) getProducts().ToArray();
-            string[] productNames = new string[products.Length];
-            for(var i = 0; i < products.Length; i++)
-            {
-                productNames[i] = products[i].ProductName;
-            }
-            return productNames;
-        }
-
-        public int[] getProductIDs()
-        {
-            tblProduct[] products = (tblProduct[])getProducts().ToArray();
-            int[] productIDs = new int[products.Length];
-            for (var i = 0; i < products.Length; i++)
-            {
-                productIDs[i] = products[i].ProductID;
-            }
-            return productIDs;
-        }
-
-        public int[] getProductSubcategoryIDs()
-        {
-            tblProduct[] products = (tblProduct[])getProducts().ToArray();
-            int[] productSubcategoryIDs = new int[products.Length];
-            for (var i = 0; i < products.Length; i++)
-            {
-                productSubcategoryIDs[i] = products[i].SubcategoryID.Value;
-            }
-            return productSubcategoryIDs;
-        }
 
         public IEnumerable<tblSubcategory> getSubcategories()
         {
@@ -82,7 +38,27 @@ namespace MarketplacePortal_Service
             return departmentNames;
         }
 
+        public String[] getSubcategoryNames()
+        {
+            tblSubcategory[] subcategories = (tblSubcategory[])getSubcategories().ToArray();
+            string[] subcategoryNames = new string[subcategories.Length];
+            for (var i = 0; i < subcategories.Length; i++)
+            {
+                subcategoryNames[i] = subcategories[i].SubcategoryName;
+            }
+            return subcategoryNames;
+        }
 
+        public int[] getSubcategoryIDs()
+        {
+            tblSubcategory[] subcategories = (tblSubcategory[])getSubcategories().ToArray();
+            int[] subcategoryIDs = new int[subcategories.Length];
+            for (var i = 0; i < subcategories.Length; i++)
+            {
+                subcategoryIDs[i] = subcategories[i].SubcategoryID;
+            }
+            return subcategoryIDs;
+        }
 
         //The Key is SubcategoryID and the Value is DepartmentName
         //SubcategoryID is a string because jQuery doesn't allow conversions when the Key is not a string
@@ -93,19 +69,55 @@ namespace MarketplacePortal_Service
             tblSubcategory[] subcategories = (tblSubcategory[])getSubcategories().ToArray();
             Dictionary<int, string> departmentsDict = getDepartments().ToDictionary(x => x.DepartmentID, x => x.DepartmentName);
 
-            for(int i = 0; i < subcategories.Length; i++)
+            for (int i = 0; i < subcategories.Length; i++)
             {
-                if(!subCategoryDepartmentDict.ContainsKey(subcategories[i].SubcategoryID.ToString()))
+                if (!subCategoryDepartmentDict.ContainsKey(subcategories[i].SubcategoryID.ToString()))
                 {
                     //DepartmentID is a nullable int, so we append .Value to the end. We should change this in our
                     //database so it can't be null. Since if it ever is, this'll default to 0 and we'll get unexpected behavior
                     subCategoryDepartmentDict.Add(subcategories[i].SubcategoryID.ToString(), departmentsDict[subcategories[i].DepartmentID.Value]);
                 }
             }
-
-            //tblProduct[] products = (tblProduct[])getProducts().ToArray();
-
             return subCategoryDepartmentDict;
         }
+
+        //public IEnumerable<tblProduct> getProducts()
+        //{
+        //    IRepository<tblProduct> productRepository = uow.ProductRepository;
+        //    return productRepository.GetAll();
+        //}
+
+        //public String[] getProductNames()
+        //{
+        //    tblProduct[] products = (tblProduct[])getProducts().ToArray();
+        //    string[] productNames = new string[products.Length];
+        //    for (var i = 0; i < products.Length; i++)
+        //    {
+        //        productNames[i] = products[i].ProductName;
+        //    }
+        //    return productNames;
+        //}
+
+        //public int[] getProductIDs()
+        //{
+        //    tblProduct[] products = (tblProduct[])getProducts().ToArray();
+        //    int[] productIDs = new int[products.Length];
+        //    for (var i = 0; i < products.Length; i++)
+        //    {
+        //        productIDs[i] = products[i].ProductID;
+        //    }
+        //    return productIDs;
+        //}
+
+        //public int[] getProductSubcategoryIDs()
+        //{
+        //    tblProduct[] products = (tblProduct[])getProducts().ToArray();
+        //    int[] productSubcategoryIDs = new int[products.Length];
+        //    for (var i = 0; i < products.Length; i++)
+        //    {
+        //        productSubcategoryIDs[i] = products[i].SubcategoryID.Value;
+        //    }
+        //    return productSubcategoryIDs;
+        //}
     }
 }

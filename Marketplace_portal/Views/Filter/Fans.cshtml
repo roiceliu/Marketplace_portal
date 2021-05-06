@@ -1,0 +1,716 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Content/CSSStyles/Filter.css")
+<div class="FilterWrapper">
+    @Html.Partial("Intro")
+    <div class="row">
+
+        <div class="col-md-4 ">
+            <div class="MakeBlock srch">
+                <div class="MakeBlock">
+                    <h4>Search:</h4>
+                </div>
+                <div class="save_clear">
+                    <div class="MakeBlock">
+                        <input id="SaveButton" class="divButton" type="submit" value="Save">
+                    </div>
+                    <div class="MakeBlock">
+                        <input id="ClearButton" class="divButton" type="submit" value="Clear">
+                    </div>
+                </div>
+            </div>
+            <div class="prod-proj">
+                <div class="MakeBl pduct"><h4>Product</h4></div>
+                <div class="MakeBl pject"><h4>Project</h4></div>
+            </div>
+            <div class="prodTyp">
+                @Html.Label("ProductType", "Product Type", new { @class = "MakeBlock" })
+                @Html.DropDownList("ProductType",
+                     new SelectList(Model.productTypes),
+                     ViewData["dropDown"].ToString(),
+                     new { @id = "ProductType", @class = "form-control" })
+            </div>
+
+            <div class="model-year">
+                <div class="inline" style="float:left">
+                    <h5>Model Year:</h5>
+                </div>
+                <div class="inline" style="float:right">
+                    <input type="text" id="yearMin" name="yearMin" maxlength="4" size="4" value="@ViewData["yearMin"]">
+                    <input type='button' name='submitMin' id='submitMin' value='Comment' style="display:none;" />
+                    &nbsp;&nbsp; -&nbsp;&nbsp;
+                    <input type="text" id="yearMax" name="yearMax" maxlength="4" size="4" value="@ViewData["yearMax"]">
+                    <input type='button' name='submitMax' id='submitMax' value='Comment' style="display:none;" />
+                </div>
+            </div>
+
+
+
+
+            <br />
+            <div class="tech-spec">
+                <h4> Technical Specifications</h4>
+                <h5> Air Flow (CFM) </h5>
+
+                <div class="scroll-bar">
+                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="0" value="@ViewData["airmin"]" /></div>
+                    <div id="slider" class="MakeBlock SliderBox"></div>
+                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="1" value="@ViewData["airmax"]" /></div>
+                </div>
+                <br />
+
+
+                <h5> Max Power (W) </h5>
+
+                <div class="scroll-bar">
+                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="2" value="@ViewData["powermin"]" /></div>
+                    <div id="slider2" class="MakeBlock SliderBox"></div>
+                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="3" value="@ViewData["powermax"]" /></div>
+                </div>
+                <br />
+
+                <h5> Sound at max speed (dBA) </h5>
+
+                <div class="scroll-bar">
+                    <div class="MakeBlock"><input type="number" class="sliderValue MinBox" readonly data-index="4" value="@ViewData["soundmin"]" /></div>
+                    <div id="slider3" class="MakeBlock SliderBox"></div>
+                    <div class="MakeBlock"><input type="number" class="sliderValue MaxBox" readonly data-index="5" value="@ViewData["soundmax"]" /></div>
+                </div>
+                <br />
+
+                <h5> Fan sweep diameter(in)</h5>
+
+                <div class="scroll-bar">
+                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="6" value="@ViewData["fanmin"]" /></div>
+                    <div id="slider4" class="MakeBlock SliderBox"></div>
+                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="7" value="@ViewData["fanmax"]" /></div>
+                </div>
+                <br />
+
+            </div>
+
+
+        </div>
+        <div class="col-md-8">
+            <p><b>Electrical > </b> Fans</p>
+            <div id="product_list_container">products will display here</div>
+            @*
+                    &nbsp;
+                <div>
+                    <input id="CompareButton" class="divButton" type="submit" value="Compare">
+                </div>
+            *@
+        </div>
+
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+
+
+
+        var airFlowMin = $("input.sliderValue[data-index=0]").val()
+        var airFlowMax = $("input.sliderValue[data-index=1]").val()
+        var type = $("#ProductType option:selected").text();
+        //var type = @ViewData["dropDown"].ToString();
+        var maxPowerMin = $("input.sliderValue[data-index=2]").val()
+        var maxPowerMax = $("input.sliderValue[data-index=3]").val()
+        var soundSpeedMin = $("input.sliderValue[data-index=4]").val();
+        var soundSpeedMax = $("input.sliderValue[data-index=5]").val();
+        var fanSweepMin = $("input.sliderValue[data-index=6]").val()
+        var fanSweepMax = $("input.sliderValue[data-index=7]").val()
+        var yearMin = $("#yearMin").val();
+        var yearMax = $("#yearMax").val();
+
+
+
+
+        jQuery.ajax({
+            type: "GET",
+            url: "/filter/_products",
+            data: {
+                type: type,
+                airFlowMin: airFlowMin,
+                airFlowMax: airFlowMax,
+                maxPowerMin: maxPowerMin,
+                maxPowerMax: maxPowerMax,
+                soundSpeedMin: soundSpeedMin,
+                soundSpeedMax: soundSpeedMax,
+                fanSweepMin: fanSweepMin,
+                fanSweepMax: fanSweepMax,
+                yearMax: yearMax,
+                yearMin: yearMin
+            },
+            success: function (data) {
+                $("#product_list_container").html(data);
+
+
+            },
+            error: function () {
+                alert("something went wrong");
+
+            }
+        });
+
+
+
+
+
+        $(document).on('click', '#CompareButton', function () {
+
+            var url = '@Url.Action("CompareTest", "Compare")'
+
+            if ($("#checkbox1").prop("checked") == true) {
+                var productIDId1 = $("#checkbox1").val();
+            }
+            else {
+                var productIDId1 = "-1";
+            }
+            if ($("#checkbox2").prop("checked") == true) {
+                var productIDId2 = $("#checkbox2").val();
+            }
+            else {
+                var productIDId2 = "-1";
+            }
+            if ($("#checkbox3").prop("checked") == true) {
+                var productIDId3 = $("#checkbox3").val();
+            }
+            else {
+                var productIDId3 = "-1";
+            }
+
+            if (productIDId1 != "-1" && productIDId2 !="-1" && productIDId3 !="-1") {
+
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId1 + '&ids=' + productIDId2 + '&ids=' + productIDId3;
+            }
+            if (productIDId1 == "-1" && productIDId2 !="-1" && productIDId3 !="-1") {
+
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId2 + '&ids=' + productIDId3;
+            }
+            if (productIDId1 == "-1" && productIDId2 =="-1" && productIDId3 !="-1") {
+
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId3;
+            }
+            if (productIDId1 == "-1" && productIDId2 =="-1" && productIDId3 =="-1") {
+
+                url = '@Url.Action("CompareTest", "Compare")?ids=-1';
+            }
+            if (productIDId1 != "-1" && productIDId2 =="-1" && productIDId3 !="-1") {
+
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId1 + '&ids=' + productIDId3;
+            }
+            if (productIDId1 != "-1" && productIDId2 !="-1" && productIDId3 =="-1") {
+
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId1 + '&ids=' + productIDId2;
+            }
+            if (productIDId1 != "-1" && productIDId2 =="-1" && productIDId3 =="-1") {
+
+                url = '@Url.Action("CompareTest", "Compare")?ids=' + productIDId1;
+            }
+            if (productIDId1 == "-1" && productIDId2 !="-1" && productIDId3 =="-1") {
+
+                url = '@Url.Action("CompareTest", "Compare")?ids='+ productIDId2;
+            }
+
+
+            //var url = '@Url.Action("Test", "Filter")?id1=' + productIDId1 + '&id2=' + productIDId2 + '&id3=' + productIDId3;
+
+
+
+            //var url = '@Url.Action("Test", "Filter")?ids=' + productIDId1 + '&ids=' + productIDId2 + '&ids=' + productIDId3;
+
+            window.location.href = url;
+
+
+
+            /*$.ajax({
+                url: "test",
+                type: 'post',
+                data: {
+                    id1: id1
+                },
+                success: function (data) {
+                    alert("hi");
+                    window.location.href = '/Filter/Test'
+                    // ... do something with the data...
+                }
+            });*/
+
+
+        });
+
+
+        $('#ProductType').change(function (e) {
+
+            var type = $("#ProductType option:selected").val();
+            var airFlowMin = $("input.sliderValue[data-index=0]").val();
+            var airFlowMax = $("input.sliderValue[data-index=1]").val();
+            var maxPowerMin = $("input.sliderValue[data-index=2]").val();
+            var maxPowerMax = $("input.sliderValue[data-index=3]").val();
+            var soundSpeedMin = $("input.sliderValue[data-index=4]").val();
+            var soundSpeedMax = $("input.sliderValue[data-index=5]").val();
+            var fanSweepMin = $("input.sliderValue[data-index=6]").val();
+            var fanSweepMax = $("input.sliderValue[data-index=7]").val();
+            var yearMin = $("#yearMin").val();
+            var yearMax = $("#yearMax").val();
+            var save = " ";
+
+
+            jQuery.ajax({
+                type: "GET",
+                url: "/filter/_products",
+                data: {
+                    type: type,
+                    airFlowMin: airFlowMin,
+                    airFlowMax: airFlowMax,
+                    maxPowerMin: maxPowerMin,
+                    maxPowerMax: maxPowerMax,
+                    soundSpeedMin: soundSpeedMin,
+                    soundSpeedMax: soundSpeedMax,
+                    fanSweepMin: fanSweepMin,
+                    fanSweepMax: fanSweepMax,
+                    yearMax: yearMax,
+                    yearMin: yearMin
+                },
+                success: function (data) {
+                    $("#product_list_container").html(data);
+                },
+                error: function () {
+                    alert("something went wrong");
+
+                }
+            });
+        });
+
+        $(function () {
+            $("#slider").slider({
+                range: true,
+                min: 0,
+                max: 100,
+                step: 1,
+                values: [parseInt(@ViewData["airmin"].ToString()), parseInt(@ViewData["airmax"].ToString())],
+                slide: function (event, ui) {
+                    for (var i = 0; i < ui.values.length; ++i) {
+                        $("input.sliderValue[data-index=" + i + "]").val(ui.values[i]);
+                    }
+
+                    var airFlowMin = ui.values[0];
+                    var airFlowMax = ui.values[1];
+                    var type = $("#ProductType option:selected").val();
+                    var maxPowerMin = $("input.sliderValue[data-index=2]").val()
+                    var maxPowerMax = $("input.sliderValue[data-index=3]").val()
+                    var soundSpeedMin = $("input.sliderValue[data-index=4]").val();
+                    var soundSpeedMax = $("input.sliderValue[data-index=5]").val();
+                    var fanSweepMin = $("input.sliderValue[data-index=6]").val()
+                    var fanSweepMax = $("input.sliderValue[data-index=7]").val()
+                    var yearMin = $("#yearMin").val();
+                    var yearMax = $("#yearMax").val();
+
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "/filter/_products",
+                        data: {
+                            type: type,
+                            airFlowMin: airFlowMin,
+                            airFlowMax: airFlowMax,
+                            maxPowerMin: maxPowerMin,
+                            maxPowerMax: maxPowerMax,
+                            soundSpeedMin: soundSpeedMin,
+                            soundSpeedMax: soundSpeedMax,
+                            fanSweepMin: fanSweepMin,
+                            fanSweepMax: fanSweepMax,
+                            yearMax: yearMax,
+                            yearMin: yearMin
+                        },
+                        success: function (data) {
+                            $("#product_list_container").html(data);
+
+                        },
+                        error: function () {
+                            alert("something went wrong");
+
+                        }
+                    });
+
+
+                }
+            });
+
+            $("input.sliderValue").change(function () {
+                var $this = $(this);
+                $("#slider").slider({ values: [parseInt(@ViewData["airmin"].ToString()), parseInt(@ViewData["airmax"].ToString())] });
+            });
+        });
+
+
+        $(function () {
+            $("#slider2").slider({
+                range: true,
+                min: 0,
+                max: 100,
+                step: 1,
+                values: [parseInt(@ViewData["powermin"].ToString()), parseInt(@ViewData["powermax"].ToString())],
+                slide: function (event, ui) {
+
+                    $("input.sliderValue[data-index=2]").val(ui.values[0]);
+                    $("input.sliderValue[data-index=3]").val(ui.values[1]);
+
+
+                    var maxPowerMin = ui.values[0];
+                    var maxPowerMax = ui.values[1];
+                    var type = $("#ProductType option:selected").val();
+                    var airFlowMin = $("input.sliderValue[data-index=0]").val();
+                    var airFlowMax = $("input.sliderValue[data-index=1]").val();
+                    var soundSpeedMin = $("input.sliderValue[data-index=4]").val();
+                    var soundSpeedMax = $("input.sliderValue[data-index=5]").val();
+                    var fanSweepMin = $("input.sliderValue[data-index=6]").val()
+                    var fanSweepMax = $("input.sliderValue[data-index=7]").val()
+                    var yearMin = $("#yearMin").val();
+                    var yearMax = $("#yearMax").val();
+
+
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "/filter/_products",
+                        data: {
+                            type: type,
+                            airFlowMin: airFlowMin,
+                            airFlowMax: airFlowMax,
+                            maxPowerMin: maxPowerMin,
+                            maxPowerMax: maxPowerMax,
+                            soundSpeedMin: soundSpeedMin,
+                            soundSpeedMax: soundSpeedMax,
+                            fanSweepMin: fanSweepMin,
+                            fanSweepMax: fanSweepMax,
+                            yearMax: yearMax,
+                            yearMin: yearMin
+                        },
+                        success: function (data) {
+                            $("#product_list_container").html(data);
+
+                        },
+                        error: function () {
+                            alert("something went wrong");
+
+                        }
+                    });
+
+
+                }
+            });
+
+            $("input.sliderValue").change(function () {
+                var $this = $(this);
+                $("#slider2").slider({ values: [parseInt(@ViewData["powermin"].ToString()), parseInt(@ViewData["powermax"].ToString())] });
+            });
+        });
+
+        $(function () {
+            $("#slider3").slider({
+                range: true,
+                min: 0,
+                max: 100,
+                step: 1,
+                values: [parseInt(@ViewData["soundmin"].ToString()), parseInt(@ViewData["soundmax"].ToString())],
+                slide: function (event, ui) {
+                    $("input.sliderValue[data-index=4]").val(ui.values[0]);
+                    $("input.sliderValue[data-index=5]").val(ui.values[1]);
+
+                    var soundSpeedMin = ui.values[0];
+                    var soundSpeedMax = ui.values[1];
+
+                    var airFlowMin = $("input.sliderValue[data-index=0]").val()
+                    var airFlowMax = $("input.sliderValue[data-index=1]").val()
+                    var type = $("#ProductType option:selected").val();
+                    var maxPowerMin = $("input.sliderValue[data-index=2]").val()
+                    var maxPowerMax = $("input.sliderValue[data-index=3]").val()
+                    var fanSweepMin = $("input.sliderValue[data-index=6]").val()
+                    var fanSweepMax = $("input.sliderValue[data-index=7]").val()
+                    var yearMin = $("#yearMin").val();
+                    var yearMax = $("#yearMax").val();
+
+
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "/filter/_products",
+                        data: {
+                            type: type,
+                            airFlowMin: airFlowMin,
+                            airFlowMax: airFlowMax,
+                            maxPowerMin: maxPowerMin,
+                            maxPowerMax: maxPowerMax,
+                            soundSpeedMin: soundSpeedMin,
+                            soundSpeedMax: soundSpeedMax,
+                            fanSweepMin: fanSweepMin,
+                            fanSweepMax: fanSweepMax,
+                            yearMax: yearMax,
+                            yearMin: yearMin
+                        },
+                        success: function (data) {
+                            $("#product_list_container").html(data);
+
+
+                        },
+                        error: function () {
+                            alert("something went wrong");
+
+                        }
+                    });
+
+
+                }
+            });
+
+            $("input.sliderValue").change(function () {
+                var $this = $(this);
+                $("#slider3").slider({ values: [parseInt(@ViewData["soundmin"].ToString()), parseInt(@ViewData["soundmax"].ToString())] });
+            });
+        });
+
+        $(function () {
+            $("#slider4").slider({
+                range: true,
+                min: 0,
+                max: 100,
+                step: 1,
+                values: [parseInt(@ViewData["fanmin"].ToString()), parseInt(@ViewData["fanmax"].ToString())],
+                slide: function (event, ui) {
+                    $("input.sliderValue[data-index=6]").val(ui.values[0]);
+                    $("input.sliderValue[data-index=7]").val(ui.values[1]);
+
+                    var fanSweepMin = ui.values[0];
+                    var fanSweepMax = ui.values[1];
+
+                    var airFlowMin = $("input.sliderValue[data-index=0]").val()
+                    var airFlowMax = $("input.sliderValue[data-index=1]").val()
+                    var type = $("#ProductType option:selected").val();
+                    var maxPowerMin = $("input.sliderValue[data-index=2]").val()
+                    var maxPowerMax = $("input.sliderValue[data-index=3]").val()
+                    var soundSpeedMin = $("input.sliderValue[data-index=4]").val();
+                    var soundSpeedMax = $("input.sliderValue[data-index=5]").val();
+                    var yearMin = $("#yearMin").val();
+                    var yearMax = $("#yearMax").val();
+
+
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "/filter/_products",
+                        data: {
+                            type: type,
+                            airFlowMin: airFlowMin,
+                            airFlowMax: airFlowMax,
+                            maxPowerMin: maxPowerMin,
+                            maxPowerMax: maxPowerMax,
+                            soundSpeedMin: soundSpeedMin,
+                            soundSpeedMax: soundSpeedMax,
+                            fanSweepMin: fanSweepMin,
+                            fanSweepMax: fanSweepMax,
+                            yearMax: yearMax,
+                            yearMin: yearMin
+                        },
+                        success: function (data) {
+                            $("#product_list_container").html(data);
+
+
+                        },
+                        error: function () {
+                            alert("something went wrong");
+
+                        }
+                    });
+
+
+                }
+            });
+
+            $("input.sliderValue").change(function () {
+                var $this = $(this);
+                $("#slider4").slider({ values: [parseInt(@ViewData["fanmin"].ToString()), parseInt(@ViewData["fanmax"].ToString())] });
+            });
+        });
+
+        $(function () {
+            $('#yearMin').keyup(function (e) {
+                if (e.keyCode == 13) {
+
+                    var airFlowMin = $("input.sliderValue[data-index=0]").val()
+                    var airFlowMax = $("input.sliderValue[data-index=1]").val()
+                    var type = $("#ProductType option:selected").val();
+                    var maxPowerMin = $("input.sliderValue[data-index=2]").val()
+                    var maxPowerMax = $("input.sliderValue[data-index=3]").val()
+                    var soundSpeedMin = $("input.sliderValue[data-index=4]").val();
+                    var soundSpeedMax = $("input.sliderValue[data-index=5]").val();
+                    var fanSweepMin = $("input.sliderValue[data-index=6]").val()
+                    var fanSweepMax = $("input.sliderValue[data-index=7]").val()
+                    var yearMin = $("#yearMin").val();
+                    var yearMax = $("#yearMax").val();
+
+
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "/filter/_products",
+                        data: {
+                            type: type,
+                            airFlowMin: airFlowMin,
+                            airFlowMax: airFlowMax,
+                            maxPowerMin: maxPowerMin,
+                            maxPowerMax: maxPowerMax,
+                            soundSpeedMin: soundSpeedMin,
+                            soundSpeedMax: soundSpeedMax,
+                            fanSweepMin: fanSweepMin,
+                            fanSweepMax: fanSweepMax,
+                            yearMax: yearMax,
+                            yearMin: yearMin
+                        },
+                        success: function (data) {
+                            $("#product_list_container").html(data);
+
+
+                        },
+                        error: function () {
+                            alert("something went wrong");
+
+                        }
+                    });
+
+
+                }
+            });
+        });
+
+        $(function () {
+            $('#yearMax').keyup(function (e) {
+                if (e.keyCode == 13) {
+
+                    var airFlowMin = $("input.sliderValue[data-index=0]").val()
+                    var airFlowMax = $("input.sliderValue[data-index=1]").val()
+                    var type = $("#ProductType option:selected").val();
+                    var maxPowerMin = $("input.sliderValue[data-index=2]").val()
+                    var maxPowerMax = $("input.sliderValue[data-index=3]").val()
+                    var soundSpeedMin = $("input.sliderValue[data-index=4]").val();
+                    var soundSpeedMax = $("input.sliderValue[data-index=5]").val();
+                    var fanSweepMin = $("input.sliderValue[data-index=6]").val()
+                    var fanSweepMax = $("input.sliderValue[data-index=7]").val()
+                    var yearMin = $("#yearMin").val();
+                    var yearMax = $("#yearMax").val();
+
+
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "/filter/_products",
+                        data: {
+                            type: type,
+                            airFlowMin: airFlowMin,
+                            airFlowMax: airFlowMax,
+                            maxPowerMin: maxPowerMin,
+                            maxPowerMax: maxPowerMax,
+                            soundSpeedMin: soundSpeedMin,
+                            soundSpeedMax: soundSpeedMax,
+                            fanSweepMin: fanSweepMin,
+                            fanSweepMax: fanSweepMax,
+                            yearMax: yearMax,
+                            yearMin: yearMin
+                        },
+                        success: function (data) {
+                            $("#product_list_container").html(data);
+
+
+                        },
+                        error: function () {
+                            alert("something went wrong");
+
+                        }
+                    });
+
+
+                }
+            });
+        });
+
+        $('#SaveButton').click(function () {
+
+
+            var status = "true";
+            var dropdown = $("#ProductType option:selected").val();
+            var yearmin = $("#yearMin").val();
+            var yearmax = $("#yearMax").val();
+            var airmin = $("input.sliderValue[data-index=0]").val()
+            var airmax = $("input.sliderValue[data-index=1]").val()
+            var powermin = $("input.sliderValue[data-index=2]").val()
+            var powermax = $("input.sliderValue[data-index=3]").val()
+            var soundmin = $("input.sliderValue[data-index=4]").val();
+            var soundmax = $("input.sliderValue[data-index=5]").val();
+            var fanmin = $("input.sliderValue[data-index=6]").val()
+            var fanmax = $("input.sliderValue[data-index=7]").val()
+
+            url = '@Url.Action("Fans", "Filter")?state=' + status
+                + "&dropdown=" + dropdown
+                + "&yearmin=" + yearmin
+                + "&yearmax=" + yearmax
+                + "&airmin=" + airmin
+                + "&airmax=" + airmax
+                + "&powermin=" + powermin
+                + "&powermax=" + powermax
+                + "&soundmin=" + soundmin
+                + "&soundmax=" + soundmax
+                + "&fanmin=" + fanmin
+                + "&fanmax=" + fanmax
+                ;
+            window.location.href = url;
+
+            alert("Saved!");
+
+
+
+
+        });
+
+        $('#ClearButton').click(function () {
+
+
+            var status = "false";
+            var dropdown = "        ";
+            var yearmin = "";
+            var yearmax = "";
+            var airmin = 10;
+            var airmax = 90;
+            var powermin = 10;
+            var powermax = 90;
+            var soundmin = 10;
+            var soundmax = 90;
+            var fanmin = 10;
+            var fanmax = 90;
+
+
+            url = '@Url.Action("Fans", "Filter")?state=' + status
+                + "&dropdown=" + dropdown
+                + "&yearmin=" + yearmin
+                + "&yearmax=" + yearmax
+                + "&airmin=" + airmin
+                + "&airmax=" + airmax
+                + "&powermin=" + powermin
+                + "&powermax=" + powermax
+                + "&soundmin=" + soundmin
+                + "&soundmax=" + soundmax
+                + "&fanmin=" + fanmin
+                + "&fanmax=" + fanmax
+                ;
+            window.location.href = url;
+
+            alert("Cleared!!");
+
+
+
+        });
+
+
+
+    });
+
+
+</script>
+
