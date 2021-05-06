@@ -5,7 +5,7 @@
 
     //ProductSummaryModel propertiesObject = ViewData["propertiesObject"] as ProductSummaryModel;
 
-    Layout = null;
+    @*Layout = null;*@
 }
 
 <!DOCTYPE html>
@@ -14,98 +14,94 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/Site.css">
+    @Styles.Render("~/Content/CSSStyles/ProductSummary.css")
     <title>Index</title>
 </head>
 <body>
-    <div>
-
+    <div class="SummaryWrapper">
         <h1>Product Summary</h1>
-        @{
-
-            <table>
-                <tr>
-                    <th>DESCRIPTION</th>
-                </tr>
-                <tr>
-                    <td class="descData">Manufacturer</td>
-                    <td>@Model.description[0]</td>
-                </tr>
-                <tr>
-                    <td class="descData">Series</td>
-                    <td>@Model.description[1]</td>
-                </tr>
-                <tr>
-                    <td class="descData">Model</td>
-                    <td>@Model.description[2]</td>
-                </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <th>TYPE</th>
-                </tr>
-                @for (int i = 0; i < Model.properties.Count(); i++)
-                {
-                    if (Model.properties[i][1].Equals("1"))
-                    {
+        <hr/>
+        <div class="DetailsWrapper">
+            @{
+                <div class="col">
+                    <table class="">
                         <tr>
-                            <td>@Model.properties[i][0]</td>
+                            <th>DESCRIPTION</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td class="descData Title">Manufacturer</td>
+                            <td >@Model.description[0]</td>
+                        </tr>
+                        <tr>
+                            <td class="descData Title">Series</td>
+                            <td >@Model.description[1]</td>
+                        </tr>
+                        <tr>
+                            <td class="descData Title">Model</td>
+                            <td >@Model.description[2]</td>
+                        </tr>
+                    </table>
+                    <hr />
+                    <table>
+                        <tr>
+                            <th>TYPE</th>
+                            <th></th>
+                        </tr>
+                        @for (int i = 0; i < Model.properties.Count(); i++)
+                        {
+                            if (Model.properties[i][1].Equals("1"))
+                            {
+                                <tr>
+                                    <td class="Title">@Model.properties[i][0]</td>
+                                    <td>@Model.properties[i][2]</td>
+                                </tr>
+                            }
+                        }
+                        <tr>
+                            <td class="Title">Model Year</td>
+                            <td>@Model.description[3]
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="col">
+                    <table>
+                        <tr>
+                            <th>TECHNICAL SPECIFICATIONS</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        @for (int i = 0; i < Model.properties.Count(); i++)
+                        {
+                            if (Model.properties[i][1].Equals("0"))
+                            {
+                    <tr>
+                        <td class="Title">@Model.properties[i][0]</td>
+                        @if (Model.properties[i][3] == "1")
+                        {
+                            <td class="Title">Min</td>
+                            <td>@Model.properties[i][5]</td>
+                            <td class="Title">Max</td>
+                            <td>@Model.properties[i][4]</td>
+                        }
+                        else
+                        {
                             <td>@Model.properties[i][2]</td>
-                        </tr>
-                    }
-                }
-                <tr>
-                    <td>Model Year</td>
-                    <td>@Model.description[3]
-                </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <th>TECHNICAL SPECIFICATIONS</th>
-                </tr>
-                @for (int i = 0; i < Model.properties.Count(); i++)
-                {
-                    if (Model.properties[i][1].Equals("0"))
-                    {
-                        <tr>
-                            <td>@Model.properties[i][0]</td>
-                            @if(Model.properties[i][3] == "1") {
-                                <td>Min</td>
-                                <td>@Model.properties[i][5]</td>
-                                <td>Max</td>
-                                <td>@Model.properties[i][4]</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        }
+                    </tr>
                             }
-                            else {                         
-                                <td>@Model.properties[i][2]</td>
-                            }
-                        </tr>
-                    }
-                }
-            </table>
-
-
-            @*<p>[ManufacturerName, Series, Model, ModelYear]</p>
-            foreach(string label in @Model.description)
-            {
-                <p>@label</p>
-            }*@
-            @*<br /><br />
-            <p>[PropertyName, IsType, Value, HasMinMax, Max, Min]</p>
-            foreach (string[] property in propertiesObject.properties)
-            {
-
-
-
-                <p>@property[0]</p>
-                <p>@property[1]</p>
-                <p>@property[2]</p>
-                <p>@property[3]</p>
-                <p>@property[4]</p>
-                <p>@property[5]</p>
-                <br /><br />
-            }*@
-        }
+                        }
+                    </table>
+                </div>
+            }
+        </div>
     </div>
 </body>
 </html>
