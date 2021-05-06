@@ -55,12 +55,18 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -136,7 +142,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompareList.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
+    <Compile Include="Models\ProductPropertyValueModel.cs" />
     <Compile Include="Models\ProductSummaryModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
@@ -150,6 +159,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CSSStyles\Banner.css" />
     <Content Include="Content\CSSStyles\Login.css" />
+    <Content Include="Content\Filter.css" />
     <Content Include="Content\CSSStyles\main.css" />
     <Content Include="Content\CSSStyles\ProductSearch.css" />
     <Content Include="Content\CSSStyles\Register.css" />
@@ -162,6 +172,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ProductImages\fan1.jpg" />
+    <Content Include="ProductImages\Fan2.jpg" />
+    <Content Include="ProductImages\fan3.jpg" />
+    <Content Include="ProductImages\fan4.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -189,20 +203,25 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Filter\Index.cshtml" />
+    <Content Include="Views\Filter\Fans.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Success.cshtml" />
-    <Content Include="Views\Compare\CompareProduct.cshtml" />
     <Content Include="Views\ProductSearch\ProductSearch.cshtml" />
     <Content Include="Views\ProductSearch\Index.cshtml" />
     <Content Include="Views\ProductSummary\Index.cshtml" />
+    <Content Include="Views\Compare\CompareTest.cshtml" />
+    <Content Include="Views\Compare\Test.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\Shared\Intro.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Filter\_Products.cshtml" />
+    <Content Include="Views\Filter\Test.cshtml" />
+    <Content Include="Views\Filter\TestProductDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UserImages\" />
-    <Folder Include="Views\AddTo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
