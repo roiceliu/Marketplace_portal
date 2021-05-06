@@ -19,9 +19,10 @@
 </head>
 
 <body>
+    @Html.Partial("Intro")
     <div class="SummaryWrapper">
         <h1>Product Summary</h1>
-        <hr/>
+        <hr />
         <div class="DetailsWrapper">
             @{
                 <div class="col">
@@ -32,15 +33,15 @@
                         </tr>
                         <tr>
                             <td class="descData Title">Manufacturer</td>
-                            <td >@Model.description[0]</td>
+                            <td>@Model.description[0]</td>
                         </tr>
                         <tr>
                             <td class="descData Title">Series</td>
-                            <td >@Model.description[1]</td>
+                            <td>@Model.description[1]</td>
                         </tr>
                         <tr>
                             <td class="descData Title">Model</td>
-                            <td >@Model.description[2]</td>
+                            <td>@Model.description[2]</td>
                         </tr>
                     </table>
                     <hr />
@@ -80,23 +81,23 @@
                         {
                             if (Model.properties[i][1].Equals("0"))
                             {
-                    <tr>
-                        <td class="Title">@Model.properties[i][0]</td>
-                        @if (Model.properties[i][3] == "1")
-                        {
-                            <td class="Title">Min</td>
-                            <td>@Model.properties[i][5]</td>
-                            <td class="Title">Max</td>
-                            <td>@Model.properties[i][4]</td>
-                        }
-                        else
-                        {
-                            <td>@Model.properties[i][2]</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        }
-                    </tr>
+                                <tr>
+                                    <td class="Title">@Model.properties[i][0]</td>
+                                    @if (Model.properties[i][3] == "1")
+                                    {
+                                        <td class="Title">Min</td>
+                                        <td>@Model.properties[i][5]</td>
+                                        <td class="Title">Max</td>
+                                        <td>@Model.properties[i][4]</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@Model.properties[i][2]</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    }
+                                </tr>
                             }
                         }
                     </table>
