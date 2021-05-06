@@ -11,16 +11,16 @@ namespace Marketplace_portal.Controllers
     public class ProductSummaryController : Controller
     {
         // GET: ProductSummary
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             ProductSummaryService productSummaryService = new ProductSummaryService();
             ProductSummaryModel properties = new ProductSummaryModel
             {
                 //Array is [ManufacturerName, Series, Model, ModelYear]
-                description = productSummaryService.getDescription(1), //Change this 1 to the productID that's passed in.
+                description = productSummaryService.getDescription(id),
 
                 //Array is [PropertyName, IsType, Value, HasMinMax, Max, Min]
-                properties = productSummaryService.getProperties(1) //Change this 1 to the productID that's passed in.
+                properties = productSummaryService.getProperties(id)
             };
 
             ViewData["propertiesObject"] = properties;

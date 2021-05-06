@@ -407,7 +407,7 @@ namespace Marketplace_portal.Controllers
                             }
                         }
 
-                        div = "<a href=\"/Filter/TestProductDetail/" + Data.ProductID.ToString() + "\" id=\"ProductDiv\" > "
+                        div = "<a href=\"/ProductSearch/Index/" + Data.ProductID.ToString() + "\" id=\"ProductDiv\" > "
                               + "<div class = \"productDiv\">"
                               + "<div> <img class = \"productImg\" runat=\"server\" src=\"../../" + Data.ProductImage + "\"alt=\"Fan Image\" > </div>"
                               + "<div><b>" + Data.ProductName + "</b></div>"
