@@ -18,8 +18,10 @@
 
 </head>
 
+
 <body>
-    <div class="container-fluid" style="background-color:white"></div>
+    <div style="padding:20px 10%">
+    @*<div class="container-fluid" style="background-color:white"></div>
     <div id="header" class="row" style="background:linear-gradient(#357CAA,white)">
         <div class="row" style="width:99vw;height:70px;text-align: center;margin-top:20px;">
             <div style="display:inline;width:400px;margin-left:20px">
@@ -29,7 +31,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>*@
     <div>
         @*@ViewBag.Message World!*@
         <div class="topper" style="color:#357CAA ">
@@ -44,7 +46,7 @@
                     while (index < modelLength)
                     {
                         string imgsrc = "../.." + @Model.ProductModels.ElementAt(index).ProductImage;
-                        <td scope="col"> <img class="center-block" src=@imgsrc width="200" height="400"></td>
+                        <td scope="col"> <img class="center-block" src=@imgsrc width="100" height="200"></td>
                         index++;
                     }
                     index = 0;
@@ -311,12 +313,8 @@
     
     </table>
 
-    <div>
-        @*
-        <a id="btn_add" href="@Url.Action(" Add", "AddToCart" )" class="btn btn-info btn-lg" style="margin-left:60px">
-            <span class="addto" onclick="SaveItem()"> </span> Add To
-        </a>*@
     </div>
+
 </body>
 </html>
 
