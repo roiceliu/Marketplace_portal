@@ -26,10 +26,10 @@
         <div class="loginHeader">
             <a onclick="ShowSignup()">Sign Up</a>
         </div>
-        <div class="modal" >
+        <div class="modal">
             <div class="modal-content">
                 @{Html.RenderAction("Register", "Registration"); }
-            </div>    
+            </div>
         </div>
         <div class="loginSection ColumnSet">
             <img id="jooleIcon" src="@Url.Content("~/Content/Images/jooleIcon.png")" alt=" Joole Icon">
@@ -63,7 +63,7 @@
     </div>
 
     <script>
-        var ShowSignup =function() {
+        var ShowSignup = function () {
             $('.modal').show();
         }
 

@@ -1,10 +1,8 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-    @*Layout = null; //Remove this when banner is done*@
-}
+@{ ViewBag.Title = "Index"; @*Layout = null; //Remove this when banner is done*@ }
 
 @Styles.Render("~/Content/CSSStyles/Filter.css")
+@Html.Partial("Intro")
 <div class="FilterWrapper">
     <div class="row">
 
@@ -29,9 +27,9 @@
             <div class="prodTyp">
                 @Html.Label("ProductType", "Product Type", new { @class = "MakeBlock" })
                 @Html.DropDownList("ProductType",
-                     new SelectList(Model.productTypes),
-                     ViewData["dropDown"].ToString(),
-                     new { @id = "ProductType", @class = "form-control" })
+                          new SelectList(Model.productTypes),
+                          ViewData["dropDown"].ToString(),
+                          new { @id = "ProductType", @class = "form-control" })
             </div>
 
             <div class="model-year">
@@ -50,27 +48,27 @@
 
 
 
-        <br />
-        <div class="tech-spec">
-            <h4> Technical Specifications</h4>
-            <h5> Air Flow (CFM) </h5>
-
-            <div class="scroll-bar">
-                <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="0" value="@ViewData["airmin"]" /></div>
-                <div id="slider" class="MakeBlock SliderBox"></div>
-                <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="1" value="@ViewData["airmax"]" /></div>
-            </div>
             <br />
+            <div class="tech-spec">
+                <h4> Technical Specifications</h4>
+                <h5> Air Flow (CFM) </h5>
+
+                <div class="scroll-bar">
+                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="0" value="@ViewData["airmin"]" /></div>
+                    <div id="slider" class="MakeBlock SliderBox"></div>
+                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="1" value="@ViewData["airmax"]" /></div>
+                </div>
+                <br />
 
 
-            <h5> Max Power (W) </h5>
+                <h5> Max Power (W) </h5>
 
-            <div class="scroll-bar">
-                <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="2" value="@ViewData["powermin"]" /></div>
-                <div id="slider2" class="MakeBlock SliderBox"></div>
-                <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="3" value="@ViewData["powermax"]" /></div>
-            </div>
-            <br />
+                <div class="scroll-bar">
+                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="2" value="@ViewData["powermin"]" /></div>
+                    <div id="slider2" class="MakeBlock SliderBox"></div>
+                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="3" value="@ViewData["powermax"]" /></div>
+                </div>
+                <br />
 
                 <h5> Sound at max speed (dBA) </h5>
 
