@@ -1,24 +1,13 @@
 ﻿@using Marketplace_portal.Models;
 @using Newtonsoft.Json;
 
-@{ ProductSearchModel productObject = ViewData["productObject"] as ProductSearchModel;
+@{
+    ProductSearchModel productObject = Session["productObject"] as ProductSearchModel;
 
-                //string[] productNames = (string[])ViewData["productNames"];
-                //String[] productsNames = new string[Products.products.Count()];
+    Layout = null;
+}
 
-                //for (var i = 0; i < Products.products.Count(); i++)
-                //{
-                //    productsNames[i] = Products.products[i].ProductName;
-                //}
 
-                //foreach(tblProduct p in Products){
-                //    productsNames.Add(p.ProductName);
-                //}
-
-                //productsNames = List.ToArray();
-
-                Layout = null;
-    }
 
 <!DOCTYPE html>
 

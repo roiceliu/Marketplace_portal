@@ -24,7 +24,7 @@ namespace Marketplace_portal.Controllers
                 subCategoryDepartmentDict = productSearchService.getSubcategoryDepartmentDict()
             };
 
-            ViewData["productObject"] = p;
+            Session.Add("productObject", p);
             //ViewData["productNames"] = p.productNames;
             return View();
         }
