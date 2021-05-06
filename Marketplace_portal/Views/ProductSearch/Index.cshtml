@@ -30,9 +30,10 @@
                 <option value="All" selected disabled hidden>Departments</option>
                 <option value="All">All</option>
                 @{ foreach (string departmentName in productObject.departmentNames)
-                    {
+                   {
                         <option name="@departmentName" value="@departmentName">@departmentName</option>
-                    } }
+                   }
+                }
             </select>
             <input id="autocomplete" placeholder="Search">
             <input type="submit" id="loginBtn" value="">

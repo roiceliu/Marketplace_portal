@@ -8,6 +8,7 @@
     border-top: 0px;*/
     display: flex;
     justify-content: flex-start;
+    flex-wrap:wrap;
     height: 125px;
     background: linear-gradient(180deg, #357CAA 0%, rgba(53, 124, 170, 0.88573) 28.24%, rgba(53, 124, 170, 0) 100%);
     background-repeat: no-repeat;
@@ -36,16 +37,15 @@
 }
 
 .bannerNav {
-    /*margin-left:30px;*/
+    margin-left:30px;
     list-style-type: none;
-    display:flex;
-    justify-content:space-around;
-/*    margin: 0;
-    padding: 0;*/
+/*    display:flex;*/
 }
 
 .banner li {
     display:inline;
+    background-color:red;
+    margin-left:1em;
 }
 
 .profilePicture {
