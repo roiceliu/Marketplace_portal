@@ -28,7 +28,7 @@ namespace Marketplace_portal.Controllers
                 IUserService us = new UserService();
                 Boolean isValid = us.IsUserExist(user.UserName, user.Password);
                 if (isValid)
-                    return View("Success");
+                    return RedirectToAction("Index", "ProductSearch");
                 else {
                     ViewData["errorMessage"] = "UserID or Password is incorrect";
                     return View();
