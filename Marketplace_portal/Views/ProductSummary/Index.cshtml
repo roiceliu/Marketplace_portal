@@ -15,11 +15,22 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/Site.css">
     @Styles.Render("~/Content/CSSStyles/ProductSummary.css")
+    <link rel="stylesheet" href="~/Content/CSSStyles/Banner2.css" />
     <title>Index</title>
 </head>
 
 <body>
     @Html.Partial("Intro")
+    <nav class="navbar navbar-default">
+        <div class="container-fluid bannerNavBox">
+            <ul class="bannerNav nav navbar-nav">
+                <li><a style="color:#337ab7" href="ProductSummary">Product Summary</a></li>
+                <li><a style="color:#337ab7" href="ProductDetails">Product Details</a></li>
+                <li><a style="color:#337ab7" href="ProductDocumentation">Product Documentation</a></li>
+                <li><a style="color:#337ab7" href="Contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="SummaryWrapper">
         <h1>Product Summary</h1>
         <hr />
