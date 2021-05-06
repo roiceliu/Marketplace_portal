@@ -1,24 +1,106 @@
-﻿<!DOCTYPE html>
+﻿@using Marketplace_portal.Models;
+@using Newtonsoft.Json;
+
+@{
+    ProductSearchModel productObject = Session["productObject"] as ProductSearchModel;
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Joole</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="~/Content/CSSStyles/Banner.css">
-
+    @*<link rel="stylesheet" href="~/Content/CSSStyles/Login.css">*@
+    @*<link rel="stylesheet" href="~/Content/CSSStyles/ProductSearch.css">*@
+    <link rel="stylesheet" href="~/Content/CSSStyles/Banner.css" />
 </head>
-
 <body>
-    <div>
-        <div class="myCenter">
-            <img class="banner" src="~/Content/Images/JooleBanner.png" alt="JooleIcon" />
-            <h3>Building Product Selection Platform</h3>
+
+    <div class="banner">
+        <div class="logo">
+            <img src="~/Content/Images/JooleBanner.png" class="logoImg" />
+        </div>
+        <div class="centerSearch">
+            <form action="/Filter/Subcategory/" method="post">
+                <select name="departments" id="departments" class="dropDownBox" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option value="All" selected disabled hidden>Departments</option>
+                    <option value="All">All</option>
+                    @{ foreach (string departmentName in productObject.departmentNames)
+                        {
+                            <option name="@departmentName" value="@departmentName">@departmentName</option>
+                        } }
+                </select>
+                <input id="autocomplete" placeholder="Search">
+                <input type="submit" id="loginBtn" value="">
+
+            </form>
+        </div>
+        <div>
+            <img class="profilePicture" />
+        </div>
+
+        <div class="bannerNavBox">
+            <ul class="bannerNav">
+                <li><a href="default.asp">Home</a></li>
+                <li><a href="news.asp">News</a></li>
+                <li><a href="contact.asp">Contact</a></li>
+                <li><a href="about.asp">About</a></li>
+            </ul>
         </div>
     </div>
+
+
 </body>
 </html>
+
+<script type="text/javascript">
+    var searchList;
+    var departmentNameLookup;
+    var productNames;
+    var subcategoryIDs;
+
+    $(document).ready(function () {
+        searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.subcategoryNames));
+        departmentNameLookup = @Html.Raw(Json.Encode(productObject.subCategoryDepartmentDict));
+        subcategoryNames = @Html.Raw(JsonConvert.SerializeObject(productObject.subcategoryNames));
+        subcategoryIDs = @Html.Raw(JsonConvert.SerializeObject(productObject.subcategoryIDs));
+        $("#departments").val("All");
+        populateSearchList("All");
+        autocomplete()
+    });
+
+
+    $("#departments").change(function () {
+        populateSearchList($("#departments").val());
+    });
+
+    function populateSearchList(departmentSelection) {
+        searchList = [];
+        if (departmentSelection == "All") {
+            searchList = @Html.Raw(JsonConvert.SerializeObject(productObject.subcategoryNames));
+            autocomplete()
+            return;
+        }
+
+        for (var i = 0; i < subcategoryIDs.length; i++) {
+            if (departmentNameLookup[subcategoryIDs[i]] == departmentSelection) {
+                searchList.push(subcategoryNames[i]);
+            }
+        }
+        autocomplete()
+    }
+    function autocomplete() {
+        $("#autocomplete").autocomplete({
+            minLength: 0,
+            source: searchList
+        }).on('focus', function () { $(this).keydown();});
+    }
+</script>

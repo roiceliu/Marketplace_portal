@@ -38,11 +38,24 @@ option:hover {
     background-color:aliceblue;
 }
 
+#loginBtn {
+    background: url("../Images/SearchIcon.svg");
+    background-repeat:no-repeat;
+    background-color: #327AB9;
+    background-size:cover;
+    height: 33px;
+    width: 33px;
+    margin-left:3px;
+}
 
 #autocomplete {
-    width:300px;
-    height:35px;
-    /*border-radius:5px;*/
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    background-image: url("../Images/DownArrow.svg");
+    background-position: calc(99%), calc(35%);
+    background-size: 8%;
+    background-repeat:no-repeat;
 }
 
 *:focus {
