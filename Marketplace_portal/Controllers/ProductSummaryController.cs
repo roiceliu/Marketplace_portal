@@ -17,10 +17,10 @@ namespace Marketplace_portal.Controllers
             ProductSummaryModel properties = new ProductSummaryModel
             {
                 //Array is [ManufacturerName, Series, Model, ModelYear]
-                description = productSummaryService.getDescription(1), //Change this 1 to the productID that's passed in.
+                description = productSummaryService.getDescription(2), //Change this 1 to the productID that's passed in.
 
                 //Array is [PropertyName, IsType, Value, HasMinMax, Max, Min]
-                properties = productSummaryService.getProperties(1) //Change this 1 to the productID that's passed in.
+                properties = productSummaryService.getProperties(2) //Change this 1 to the productID that's passed in.
             };
 
             ViewData["propertiesObject"] = properties;
