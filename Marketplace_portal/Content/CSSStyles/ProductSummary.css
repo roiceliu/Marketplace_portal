@@ -1,0 +1,58 @@
+﻿body {
+   
+}
+
+
+.SummaryWrapper{
+    width:100%;
+    min-height:600px;
+    padding: 15px 3%;
+    display: flex;
+    flex-direction:column;
+}
+
+    .SummaryWrapper hr {
+        border-top: 1px solid #DDDDDD;
+        width: 100%;
+    }
+
+    .SummaryWrapper h1 {
+        color: #1B2863;
+        font-size:18pt;
+        margin-bottom: -10px;
+    }
+
+.DetailsWrapper{
+    display:flex;
+}
+
+.col{
+    width:50%;
+}
+
+table{
+    width:95%;
+}
+
+tr {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+td{
+    padding: 5px 5px;
+}
+
+.Title {
+    background-color: #DDDDDD;
+    width: 300px;
+    font-weight:bold;
+}
+
+
+
+
+
+
+
+
+

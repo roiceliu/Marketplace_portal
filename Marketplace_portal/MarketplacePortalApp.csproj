@@ -159,6 +159,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CSSStyles\Banner.css" />
     <Content Include="Content\CSSStyles\Login.css" />
+    <Content Include="Content\CSSStyles\ProductSummary.css" />
     <Content Include="Content\Filter.css" />
     <Content Include="Content\CSSStyles\main.css" />
     <Content Include="Content\CSSStyles\ProductSearch.css" />
