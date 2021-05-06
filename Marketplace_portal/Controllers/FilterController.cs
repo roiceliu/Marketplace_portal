@@ -40,13 +40,6 @@ namespace Marketplace_portal.Controllers
 
         }
 
-        public ActionResult Subcategory()
-        {
-            //Request["txtAmoun"].ToString();
-            return RedirectToAction("Fans", "Filter");    
-            
-        }
-
 
             public ActionResult Test( int[] Ids)
         {
