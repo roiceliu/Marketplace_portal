@@ -196,8 +196,18 @@ namespace Marketplace_portal.Controllers
 
             //get unfiltered products
 
-            //get products by type
-            List <tblProduct> productsByType = fservice.GetProductsByProductType(type);
+            List<tblProduct> productsByType = new List<tblProduct>();
+
+            if (type == "       ")
+            {
+                productsByType =   fservice.GetAllProducts().ToList(); 
+            }
+            else
+            {
+                //get products by type
+                productsByType = fservice.GetProductsByProductType(type);
+            }
+            
 
             //get products by property name
             List<tblProduct> productsByPropertyName = fservice.GetProductsByPropertyName("Air Flow");
