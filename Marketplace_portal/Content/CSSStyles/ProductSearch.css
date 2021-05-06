@@ -21,6 +21,7 @@
     background-size: 10%;
     color: aliceblue;
     border: 0px;
+    border-radius:5px;
     outline: 0px;
     /*background-position-x: calc(95%);*/
     /*background-position:*/
@@ -37,15 +38,6 @@ option:hover {
     background-color:aliceblue;
 }
 
-#loginBtn {
-    background: url("../Images/SearchIcon.svg");
-    background-repeat:no-repeat;
-    background-color: #327AB9;
-    background-size:cover;
-    height: 33px;
-    width: 33px;
-    margin-left:3px;
-}
 
 #autocomplete {
     width:300px;
