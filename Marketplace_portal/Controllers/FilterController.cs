@@ -17,8 +17,14 @@ namespace Marketplace_portal.Controllers
 
         List<string> types = new List<string>();
 
+        public ActionResult Subcategory( )
+        {
 
-        public ActionResult Test( int[] Ids)
+
+            return RedirectToAction("Fans", "Filter");
+        }
+
+            public ActionResult Test( int[] Ids)
         {
             /*string id1 = Request.QueryString["id1"].ToString();
             string id2 = Request.QueryString["id2"].ToString();
@@ -407,7 +413,7 @@ namespace Marketplace_portal.Controllers
                             }
                         }
 
-                        div = "<a href=\"/Filter/TestProductDetail/" + Data.ProductID.ToString() + "\" id=\"ProductDiv\" > "
+                        div = "<a href=\"/ProductSummary/Index/" + Data.ProductID.ToString() + "\" id=\"ProductDiv\" > "
                               + "<div class = \"productDiv\">"
                               + "<div> <img class = \"productImg\" runat=\"server\" src=\"../../" + Data.ProductImage + "\"alt=\"Fan Image\" > </div>"
                               + "<div><b>" + Data.ProductName + "</b></div>"
