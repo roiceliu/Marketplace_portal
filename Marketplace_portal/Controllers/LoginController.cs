@@ -15,7 +15,7 @@ namespace Marketplace_portal.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            return View(new UserLogin()); //had to change here to make it work-Mark
+            return View(new UserLogin());
         }
 
         [HttpPost]
