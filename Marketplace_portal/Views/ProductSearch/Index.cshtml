@@ -25,16 +25,15 @@
     @Html.Partial("Intro")
 
     <div class="center">
-        <form action="/Filter/Fans/" method="post">
+        <form action="/Filter/Subcategory/" method="post"> @* To do: Send the subcategory name *@
             <select name="departments" id="departments" class="dropDownBox" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <option value="All" selected disabled hidden>Departments</option>
                 <option value="All">All</option>
                 @{ foreach (string departmentName in productObject.departmentNames)
                     {
-                        <option value="@departmentName">@departmentName</option>
+                        <option name="@departmentName" value="@departmentName">@departmentName</option>
                     } }
             </select>
-
             <input id="autocomplete" placeholder="Search">
             <input type="submit" id="loginBtn" value="">
 
