@@ -4,6 +4,8 @@
     @*Layout = null; //Remove this when banner is done*@
 }
 
+@Html.Partial("Intro")
+
 <div class="row">
 
     <div class="col-md-4 ">
@@ -43,67 +45,67 @@
                 <input type="text" id="yearMax" name="yearMax" maxlength="4" size="4" value="@ViewData["yearMax"]">
                 <input type='button' name='submitMax' id='submitMax' value='Comment' style="display:none;" />
             </div>
+        </div>
+
+
+
+
+        <br />
+        <div class="tech-spec">
+            <h4> Technical Specifications</h4>
+            <h5> Air Flow (CFM) </h5>
+
+            <div class="scroll-bar">
+                <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="0" value="@ViewData["airmin"]" /></div>
+                <div id="slider" class="MakeBlock SliderBox"></div>
+                <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="1" value="@ViewData["airmax"]" /></div>
             </div>
-
-
-
-
             <br />
-            <div class="tech-spec">
-                <h4> Technical Specifications</h4>
-                <h5> Air Flow (CFM) </h5>
-
-                <div class="scroll-bar">
-                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="0" value="@ViewData["airmin"]" /></div>
-                    <div id="slider" class="MakeBlock SliderBox"></div>
-                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="1" value="@ViewData["airmax"]" /></div>
-                </div>
-                <br />
 
 
-                <h5> Max Power (W) </h5>
+            <h5> Max Power (W) </h5>
 
-                <div class="scroll-bar">
-                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="2" value="@ViewData["powermin"]" /></div>
-                    <div id="slider2" class="MakeBlock SliderBox"></div>
-                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="3" value="@ViewData["powermax"]" /></div>
-                </div>
-                <br />
-
-                <h5> Sound at max speed (dBA) </h5>
-         
-                <div class="scroll-bar">
-                    <div class="MakeBlock"><input type="number" class="sliderValue MinBox" readonly data-index="4" value="@ViewData["soundmin"]" /></div>
-                    <div id="slider3" class="MakeBlock SliderBox"></div>
-                    <div class="MakeBlock"><input type="number" class="sliderValue MaxBox" readonly data-index="5" value="@ViewData["soundmax"]" /></div>
-                </div>
-                    <br />
-                
-                <h5> Fan sweep diameter(in)</h5>
-               
-                <div class="scroll-bar">
-                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="6" value="@ViewData["fanmin"]" /></div>
-                    <div id="slider4" class="MakeBlock SliderBox"></div>
-                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="7" value="@ViewData["fanmax"]" /></div>
-                </div>
-                    <br />
-               
+            <div class="scroll-bar">
+                <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="2" value="@ViewData["powermin"]" /></div>
+                <div id="slider2" class="MakeBlock SliderBox"></div>
+                <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="3" value="@ViewData["powermax"]" /></div>
             </div>
-           
+            <br />
+
+            <h5> Sound at max speed (dBA) </h5>
+
+            <div class="scroll-bar">
+                <div class="MakeBlock"><input type="number" class="sliderValue MinBox" readonly data-index="4" value="@ViewData["soundmin"]" /></div>
+                <div id="slider3" class="MakeBlock SliderBox"></div>
+                <div class="MakeBlock"><input type="number" class="sliderValue MaxBox" readonly data-index="5" value="@ViewData["soundmax"]" /></div>
+            </div>
+            <br />
+
+            <h5> Fan sweep diameter(in)</h5>
+
+            <div class="scroll-bar">
+                <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="6" value="@ViewData["fanmin"]" /></div>
+                <div id="slider4" class="MakeBlock SliderBox"></div>
+                <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="7" value="@ViewData["fanmax"]" /></div>
+            </div>
+            <br />
 
         </div>
+
+
+    </div>
     <div class="col-md-8">
         <p><b>Electrical > </b> Fans</p>
         <div id="product_list_container">products will display here</div>
         @*
-            &nbsp;
-        <div>
-            <input id="CompareButton" class="divButton" type="submit" value="Compare">
-        </div>
+                &nbsp;
+            <div>
+                <input id="CompareButton" class="divButton" type="submit" value="Compare">
+            </div>
         *@
     </div>
 
-    </div>
+</div>
 <script>
     $(document).ready(function () {
 
@@ -157,7 +159,7 @@
 
 
         $(document).on('click', '#CompareButton', function () {
-            
+
             var url = '@Url.Action("CompareTest", "Compare")'
 
             if ($("#checkbox1").prop("checked") == true) {

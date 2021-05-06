@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    @Html.Partial("Intro")
     <div class="container-fluid" style="background-color:white"></div>
     <div id="header" class="row" style="background:linear-gradient(#357CAA,white)">
         <div class="row" style="width:99vw;height:70px;text-align: center;margin-top:20px;">
@@ -188,8 +189,8 @@
                         index++;
                     }
                     index = 0;
-                  }
-             </tr>
+                }
+            </tr>
             <tr>
                 <th scope="row" class="col-md-3 active">Operating Voltage (VAC)</th>
                 @{
@@ -310,14 +311,14 @@
                 }
             </tr>
         </tbody>
-    
+
     </table>
 
     <div>
         @*
-        <a id="btn_add" href="@Url.Action(" Add", "AddToCart" )" class="btn btn-info btn-lg" style="margin-left:60px">
-            <span class="addto" onclick="SaveItem()"> </span> Add To
-        </a>*@
+            <a id="btn_add" href="@Url.Action(" Add", "AddToCart" )" class="btn btn-info btn-lg" style="margin-left:60px">
+                <span class="addto" onclick="SaveItem()"> </span> Add To
+            </a>*@
     </div>
 </body>
 </html>
