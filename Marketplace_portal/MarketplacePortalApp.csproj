@@ -216,6 +216,7 @@
     <Content Include="Views\Filter\Light.cshtml" />
     <Content Include="Views\Filter\Sports.cshtml" />
     <Content Include="Views\Filter\Commute.cshtml" />
+    <Content Include="Views\Shared\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Filter\_Products.cshtml" />
