@@ -18,7 +18,15 @@ namespace Marketplace_portal.Controllers
         List<string> types = new List<string>();
 
 
-        public ActionResult Test( int[] Ids)
+        public ActionResult Subcategory()
+        {
+            //Request["txtAmoun"].ToString();
+            return RedirectToAction("Fans", "Filter");    
+            
+        }
+
+
+            public ActionResult Test( int[] Ids)
         {
             /*string id1 = Request.QueryString["id1"].ToString();
             string id2 = Request.QueryString["id2"].ToString();
