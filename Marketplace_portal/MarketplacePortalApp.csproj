@@ -162,7 +162,7 @@
     <Content Include="Content\CSSStyles\Layout.css" />
     <Content Include="Content\CSSStyles\Login.css" />
     <Content Include="Content\CSSStyles\ProductSummary.css" />
-    <Content Include="Content\Filter.css" />
+    <Content Include="Content\CSSStyles\Filter.css" />
     <Content Include="Content\CSSStyles\main.css" />
     <Content Include="Content\CSSStyles\ProductSearch.css" />
     <Content Include="Content\CSSStyles\Register.css" />
@@ -223,7 +223,6 @@
     <Content Include="Views\ProductSearch\Index.cshtml" />
     <Content Include="Views\ProductSummary\Index.cshtml" />
     <Content Include="Views\Compare\CompareTest.cshtml" />
-    <Content Include="Views\Compare\Test.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\Shared\Intro.cshtml" />
     <Content Include="Views\Filter\Light.cshtml" />

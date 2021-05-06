@@ -4,48 +4,48 @@
     @*Layout = null; //Remove this when banner is done*@
 }
 
-@Html.Partial("Intro")
+@Styles.Render("~/Content/CSSStyles/Filter.css")
+<div class="FilterWrapper">
+    <div class="row">
 
-<div class="row">
-
-    <div class="col-md-4 ">
-        <div class="MakeBlock srch">
-            <div class="MakeBlock">
-                <h4>Search:</h4>
-            </div>
-            <div class="save_clear">
+        <div class="col-md-4 ">
+            <div class="MakeBlock srch">
                 <div class="MakeBlock">
-                    <input id="SaveButton" class="divButton" type="submit" value="Save">
+                    <h4>Search:</h4>
                 </div>
-                <div class="MakeBlock">
-                    <input id="ClearButton" class="divButton" type="submit" value="Clear">
+                <div class="save_clear">
+                    <div class="MakeBlock">
+                        <input id="SaveButton" class="divButton" type="submit" value="Save">
+                    </div>
+                    <div class="MakeBlock">
+                        <input id="ClearButton" class="divButton" type="submit" value="Clear">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="prod-proj">
-            <div class="MakeBl pduct"><h4>Product</h4></div>
-            <div class="MakeBl pject"><h4>Project</h4></div>
-        </div>
-        <div class="prodTyp">
-            @Html.Label("ProductType", "Product Type", new { @class = "MakeBlock" })
-            @Html.DropDownList("ProductType",
-                 new SelectList(Model.productTypes),
-                 ViewData["dropDown"].ToString(),
-                 new { @id = "ProductType", @class = "form-control" })
-        </div>
+            <div class="prod-proj">
+                <div class="MakeBl pduct"><h4>Product</h4></div>
+                <div class="MakeBl pject"><h4>Project</h4></div>
+            </div>
+            <div class="prodTyp">
+                @Html.Label("ProductType", "Product Type", new { @class = "MakeBlock" })
+                @Html.DropDownList("ProductType",
+                     new SelectList(Model.productTypes),
+                     ViewData["dropDown"].ToString(),
+                     new { @id = "ProductType", @class = "form-control" })
+            </div>
 
-        <div class="model-year">
-            <div class="inline" style="float:left">
-                <h5>Model Year:</h5>
+            <div class="model-year">
+                <div class="inline" style="float:left">
+                    <h5>Model Year:</h5>
+                </div>
+                <div class="inline" style="float:right">
+                    <input type="text" id="yearMin" name="yearMin" maxlength="4" size="4" value="@ViewData["yearMin"]">
+                    <input type='button' name='submitMin' id='submitMin' value='Comment' style="display:none;" />
+                    &nbsp;&nbsp; -&nbsp;&nbsp;
+                    <input type="text" id="yearMax" name="yearMax" maxlength="4" size="4" value="@ViewData["yearMax"]">
+                    <input type='button' name='submitMax' id='submitMax' value='Comment' style="display:none;" />
+                </div>
             </div>
-            <div class="inline" style="float:right">
-                <input type="text" id="yearMin" name="yearMin" maxlength="4" size="4" value="@ViewData["yearMin"]">
-                <input type='button' name='submitMin' id='submitMin' value='Comment' style="display:none;" />
-                &nbsp;&nbsp; -&nbsp;&nbsp;
-                <input type="text" id="yearMax" name="yearMax" maxlength="4" size="4" value="@ViewData["yearMax"]">
-                <input type='button' name='submitMax' id='submitMax' value='Comment' style="display:none;" />
-            </div>
-        </div>
 
 
 
@@ -72,37 +72,39 @@
             </div>
             <br />
 
-            <h5> Sound at max speed (dBA) </h5>
+                <h5> Sound at max speed (dBA) </h5>
 
-            <div class="scroll-bar">
-                <div class="MakeBlock"><input type="number" class="sliderValue MinBox" readonly data-index="4" value="@ViewData["soundmin"]" /></div>
-                <div id="slider3" class="MakeBlock SliderBox"></div>
-                <div class="MakeBlock"><input type="number" class="sliderValue MaxBox" readonly data-index="5" value="@ViewData["soundmax"]" /></div>
+                <div class="scroll-bar">
+                    <div class="MakeBlock"><input type="number" class="sliderValue MinBox" readonly data-index="4" value="@ViewData["soundmin"]" /></div>
+                    <div id="slider3" class="MakeBlock SliderBox"></div>
+                    <div class="MakeBlock"><input type="number" class="sliderValue MaxBox" readonly data-index="5" value="@ViewData["soundmax"]" /></div>
+                </div>
+                <br />
+
+                <h5> Fan sweep diameter(in)</h5>
+
+                <div class="scroll-bar">
+                    <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="6" value="@ViewData["fanmin"]" /></div>
+                    <div id="slider4" class="MakeBlock SliderBox"></div>
+                    <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="7" value="@ViewData["fanmax"]" /></div>
+                </div>
+                <br />
+
             </div>
-            <br />
 
-            <h5> Fan sweep diameter(in)</h5>
-
-            <div class="scroll-bar">
-                <div class="MakeBlock"><input type="text" class="sliderValue MinBox" readonly data-index="6" value="@ViewData["fanmin"]" /></div>
-                <div id="slider4" class="MakeBlock SliderBox"></div>
-                <div class="MakeBlock"><input type="text" class="sliderValue MaxBox" readonly data-index="7" value="@ViewData["fanmax"]" /></div>
-            </div>
-            <br />
 
         </div>
+        <div class="col-md-8">
+            <p><b>Electrical > </b> Fans</p>
+            <div id="product_list_container">products will display here</div>
+            @*
+                    &nbsp;
+                <div>
+                    <input id="CompareButton" class="divButton" type="submit" value="Compare">
+                </div>
+            *@
+        </div>
 
-
-    </div>
-    <div class="col-md-8">
-        <p><b>Electrical > </b> Fans</p>
-        <div id="product_list_container">products will display here</div>
-        @*
-                &nbsp;
-            <div>
-                <input id="CompareButton" class="divButton" type="submit" value="Compare">
-            </div>
-        *@
     </div>
 
 </div>
