@@ -19,7 +19,7 @@ namespace MarketplacePortal_Repository
         private GenericRepository<tblTechSpecsFilter> techSpecsFilterRepository;
         private GenericRepository<tblTypeFilter> typeFilterRepository;
         private GenericRepository<tblUser> userRepository;
-        private ProductRepository productRepositoryFilter;
+        
 
 
 
@@ -165,17 +165,17 @@ namespace MarketplacePortal_Repository
             GC.SuppressFinalize(this);
         }
 
-        public ProductRepository ProductRepositoryFilter()
-        {
+        //public ProductRepository ProductRepositoryFilter()
+        //{
            
-                if (this.productRepositoryFilter == null)
-                {
-                    this.productRepositoryFilter = new ProductRepository(context);
-                }
-                return productRepositoryFilter;
+        //        if (this.productRepositoryFilter == null)
+        //        {
+        //            this.productRepositoryFilter = new ProductRepository(context);
+        //        }
+        //        return productRepositoryFilter;
 
                 
           
-        }
+        //}
     }
 }

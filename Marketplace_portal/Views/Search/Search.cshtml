@@ -1,0 +1,24 @@
+﻿@model Marketplace_portal.Models.SearchDepartment
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<div>
+    
+    @Html.DropDownListFor(model => model.Department_id, Model.departments, "Category", htmlAttributes: new { @id = "dropDownCat" })
+    
+
+
+    @*remove the placeholder option at dropdown*@
+    <script>
+      
+        $('#dropDownCat').on("mouseover", function () {
+            if ($(this).children('option[Value=""]').length)
+            {
+                $(this).children('option[value=""]').hide();
+                $(this).children('option[value=""]').attr("selected", "true");
+                $(this).children('option[value=""]').attr("disabled", "true");  
+            }
+        });
+    </script>
+    
+</div>
