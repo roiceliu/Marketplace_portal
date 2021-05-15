@@ -169,6 +169,7 @@
     <Content Include="Content\Images\DownArrow.svg" />
     <Content Include="Content\Images\JooleBanner.png" />
     <Content Include="Content\Images\JooleBanner.svg" />
+    <Content Include="Content\Images\jooleIcon.PNG" />
     <Content Include="Content\Images\SearchIcon.png" />
     <Content Include="Content\Images\SearchIcon.svg" />
     <Content Include="favicon.ico" />
